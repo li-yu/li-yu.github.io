@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>使用 ViewDragHelper 实现图片下拽返回 | 呵呵小鱼</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://liyuyu.cn/favicon.ico?v=1578022317997">
+<link rel="stylesheet" href="https://liyuyu.cn/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="微信的图片下拽返回功能在日常使用中非常方便，同时在很多 App 中都见到了类似的设计，可以说一旦习惯这种操作再也回不去了。
+
+这几天逛 GitHub，发现一个很赞的库 https://github.com/iielse/ImageWatch..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://liyuyu.cn">
+        <img src="https://liyuyu.cn/images/avatar.png?v=1578022317997" class="site-logo">
+        <h1 class="site-title">呵呵小鱼</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      <p><a href="http://www.beian.miit.gov.cn" target="_blank">粤ICP备14087112号-1</a></p>
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://liyuyu.cn/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">使用 ViewDragHelper 实现图片下拽返回</h2>
+            <div class="post-date">2018-08-09</div>
+            
+            <div class="post-content" v-pre>
+              <p>微信的图片下拽返回功能在日常使用中非常方便，同时在很多 App 中都见到了类似的设计，可以说一旦习惯这种操作再也回不去了。</p>
+<!--more-->
+<p>这几天逛 GitHub，发现一个很赞的库 <a href="https://github.com/iielse/ImageWatcher">https://github.com/iielse/ImageWatcher</a> 高度还原了微信的效果，粗看了下源码，我觉得可以更简单的实现类似的效果，动手实现后，发现 ViewDragHelper + ActvitySceneTransition 的方案简单粗暴。</p>
+<center>
+<img src="http://cdn.liyuyu.cn/draglayout.gif"/>
+</center>
+<h3 id="什么是-viewdraghelper">什么是 ViewDragHelper</h3>
+<p>具体实现之前先简单介绍下什么是 ViewDragHelper。</p>
+<p>ViewDragHelper 是 support v4 兼容包中的一个工具类，用来简化自定义 ViewGroup 中的手势处理。</p>
+<p>使用 ViewDragHelper 可以轻松实现 ViewGroup 里 View 的拖拽操作，这里介绍下使用 ViewDragHelper 里几个重要步骤。</p>
+<h4 id="初始化">初始化</h4>
+<p>通过静态方法创建：viewGroup 即为当前容器；sensitivity 为拖拽的灵敏度，默认为 1；callback 为配置拖拽中的各种逻辑处理。</p>
+<pre><code class="language-java">mViewDragHelper = ViewDragHelper.create(viewGroup, callback);
+...
+or
+...
+mViewDragHelper = ViewDragHelper.create(viewGroup, sensitivity, callback);
+</code></pre>
+<h4 id="callback">Callback</h4>
+<p>这里仅列出我们需要使用到的一些回调方法：</p>
+<pre><code class="language-java">public abstract static class Callback {
+        /**
+         * 当子 View 被拖动改变位置时回调此方法
+         * 
+         * @param changedView 当前子 View
+         * @param left 当前子 View 的最新 X 坐标
+         * @param top 当前子 View 的最新 Y 坐标
+         * @param dx 当前子 View 的最新 X 坐标较上次 X 的位移量
+         * @param dy 当前子 View 的最新 Y 坐标较上次 Y 的位移量
+         */
+        public void onViewPositionChanged(@NonNull View changedView, int left, int top, int dx,
+                int dy) {
+        }
+
+
+        /**
+         * 当子 View 被释放后回调此方法
+         *
+         * @param releasedChild 当前子 View
+         * @param xvel X 子 View 被释放时，用户手指在屏幕上滑动的横向加速度
+         * @param yvel Y 子 View 被释放时，用户手指在屏幕上滑动的纵向加速度
+         */
+        public void onViewReleased(@NonNull View releasedChild, float xvel, float yvel) {}
+
+        /**
+         * 限制子 View 水平拖拽范围。
+         * 
+         * 如果返回 0，则不能进行水平拖动，如果要实现拖拽，返回值 &gt; 0 即可。
+         *
+         */
+        public int getViewHorizontalDragRange(@NonNull View child) {
+            return 1;
+        }
+
+        /**
+         * 限制子 View 纵向拖拽范围。
+         * 
+         * 如果返回 0，则不能进行纵向拖动， 我们要实现拖拽，返回值 &gt; 0 即可。
+         *
+         */
+        public int getViewVerticalDragRange(@NonNull View child) {
+            return 1;
+        }
+
+        /**
+         * 判断当前触摸的 View 能否被捕获进行拖拽，如果返回 true 则可以进行拖拽。
+         */
+        public abstract boolean tryCaptureView(@NonNull View child, int pointerId);
+
+        /**
+         * 限制当前 View 的横向拖拽范围，也可说是我们可以动态修正 View 的 top 坐标，比如我们想限制 View 只在容器内部拖动
+         *
+         * @param child 当前拖动的 View
+         * @param left View 上次的 x 坐标 + 手指移动的 x 轴位移量
+         * @param dx 手指移动的位移量
+         * @return  修正后的 x 坐标，直接返回 left 表示不限制水平拖拽范围，拖到哪儿就哪儿
+         */
+        public int clampViewPositionHorizontal(@NonNull View child, int left, int dx) {
+            return left;
+        }
+
+        /**
+         * 限制当前 View 的纵向拖拽范围，也可说是我们可以动态修正 View 的 top 坐标，比如我们想限制 View 只在容器内部拖动
+         *
+         * @param child 当前拖动的 View
+         * @param top View 上次的 y 坐标 + 手指移动的 y 轴位移量
+         * @param dx 手指移动的位移量
+         * @return  修正后的 x 坐标，直接返回 top 表示不限制纵向拖拽范围，拖到哪儿就哪儿
+         */
+        public int clampViewPositionVertical(@NonNull View child, int top, int dy) {
+            return top;
+        }
+    }
+</code></pre>
+<h4 id="处理-touch-事件">处理 Touch 事件</h4>
+<p>复杂的触摸逻辑就让 ViewDragHelper 接管即可。</p>
+<pre><code class="language-java">@Override
+    public boolean onInterceptTouchEvent(MotionEvent ev) {
+        return mViewDragHelper.shouldInterceptTouchEvent(ev);
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        mViewDragHelper.processTouchEvent(event);
+        return true;
+    }
+</code></pre>
+<h4 id="处理-view-自动复位效果">处理 View 自动复位效果</h4>
+<p>当拖拽操作不满足触发条件时，手指松开，View 需要自动回到初始位置，在 onViewReleased 里调用以下方法即可：</p>
+<pre><code class="language-java">mViewDragHelper.settleCapturedViewAt(originPoint.x, originPoint.y);
+invalidate();
+</code></pre>
+<p>同时需要覆写：</p>
+<pre><code class="language-java">    @Override
+    public void computeScroll() {
+        if (mViewDragHelper.continueSettling(true)) {
+            ViewCompat.postInvalidateOnAnimation(this);
+        }
+    }
+</code></pre>
+<h3 id="具体实现步骤">具体实现步骤</h3>
+<h4 id="1-自定义-draglayout内部使用-viewdraghelper-来处理拖拽操作">1. 自定义 DragLayout，内部使用 ViewDragHelper 来处理拖拽操作。</h4>
+<h4 id="2-创建-activity-展示图片使用-draglayout-作为根布局">2. 创建 Activity 展示图片，使用 DragLayout 作为根布局:</h4>
+<pre><code class="language-xml">&lt;com.liyu.fakeweather.widgets.DragLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;
+    android:id=&quot;@+id/drag_layout&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;
+    android:background=&quot;@color/black&quot;
+    android:fitsSystemWindows=&quot;true&quot;&gt;
+
+    &lt;ImageView
+        android:id=&quot;@+id/picture&quot;
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;match_parent&quot;
+        android:layout_centerInParent=&quot;true&quot;
+        android:adjustViewBounds=&quot;true&quot;
+        android:scaleType=&quot;fitCenter&quot; /&gt;
+
+&lt;/com.liyu.fakeweather.widgets.DragLayout&gt;
+</code></pre>
+<p>并设置 Activity 背景为透明：</p>
+<pre><code class="language-java">activity.getWindow().getDecorView().setBackgroundColor(Color.TRANSPARENT);// 当然也可以在 theme 里设置
+</code></pre>
+<h4 id="3-实现拖拽时动态改变背景透明度以及图片的缩放效果">3. 实现拖拽时动态改变背景透明度以及图片的缩放效果：</h4>
+<pre><code class="language-java">        @Override
+        public void onViewPositionChanged(@NonNull View changedView, int left, int top, int dx, int dy) {
+            if (top &gt; originPoint.y) {// 仅当向下拖拽时才处理
+                float a = (float) (top - originPoint.y) / (float) (getMeasuredHeight() - originPoint.y);
+                setBackgroundColor(ThemeUtil.changeAlpha(0xff000000, 1 - a));// 根据拖拽位移量动态改变背景透明度
+                targetView.setScaleX(1 - a);// 缩放图片
+                targetView.setScaleY(1 - a);// 缩放图片
+                if ((top - originPoint.y) &gt; getMeasuredHeight() / 5) {
+                    callEvent = true; // 下拽的位移量满足要求，可以触发关闭操作
+                } else {
+                    callEvent = false;// 不能触发关闭操作
+                }
+            }
+        }
+</code></pre>
+<h4 id="4-手指释放时逻辑处理">4. 手指释放时逻辑处理：</h4>
+<pre><code class="language-java">        @Override
+        public void onViewReleased(@NonNull View releasedChild, float xvel, float yvel) {
+            if (releasedChild == targetView) {
+                if (callEvent || yvel &gt; 8000) {// 除了判断下拽的位移量，还要判断快速下拽的速度，这边 yevl 为用户手指快速滑动的 Y 轴加速度，当加速度大于一定值时也可触发关闭操作
+                    if (listener != null) {
+                        listener.onDragFinished();
+                    }
+                    callEvent = false;
+                } else {
+					// 当拖拽不满足触发条件时，需要将 View 归位，这里使用自带的方法实现动画效果，传入初始坐标即可。
+                    mViewDragHelper.settleCapturedViewAt(originPoint.x, originPoint.y);
+                    invalidate();
+                }
+            }
+        }
+</code></pre>
+<h4 id="5-图片的转场动画">5. 图片的转场动画：</h4>
+<p>使用自带转场动画即可实现图片的打开和关闭动画。</p>
+<pre><code class="language-java">
+ActivityOptionsCompat optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                (Activity) context, transitView, PictureActivity.TRANSIT_PIC);
+
+ActivityCompat.startActivity(context, intent, optionsCompat.toBundle());
+
+...
+ViewCompat.setTransitionName(mImageView, TRANSIT_PIC);
+...
+
+</code></pre>
+<p>图片下拽返回的功能加入到了假装看天气的妹子图模块中，完整示例代码可前往 <a href="https://github.com/li-yu/FakeWeather/blob/master/app/src/main/java/com/liyu/fakeweather/widgets/DragLayout.java">https://github.com/li-yu/FakeWeather/blob/master/app/src/main/java/com/liyu/fakeweather/widgets/DragLayout.java</a> 查看。</p>
+<h3 id="总结">总结</h3>
+<p>依靠简单而又强大的 ViewDragHelper，不到 200 行的代码也实现了类似的效果。他山之石可以攻玉，翻看其源码，也学到一些很少用到的小技巧，比如获取当前触摸位置的子 View，逆向遍历全部子 View 集合然后判断触摸坐标是否在范围内，真是简单粗暴：</p>
+<pre><code class="language-java">    @Nullable
+    public View findTopChildUnder(int x, int y) {
+        final int childCount = mParentView.getChildCount();
+        for (int i = childCount - 1; i &gt;= 0; i--) {
+            final View child = mParentView.getChildAt(mCallback.getOrderedChildIndex(i));
+            if (x &gt;= child.getLeft() &amp;&amp; x &lt; child.getRight()
+                    &amp;&amp; y &gt;= child.getTop() &amp;&amp; y &lt; child.getBottom()) {
+                return child;
+            }
+        }
+        return null;
+    }
+</code></pre>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://liyuyu.cn/post/My2017">
+                  <h3 class="post-title">
+                    我的 2017
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+
+  </body>
+</html>

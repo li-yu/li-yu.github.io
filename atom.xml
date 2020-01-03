@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://liyuyu.cn</id>
     <title>呵呵小鱼</title>
-    <updated>2020-01-02T12:48:59.667Z</updated>
+    <updated>2020-01-03T03:47:35.232Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://liyuyu.cn"/>
     <link rel="self" href="https://liyuyu.cn/atom.xml"/>
-    <subtitle>我是好人</subtitle>
+    <subtitle>&lt;p&gt;&lt;a href=&quot;http://www.beian.miit.gov.cn&quot; target=&quot;_blank&quot;&gt;粤ICP备14087112号-1&lt;/a&gt;&lt;/p&gt;</subtitle>
     <logo>https://liyuyu.cn/images/avatar.png</logo>
     <icon>https://liyuyu.cn/favicon.ico</icon>
     <rights>All rights reserved 2020, 呵呵小鱼</rights>
@@ -30,5 +30,978 @@
 <p>2019 收获满满，2020 整装待发。</p>
 <p>最后希望未来一切安好，努力赚钱养家，这才是最好的 Flag。</p>
 ]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[RecyclerView 指定 Item 滚动居中显示]]></title>
+        <id>https://liyuyu.cn/post/RecyclerViewScrollToCenter</id>
+        <link href="https://liyuyu.cn/post/RecyclerViewScrollToCenter">
+        </link>
+        <updated>2019-04-17T08:27:00.000Z</updated>
+        <summary type="html"><![CDATA[<p>这是一个老生常谈的话题了。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>这是一个老生常谈的话题了。</p>
+<!--more-->
+<p>RecyclerView 提供了两个方法 <code>scrollToPosition(position)</code> 和 <code>smoothScrollToPosition(position)</code> 来将指定的 item 滚动到屏幕中，但不会居中显示，且在滚动到同一 position 的条件下，两个方法的最终效果也是不一样的（废话，方法名都不一样）。</p>
+<p>其实我们距离成功只差<em>半个屏幕</em>了，与其从头开始实现，不如分析下上面两个方法，也许会带来事半功倍的效果。</p>
+<h3 id="1-scrolltopositionposition">1. scrollToPosition(position)</h3>
+<p>通过源码发现，在调用 <code>recyclerView.scrollToPosition(position)</code> 其实调用的是 <code>layoutManager.scrollToPosition(position)</code> 方法，下面是 LinearLayoutManager 对应的代码：</p>
+<pre><code class="language-java">@Override
+public void scrollToPosition(int position) {
+    //当 LayoutManager 需要滚动到某个位置时，设置 mPendingScrollPosition 为目标位置，进行重新布局时将检查此变量。
+    mPendingScrollPosition = position;
+    // 当调用 scrollToPositionWithOffset 方法时才使用到，这里不解释
+    mPendingScrollPositionOffset = INVALID_OFFSET;
+    if (mPendingSavedState != null) {
+        // 重置锚点
+        mPendingSavedState.invalidateAnchor();
+    }
+    // 请求重新布局
+    requestLayout();
+}
+</code></pre>
+<p>顺藤摸瓜，接着调用 <code>mRecyclerView.requestLayout()</code>，触发 <code>RecyclerView#onLayout</code> 方法，在 <code>onLayout</code> 方法里调用 <code>dispatchLayout() =&gt; dispatchLayoutStep2()</code> 最后调用 <code>mLayout.onLayoutChildren(mRecycler, mState)</code>，又回到了 LinearLayoutManager 里：</p>
+<pre><code class="language-java">@Override
+public void onLayoutChildren(RecyclerView.Recycler recycler, RecyclerView.State state) {
+    // 布局算法主要分为 4 步：
+    // 1. 检查 Children 和其他变量，找到锚点信息，计算更新保存绘制锚点信息
+    // 2. 在锚点位置朝 start 方向上填充 ItemView
+    // 3. 在锚点位置朝 end 方向填充 ItemView
+    // 4. 滚动以满足从底部堆栈的要求。
+    
+    ...
+    if (!mAnchorInfo.mValid || mPendingScrollPosition != RecyclerView.NO_POSITION
+            || mPendingSavedState != null) {
+        mAnchorInfo.reset(); // 锚点重置
+        mAnchorInfo.mLayoutFromEnd = mShouldReverseLayout ^ mStackFromEnd; // 布局方向，mStackFromEnd 默认为 false
+        // 重点来了：开始更新锚点信息！如果我们设置了有效的 mPendingScrollPosition
+        // 接下来将会在 updateAnchorFromPendingData(state, anchorInfo) 方法中将 anchorInfo.mPosition = mPendingScrollPosition;
+        // 这样就把锚点设置为了我们想要显示的目标位置了
+        updateAnchorInfoForLayout(recycler, state, mAnchorInfo);
+        mAnchorInfo.mValid = true;
+    }
+    ...
+    // 后面就会按照锚点位置以及布局方向等信息开始布局绘制，以及各种滚动偏移量，这里不做过多的赘述
+}
+</code></pre>
+<p>简单概括下 <code>scrollToPosition(position)</code> 的实现过程就是：把锚点设置为需要显示的目标位置，然后请求 RecyclerView 重新布局。这一过程看似简单，实则很复杂，且最终效果也不是我们想要的滚动居中的<strong>动态效果</strong>。</p>
+<h3 id="2-smoothscrolltopositionposition">2. smoothScrollToPosition(position)</h3>
+<p>从名字就可以看出，这一过程是平滑的，还是接着扒源码，在调用 <code>recyclerView.smoothScrollToPosition(position)</code> 其实调用的是 <code>layoutManager.smoothScrollToPosition(position)</code> 方法，最终调用具体 LayoutManager 的 <code>smoothScrollToPosition(RecyclerView recyclerView, State state, int position)</code> 方法，下面是 LinearLayoutManager 对应的代码：</p>
+<pre><code class="language-java">@Override
+public void smoothScrollToPosition(RecyclerView recyclerView, RecyclerView.State state,
+        int position) {
+    // 创建一个线性平滑滚动器
+    LinearSmoothScroller linearSmoothScroller = new LinearSmoothScroller(recyclerView.getContext());
+    // 设置滚动器目标位置
+    linearSmoothScroller.setTargetPosition(position);
+    // 开始平滑滚动（如果目标位置不在屏幕范围内，则一直匀速滚动，一旦目标位置出现在屏幕上就减速滑动直至停止）
+    startSmoothScroll(linearSmoothScroller);
+}
+</code></pre>
+<p>三行代码，简单粗暴，接下来分析下滚动器是如何发现目标位置的。先从 LinearSmoothScroller 的基类 SmoothScroller 入手:</p>
+<h4 id="21-smoothscroller-是如何实现不断滚动的">2.1 SmoothScroller 是如何实现不断滚动的？</h4>
+<p>如果目标位置不在当前屏幕范围内，我们是无法获取到对应的 itemView 的，所以第一步就是让 RecyclerView 滚动起来。</p>
+<p>调用 SmoothScroller#start 方法开始滚动，如下：</p>
+<pre><code class="language-java">void start(RecyclerView recyclerView, LayoutManager layoutManager) {
+    ...
+    // 开始滚动标记
+    mRunning = true;
+    ...
+    //这里使用 ViewFlinger 进行滚动动画，ViewFlinger 实现了 Runnable 接口，并且内部使用了 OverScroller
+    mRecyclerView.mViewFlinger.postOnAnimation();
+    ...
+}
+</code></pre>
+<p>ViewFlinger 实现如下：</p>
+<pre><code class="language-java">private class ViewFlinger implements Runnable {
+     @Override
+     public void run() {
+        ...
+        // 判断 scroller 滚动是否完成， true 为滚动未完成
+        if (scroller.computeScrollOffset()) {
+            ...
+            //调用 SmoothScroller 的 onAnimation 方法，此方法将在下面详细分析
+            smoothScroller.onAnimation(dx - overscrollX, dy - overscrollY);
+            ...
+        }
+     }
+}
+</code></pre>
+<p>其实滚动的核心是不停地调用 <code>ViewCompat.postOnAnimation(RecyclerView.this, action);</code> 来实现动画效果。</p>
+<h4 id="22-smoothscroller-是如何找到目标位置的">2.2 SmoothScroller 是如何找到目标位置的？</h4>
+<p>还是以 LinearLayoutManager 为例，布局的核心流程都在 <code>onLayoutChildren</code> 方法里，一路追踪下去 <code>onLayoutChildren =&gt; fill =&gt; layoutChunk =&gt; addDisappearingView =&gt; addViewInt =&gt; mSmoothScroller.onChildAttachedToWindow(child);</code><br>
+最终调用 SmoothScroller#onChildAttachedToWindow 方法如下：</p>
+<pre><code class="language-java">protected void onChildAttachedToWindow(View child) {
+    // 每个 child 被“滚动”到屏幕上时都会调用该方法，判断下 child 的 position 是否等于目标位置即可
+    if (getChildPosition(child) == getTargetPosition()) {
+        // 找到我们要的 itemView 啦~
+        mTargetView = child;
+        ...
+    }
+}
+</code></pre>
+<p>前面提到过，在滚动的过程中，ViewFlinger 会不断调用 <code>smoothScroller.onAnimation</code> 方法，那么只要在这个方法里判断 mTargetView 是否为 null 就可以了：</p>
+<pre><code class="language-java">private void onAnimation(int dx, int dy) {
+    ...
+    if (mTargetView != null) {
+        // 再次核对下
+        if (getChildPosition(mTargetView) == mTargetPosition) {
+            // 最终回调 onTargetFound 方法
+            onTargetFound(mTargetView, recyclerView.mState, mRecyclingAction);
+            ...
+        }
+        ...
+    }
+    ...
+}
+</code></pre>
+<p>值得注意的是，当 <code>onTargetFound</code> 方法被调用时，mTargetView 并不一定被完整的显示出来，可能只&quot;露出了一丢丢身子&quot;，也有可能已经完整出现在屏幕上了。</p>
+<h4 id="23-如何矫正目标-targetview">2.3 如何矫正目标 TargetView ？</h4>
+<p><code>onTargetFound</code> 是抽象方法，来看下 LinearLayoutManager 具体是怎么实现 mTargetView 位置&quot;矫正&quot;的：</p>
+<pre><code class="language-java">public class LinearSmoothScroller extends RecyclerView.SmoothScroller {
+    @Override
+    protected void onTargetFound(View targetView, RecyclerView.State state, Action action) {
+        // 计算矫正 targetView 需要再移动的水平距离
+        // getHorizontalSnapPreference() 此方法定义是否将 targetView 的左边缘或右边缘与父 RecyclerView 对齐。
+        final int dx = calculateDxToMakeVisible(targetView, getHorizontalSnapPreference());
+        // 计算矫正 targetView 需要再移动的垂直距离
+        // getVerticalSnapPreference() 此方法定义是否将 targetView 的上边缘或下边缘与父 RecyclerView 对齐。
+        final int dy = calculateDyToMakeVisible(targetView, getVerticalSnapPreference());
+        // 计算原始位置和最终位置的距离
+        final int distance = (int) Math.sqrt(dx * dx + dy * dy);
+        // 根据距离评估下动画时间
+        final int time = calculateTimeForDeceleration(distance);
+        if (time &gt; 0) {
+            //向最终位置发起减速运动，最终让 targetView 矫正在指定位置
+            action.update(-dx, -dy, time, mDecelerateInterpolator);
+        }
+    }
+    ···
+}
+</code></pre>
+<p>其实到了这里，问题就变得很简单了，要实现“居中”效果，只要在 <code>onTargetFound</code> 方法里做文章就可以了，依葫芦画瓢。</p>
+<h3 id="3-动手实现-scrolltocenter-效果">3. 动手实现 scrollToCenter 效果</h3>
+<p>在此之前，不得不提下 RecyclerView 在 24.2.0 版本中新增的 SnapHelper 这个类，它用于辅助 RecyclerView 在滚动结束时将 Item 对齐到某个位置。由于是一个抽象类，官方又提供了一个 LinearSnapHelper 的子类，可以在 RecyclerView 滚动停止时将相应的 Item 停留中间位置，LinearSnapHelper 的效果已经非常接近我们的目标了，只不过 LinearSnapHelper 需要用户主动滑动，且仅仅是滚动停止时把距离中心最近的 Item 居中了。不过可以借鉴其实现思路结合 LinearSmoothScroller 实现我们的目标效果。</p>
+<p>自定义 MyLinearSmoothScroller 实现自动滚动并居中的效果，完整代码如下：</p>
+<pre><code class="language-java">class MyLinearSmoothScroller(context: Context) : LinearSmoothScroller(context) {
+    override fun onTargetFound(targetView: View, state: RecyclerView.State, action: Action) {
+        // 计算距离
+        val distance = distanceToCenter(
+            layoutManager!!,
+            targetView,
+            getOrientationHelper(layoutManager!!)!!
+        )
+        // 计算动画时间
+        val time = calculateTimeForDeceleration(distance)
+        if (time &gt; 0) {
+            // 这里仅实现了水平或者垂直一种方向上的矫正，两者同时的情况暂不考虑
+            if (layoutManager!!.canScrollVertically())
+                action.update(0, distance, time, mDecelerateInterpolator)
+            else
+                action.update(distance, 0, time, mDecelerateInterpolator)
+        }
+
+    }
+    
+    /**
+    * 计算 targetView 中心点到 RecyclerView 中心点的距离
+    */
+    private fun distanceToCenter(
+        layoutManager: RecyclerView.LayoutManager,
+        targetView: View, helper: OrientationHelper
+    ): Int {
+        val childCenter = helper.getDecoratedStart(targetView) + helper.getDecoratedMeasurement(targetView) / 2
+        val containerCenter = if (layoutManager.clipToPadding) {
+            helper.startAfterPadding + helper.totalSpace / 2
+        } else {
+            helper.end / 2
+        }
+        return childCenter - containerCenter
+    }
+
+    /**
+    * 不同方向上的距离使用不同的 OrientationHelper
+    */
+    private fun getOrientationHelper(layoutManager: RecyclerView.LayoutManager): OrientationHelper? {
+        if (layoutManager.canScrollVertically()) {
+            return OrientationHelper.createVerticalHelper(layoutManager)
+        } else if (layoutManager.canScrollHorizontally()) {
+            return OrientationHelper.createHorizontalHelper(layoutManager)
+        }
+        return null
+    }
+}
+</code></pre>
+<p>调用：</p>
+<pre><code class="language-java">val scroller = MyLinearSmoothScroller(recyclerView.context)
+//设置目标位置
+scroller.targetPosition = 10
+//开始平滑滚动
+recyclerView.layoutManager!!.startSmoothScroll(scroller)
+</code></pre>
+<p>效果图如下：<br>
+<img src="https://liyuyu.cn/post-images/RecyclerViewScrollToCenter.gif" alt="" loading="lazy"></p>
+<h3 id="4-总结">4. 总结</h3>
+<p>扒了一篇源码，果然受益匪浅</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[我的 2018]]></title>
+        <id>https://liyuyu.cn/post/My2018</id>
+        <link href="https://liyuyu.cn/post/My2018">
+        </link>
+        <updated>2019-01-02T02:03:10.000Z</updated>
+        <summary type="html"><![CDATA[<p>年纪越大，感觉时间过得越快，要不是翻看手机相册，都不知道这一年是怎么过的。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>年纪越大，感觉时间过得越快，要不是翻看手机相册，都不知道这一年是怎么过的。</p>
+<!--more-->
+<h3 id="今年印象深刻的几件事">今年印象深刻的几件事</h3>
+<ul>
+<li>年初苏城的一场大雪，上次经历这么大的雪好像还是 2008 高三那一年，一晃 10 年了哟。</li>
+<li>4 月部门团建去了浙江开化，欣赏了一望无际的油菜花，也吃到了当地特色名菜清水鱼，舟车劳顿，晚上约了个同事去捏脚，第二天爬山轻轻松松。</li>
+<li>今年和几个朋友组织了几次野钓，收获满满，乐趣无穷。</li>
+<li>因公司项目研发需要，年中的时候去郑州出差了两次，完整体验了 120 急救流程，看到了危急的心脏病患者，也看到了溺水奄奄一息的少女，不禁感慨生命的可贵。</li>
+<li>今年加了一次薪，虽然不多，但遇到了一帮靠谱的队友，团队协作，轻松高效。有的时候，钱固然重要，但干得开心也很重要。</li>
+<li>最后，今年最最激动和开心的就是老婆圣诞节送我的大礼了，哈哈哈！</li>
+<li></li>
+</ul>
+<h3 id="今年看过的书以及付费阅读">今年看过的书以及付费阅读</h3>
+<p>今年也买了好几本书，但遗憾的是并没有全部看完，除了公司项目繁忙和自己的懒惰外，也找不到其他理由了。不过好在，我把更多的碎片时间留给了网络学习。</p>
+<ul>
+<li>《Android 开发艺术探索》
+<blockquote>
+<p>多年之后，再次阅读，依然收获很大。</p>
+</blockquote>
+</li>
+<li>《图解 HTTP》
+<blockquote>
+<p>书不厚，几天就翻完了，填鸭式阅读，很多东西还要深入理解。</p>
+</blockquote>
+</li>
+<li>《Java 核心技术 36 讲》
+<blockquote>
+<p>Java 重点知识的复习与加深。</p>
+</blockquote>
+</li>
+<li>《Android 开发高手课》
+<blockquote>
+<p>追更中，日常补漏学习。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="今年看过的电影">今年看过的电影</h3>
+<ul>
+<li>头号玩家
+<blockquote>
+<p>游戏爱好者表示大呼过瘾！</p>
+</blockquote>
+</li>
+<li>复仇者联盟3：无限战争
+<blockquote>
+<p>漫威宇宙超级英雄集合，结尾无限惆怅，期待下集！</p>
+</blockquote>
+</li>
+<li>我是药神
+<blockquote>
+<p>现实的缩影，感人肺腑，最后落泪了。</p>
+</blockquote>
+</li>
+<li>蚁人 2：黄蜂女现身
+<blockquote>
+<p>轻松有趣，亮点不多，衔接《复联3》结尾，令人遐想。</p>
+</blockquote>
+</li>
+<li>毒液：致命守护者
+<blockquote>
+<p>暗黑风混搭爆米花，基情四射，特效值回票价。</p>
+</blockquote>
+</li>
+<li>西虹市首富
+<blockquote>
+<p>抛去所有笑点，仍然回味无穷。</p>
+</blockquote>
+</li>
+<li>僵尸先生
+<blockquote>
+<p>僵尸片的祖师爷，30 多年过去了，依旧好看。</p>
+</blockquote>
+</li>
+<li>机器人总动员
+<blockquote>
+<p>看了不知多少遍了，每次都被瓦力感动到哭，被媳妇笑惨了。</p>
+</blockquote>
+</li>
+<li>摩天营救
+<blockquote>
+<p>强森出演，烂片一部！</p>
+</blockquote>
+</li>
+<li>幕后玩家
+<blockquote>
+<p>能猜得到剧情的悬疑片，有亮点也有槽点。</p>
+</blockquote>
+</li>
+<li>电锯惊魂 8 ：竖锯
+<blockquote>
+<p>熟悉的老套路，也就不觉得那么惊艳了。</p>
+</blockquote>
+</li>
+<li>外星人E.T.
+<blockquote>
+<p>自行车腾空而起的画面，记忆一下子燃了起来。</p>
+</blockquote>
+</li>
+<li>明日边缘
+<blockquote>
+<p>一个关于游戏存档，最后通关的故事，几年前在院线看的时候还是觉得挺有意思的。</p>
+</blockquote>
+</li>
+<li>一出好戏
+<blockquote>
+<p>荒岛求生，人性考验。</p>
+</blockquote>
+</li>
+<li>为了给媳妇补课《复联 3》再次看了美国队长、雷神、钢铁侠、无敌浩克、蚁人以及奇异博士等全系列电影。</li>
+</ul>
+<h3 id="最后flag-还是要立的">最后，FLAG 还是要立的</h3>
+<p>去年年终总结的时候计划学习下 Python 和 Web 前端开发，很遗憾，一年过去了，仅安装了开发环境，学习了一些基础知识外，便停止了。我真的害怕立 FLAG 了，『间歇性踌躇满志 持续性混吃等死』是最真实的写照了。</p>
+<p>虽然 2018 年新技术涉猎的不多，但好在 Android 老本行还是查漏补缺了不少，在接下来的一年，计划完成极客时间 App 里的《数据结构与算法之美》、《趣谈网络协议》以及《快速上手 Kotlin 开发》三个付费专栏的学习，毕竟花钱了嘛。</p>
+<p>最后希望未来一切安好，努力赚钱养家。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[使用 WebSocket 实现 JsBridge]]></title>
+        <id>https://liyuyu.cn/post/WebSocketJsBridge</id>
+        <link href="https://liyuyu.cn/post/WebSocketJsBridge">
+        </link>
+        <updated>2018-09-30T02:40:43.000Z</updated>
+        <summary type="html"><![CDATA[<p>去年写了个简单的 Android 壳子程序在部门内部使用，借助壳子程序 JavaScript （以下简称 JS）可以高效地使用拍照、签名、二维码扫描等原生功能，为 Web 项目提供接近原生的体验。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>去年写了个简单的 Android 壳子程序在部门内部使用，借助壳子程序 JavaScript （以下简称 JS）可以高效地使用拍照、签名、二维码扫描等原生功能，为 Web 项目提供接近原生的体验。</p>
+<!--more-->
+<p>但是一段时间使用下来，前端开发人员陆陆续续地反馈了一些蛋疼的问题，比如正常情况下可以使用 Chrome 浏览器的 <code>chrome://inspect</code> 功能调试设备上的远程网页，但是一些设备死活都无法 <code>inspect</code>，这给开发调试带来了很多不便，而后我在思考，还有没有另一种方式既能实现基本的 JsBridge 功能又能方便开发人员调试。</p>
+<p>我想到了 WebSocket，它是 HTML5 开始提供的一种在单个 TCP 连接上进行全双工通讯的协议。不过，在具体介绍 Websocket 之前先简单回顾下目前主流 JsBridge 的实现方案。</p>
+<h3 id="1-addjavascriptinterface-方式">1. addJavascriptInterface 方式</h3>
+<p>这是 Android 官方推荐的交互方式，但是在 Android 4.2 以下存在安全漏洞，后期官方通过在 Java 远程方法上添加注解 <code>@JavascriptInterface</code> 解决了这一安全隐患。</p>
+<h4 id="11-java-调用-js-方法">1.1 Java 调用 JS 方法</h4>
+<pre><code class="language-java">if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.KITKAT) {
+    webView.evaluateJavascript(script, new ValueCallback&lt;String&gt;() {
+        @Override
+        public void onReceiveValue(String value) {
+            // 处理 JavaScript 方法的返回值
+        }
+    });
+} else {
+    webView.loadUrl(&quot;javascript:&quot; + script);// 低版本通用方式，但有弊端：无法获取返回值
+}
+</code></pre>
+<h4 id="12-js-调用-java-方法">1.2 JS 调用 Java 方法</h4>
+<p>Java 端注入接口等待调用：</p>
+<pre><code class="language-java">class BridgeInterface {    
+    @JavascriptInterface
+    public String call(String msg) { 
+        return &quot;Hello!&quot;; 
+    }
+}
+...
+webView.addJavascriptInterface(new BridgeInterface(), &quot;JsBridge&quot;);
+</code></pre>
+<p>JS 端调用：</p>
+<pre><code class="language-javascript">if(window.JsBridge){
+    JsBridge.call(msg);
+}
+</code></pre>
+<h3 id="2-onjsprompt-方式">2. onJsPrompt 方式</h3>
+<p>为解决 Android 4.2 以下安全漏洞，肯定不能再使用 <code>addJavascriptInterface</code> 方式了，我们可以使用 HTML DOM <code>prompt()</code> 方法配合 <code>WebChromeClient</code> 的 <code>onJsPrompt</code> 回调方法实现交互。</p>
+<p>Java 端等待回调：</p>
+<pre><code class="language-java">@Override
+public boolean onJsPrompt(WebView view, String url, final String message, String defaultValue, final JsPromptResult result) {
+// message 和 defaultValue 为 JavaScript 端传来参数
+// 我们还可以通过 JsPromptResult 返回数据给 JavaScript 端，例如：result.confirm(&quot;Done!&quot;);
+}
+</code></pre>
+<p>JS 端调用：</p>
+<pre><code class="language-javascript">prompt(message, defaultValue);
+</code></pre>
+<h3 id="3-拦截-url-方式">3. 拦截 Url 方式</h3>
+<p>https://github.com/lzyzsd/JsBridge 提供了一个很好的思路，通过 <code>shouldOverrideUrlLoading</code> 来拦截指定规则的 Url，然后处理业务逻辑实现两端交互。<br>
+由于 Java 调用 JS 方法都大同小异，这里我们不做过多的说明。</p>
+<p>页面加载完成后，JsBridge 动态创建了一个不可见的 <code>iframe</code>，在需要通知 Java 端时在 JS  消息队列里添加新的消息，同时改变 <code>iframe</code> 的 <code>src</code> 值触发 WebView 的 <code>shouldOverrideUrlLoading</code> 回调方法，然后 Java 端调用 <code>javascript:WebViewJavascriptBridge._fetchQueue();</code> 方法准备获取数据，调用后触发 <code>iframe</code> 的 <code>src</code> 值改变，此时 <code>src</code> 值为需要传递给 Java 端的数据，最后再次触发 <code>shouldOverrideUrlLoading</code> 回调方法，Java 端解析 url 取出数据，完成整个调用流程。</p>
+<p>整个流程稍显啰嗦了一点，JS 端发消息给 Java 端完全可以把两步合并为一步，此外通过改变 <code>iframe src</code> 属性的这种方式并不能保证 <code>shouldOverrideUrlLoading</code> 每次都会被调用。</p>
+<h3 id="4-websocket-方式">4. WebSocket 方式</h3>
+<p>在使用之前，我对 WebSocket 并不熟悉，网上找不到使用它来实现 JsBridge 的相关资料，不过这并不能阻止我尝试的脚步。</p>
+<blockquote>
+<p>WebSocket 协议在 2008年 诞生，2011 年成为国际标准。所有浏览器都已经支持了。</p>
+<p>它的最大特点就是，服务器可以主动向客户端推送信息，客户端也可以主动向服务器发送信息，是真正的双向平等对话，属于服务器推送技术的一种。</p>
+</blockquote>
+<p>其特点包括：</p>
+<ul>
+<li>建立在 TCP 协议之上，服务器端的实现比较容易。</li>
+<li>与 HTTP 协议有着良好的兼容性。默认端口也是 80 和 443，并且握手阶段采用 HTTP 协议，因此握手时不容易屏蔽，能通过各种 HTTP 代理服务器。</li>
+<li>数据格式比较轻量，性能开销小，通信高效。</li>
+<li>可以发送文本，也可以发送二进制数据。</li>
+<li>没有同源限制，客户端可以与任意服务器通信。</li>
+<li>协议标识符是 ws（如果加密，则为 wss），服务器网址就是 URL。</li>
+</ul>
+<p>WebSocket 的相关特性刚好满足 Native 端和 JS 端交互。</p>
+<h4 id="41-搭建-android-端-websocket-服务器">4.1 搭建 Android 端 WebSocket 服务器</h4>
+<p>这里用的是开源项目 <a href="https://github.com/koush/AndroidAsync">AndroidAsync</a> 搭建服务器，示例代码如下：</p>
+<pre><code class="language-java">AsyncHttpServer server = new AsyncHttpServer();
+
+List&lt;WebSocket&gt; _sockets = new ArrayList&lt;WebSocket&gt;();
+
+server.websocket(&quot;/live&quot;, new WebSocketRequestCallback() {
+    @Override
+    public void onConnected(final WebSocket webSocket, AsyncHttpServerRequest request) {
+        _sockets.add(webSocket);
+        
+        //连接断开时的回调
+        webSocket.setClosedCallback(new CompletedCallback() {
+            @Override
+            public void onCompleted(Exception ex) {
+                try {
+                    if (ex != null)
+                        Log.e(&quot;WebSocket&quot;, &quot;Error&quot;);
+                } finally {
+                    _sockets.remove(webSocket);
+                }
+            }
+        });
+        
+        // 我们可以在这里处理来自 JS 端的消息
+        webSocket.setStringCallback(new StringCallback() {
+            @Override
+            public void onStringAvailable(String s) {
+                if (&quot;Hello Server&quot;.equals(s))
+                    webSocket.send(&quot;Welcome Client!&quot;);// Java 端发消息给 JS 端
+            }
+        });
+    
+    }
+});
+
+server.listen(5000);
+</code></pre>
+<h4 id="42-js-实现-websocket-客户端">4.2 JS 实现 WebSocket 客户端</h4>
+<pre><code class="language-javascript">// 创建完对象后，客户端就会与服务器进行连接
+var ws = new WebSocket(&quot;wss://localhost:5000/live&quot;);
+
+ws.onopen = function(evt) { 
+  // 连接成功后
+  console.log(&quot;Connection open ...&quot;); 
+};
+
+ws.onmessage = function(evt) {
+  // 收到服务端的消息
+  console.log( &quot;Received Message: &quot; + evt.data);
+};
+
+ws.onclose = function(evt) {
+  // 连接断开后
+  console.log(&quot;Connection closed.&quot;);
+};    
+
+...
+
+// JS 端发消息给服务端
+ws.send(&quot;Hello Server&quot;);
+
+</code></pre>
+<p>写了个测试 <a href="https://github.com/li-yu/WebSocketJsBridge">Demo</a>，发现整体效果还是可以的，后期完善下可以独立出来做个开源组件了。</p>
+<h3 id="总结">总结</h3>
+<p>WebSocket 并不是新鲜技术，用它来实现 JsBridge 也有点杀鸡用牛刀的错觉，但也不失为一种新的思路。此外，通过这种方式我们可以不使用 <code>chrome://inspect</code> 来调试远程网页了，把 JS 里 <code>localhost</code> 改为手机的 IP 地址就可以实现在任意电脑上调试 JsBridge了。</p>
+<p>注意，原生 WebView 在 Android 4.4.x (KitKat) 之后才支持 WebSocket，如果想兼容低版本可以尝试使用一些第三方 WebView 组件，例如腾讯浏览服务 <a href="https://x5.tencent.com/">TBS</a>。</p>
+<h3 id="参考">参考</h3>
+<ol>
+<li><a href="https://blog.csdn.net/leehong2005/article/details/11808557">Android WebView 的 Js 对象注入漏洞解决方案</a></li>
+<li><a href="https://www.jianshu.com/p/910e058a1d63">JsBridge 使用和原理</a></li>
+<li><a href="https://github.com/lzyzsd/JsBridge">JsBridge</a></li>
+<li><a href="https://github.com/wendux/WebViewJavascriptBridge">WebViewJavascriptBridge</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2017/05/websocket.html">WebSocket 教程</a></li>
+</ol>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[回顾几个 Java 关键字]]></title>
+        <id>https://liyuyu.cn/post/JavaKeywords</id>
+        <link href="https://liyuyu.cn/post/JavaKeywords">
+        </link>
+        <updated>2018-09-07T02:25:41.000Z</updated>
+        <summary type="html"><![CDATA[<p>温故而知新，却还是那一套。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>温故而知新，却还是那一套。</p>
+<!--more-->
+<h3 id="static-关键字">static 关键字</h3>
+<ol>
+<li>
+<p><strong>static 方法</strong>：一般称作静态方法，由于静态方法不依赖于任何对象就可以进行访问。但是要注意的是，虽然在静态方法中不能访问非静态成员方法和非静态成员变量，但是在非静态成员方法中是可以访问静态成员方法/变量的。</p>
+</li>
+<li>
+<p><strong>static 变量</strong>：也称作静态变量，静态变量和非静态变量的区别是：静态变量被所有的对象所共享，在内存中只有一个副本，它当且仅当在类初次加载时会被初始化。而非静态变量是对象所拥有的，在创建对象的时候被初始化，存在多个副本，各个对象拥有的副本互不影响。</p>
+</li>
+<li>
+<p><strong>static 代码块</strong>：用来形成静态代码块以优化程序性能。在类初次被加载的时候，会按照 static 块的顺序来执行每个 static 块，并且只会执行一次。</p>
+</li>
+<li>
+<p><strong>static 内部类</strong>：如果一个类要被声明为 static 的，只有一种情况，就是静态内部类。静态内部类使用场景一般是当外部类需要使用内部类，而内部类无需外部类资源，并且内部类可以单独创建的时候会考虑采用静态内部类的设计。</p>
+<blockquote>
+<p>典型应用场景：如果类的构造器或静态工厂中有多个参数，设计这样类时，最好使用 Builder 模式，特别是当大多数参数都是可选的时候，例如 Android 里的 AlertDialog：</p>
+</blockquote>
+<pre><code class="language-java">AlertDialog.Builder builder = new AlertDialog.Builder(this).setTitle(&quot;标题&quot;).setMessage(&quot;你好呀&quot;).create();
+</code></pre>
+</li>
+</ol>
+<h3 id="final-关键字">final 关键字</h3>
+<ol>
+<li><strong>final 类</strong>：当用 final 修饰一个类时，表明这个类不能被继承，final 类中的所有成员方法都会被隐式地指定为 final 方法。</li>
+<li><strong>final 方法</strong>：如果想禁止该方法在子类中被覆盖，可以将方法设置为 final，此外类的 private 方法会隐式地被指定为 final 方法。</li>
+<li><strong>final 变量</strong>：对于一个 final 变量，如果是基本数据类型的变量，则其数值一旦在初始化之后便不能更改；如果是引用类型的变量，则在对其初始化之后便不能再让其指向另一个对象。</li>
+</ol>
+<h3 id="synchronized-关键字">synchronized 关键字</h3>
+<ol>
+<li>
+<p><strong>修饰代码块</strong>：被修饰的代码块称为同步语句块，其作用的范围是大括号 <code>{}</code>括起来的代码，作用的对象是调用这个代码块的对象。</p>
+<ul>
+<li>一个线程访问一个对象中的 <code>synchronized(this)</code> 同步代码块时，其他试图访问该代码块的线程将被阻塞。</li>
+<li>当一个线程访问对象的一个 <code>synchronized(this)</code> 同步代码块时，另一个线程仍然可以访问该对象中的非 <code>synchronized(this)</code> 同步代码块。</li>
+<li>当没有明确的对象作为锁，只是想让一段代码同步时，可以创建一个特殊的对象来充当锁：</li>
+</ul>
+<pre><code class="language-java">private byte[] lock = new byte[0];
+
+synchronized(lock) {
+     // todo 同步代码块
+  }
+</code></pre>
+</li>
+<li>
+<p><strong>修饰普通方法</strong>：synchronized 修饰方法和修饰一个代码块类似，只是作用范围不一样，修饰代码块是大括号括起来的范围，而修饰方法范围是整个函数。</p>
+<blockquote>
+<ul>
+<li>synchronized 关键字不能继承。</li>
+<li>在定义接口方法时不能使用 synchronized 关键字。</li>
+<li>构造方法不能使用 synchronized 关键字，但可以使用 synchronized 代码块来进行同步。</li>
+</ul>
+</blockquote>
+</li>
+<li>
+<p><strong>修饰静态方法</strong>：由于静态方法是属于类的而不属于对象的所以 synchronized 修饰的静态方法锁定的是这个类的所有对象。</p>
+</li>
+<li>
+<p><strong>修饰一个类</strong>：synchronized 作用于一个类 T 时，是给这个类 T 加锁，T 的所有对象用的是同一把锁。</p>
+<pre><code class="language-java">synchronized(ClassName.class) {
+    // todo 同步代码块
+}
+</code></pre>
+</li>
+</ol>
+<h3 id="volatile-关键字">volatile 关键字</h3>
+<p>volatile，字面意思是<code>易变的，不稳定的</code>， 一般用于修饰变量。</p>
+<ol>
+<li>保证了不同线程对这个变量进行操作时的可见性，即一个线程修改了某个变量的值，这新值对其他线程来说是立即可见的。</li>
+<li>禁止进行指令重排序。
+<blockquote>
+<ul>
+<li>当程序执行到 volatile 变量的读操作或者写操作时，在其前面的操作的更改肯定全部已经进行，且结果已经对后面的操作可见；在其后面的操作肯定还没有进行；</li>
+<li>在进行指令优化时，不能将在对 volatile 变量访问的语句放在其后面执行，也不能把 volatile 变量后面的语句放到其前面执行。</li>
+</ul>
+</blockquote>
+</li>
+<li>volatile 关键字在某些情况下性能要优于 synchronized，但是要注意 volatile 关键字是无法替代 synchronized 关键字的，因为 volatile 关键字无法保证操作的原子性。</li>
+</ol>
+<h3 id="assert-关键字">assert 关键字</h3>
+<p>assert，字面意思是<code>声称，断言</code>，有两种用法：</p>
+<ol>
+<li>
+<p><code>assert &lt;boolean 表达式&gt;</code><br>
+如果表达式为 true，则程序继续执行。<br>
+如果为 false，则程序抛出 AssertionError，并终止执行。</p>
+</li>
+<li>
+<p><code>assert &lt;boolean 表达式&gt; : &lt;错误信息表达式&gt;</code><br>
+如果表达式为 true，则程序继续执行。<br>
+如果为 false，则程序抛出 <code>java.lang.AssertionError</code>，并输出&lt;错误信息表达式&gt;。</p>
+</li>
+</ol>
+<p>在 Android 开发中除非在 debug 模式下，否则 assert 根本无法工作，所以不太建议在生产环境下使用 assert，此外主流的 Java IDE 工具默认都没有开启断言检查功能。</p>
+<blockquote>
+<ul>
+<li>Android Studio 或者 IDEA 开启 assert 的方式：Tools -&gt; Edit Configurations -&gt; VM options, 输入 -enableassertions 或者 -ea 保存即可。</li>
+<li>Android 设备开启 assert 检查可以使用以下命令：<code>adb shell setprop debug.assert 1</code></li>
+</ul>
+</blockquote>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[使用 ViewDragHelper 实现图片下拽返回]]></title>
+        <id>https://liyuyu.cn/post/Dragback</id>
+        <link href="https://liyuyu.cn/post/Dragback">
+        </link>
+        <updated>2018-08-09T02:48:03.000Z</updated>
+        <summary type="html"><![CDATA[<p>微信的图片下拽返回功能在日常使用中非常方便，同时在很多 App 中都见到了类似的设计，可以说一旦习惯这种操作再也回不去了。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>微信的图片下拽返回功能在日常使用中非常方便，同时在很多 App 中都见到了类似的设计，可以说一旦习惯这种操作再也回不去了。</p>
+<!--more-->
+<p>这几天逛 GitHub，发现一个很赞的库 <a href="https://github.com/iielse/ImageWatcher">https://github.com/iielse/ImageWatcher</a> 高度还原了微信的效果，粗看了下源码，我觉得可以更简单的实现类似的效果，动手实现后，发现 ViewDragHelper + ActvitySceneTransition 的方案简单粗暴。</p>
+<center>
+<img src="http://cdn.liyuyu.cn/draglayout.gif"/>
+</center>
+<h3 id="什么是-viewdraghelper">什么是 ViewDragHelper</h3>
+<p>具体实现之前先简单介绍下什么是 ViewDragHelper。</p>
+<p>ViewDragHelper 是 support v4 兼容包中的一个工具类，用来简化自定义 ViewGroup 中的手势处理。</p>
+<p>使用 ViewDragHelper 可以轻松实现 ViewGroup 里 View 的拖拽操作，这里介绍下使用 ViewDragHelper 里几个重要步骤。</p>
+<h4 id="初始化">初始化</h4>
+<p>通过静态方法创建：viewGroup 即为当前容器；sensitivity 为拖拽的灵敏度，默认为 1；callback 为配置拖拽中的各种逻辑处理。</p>
+<pre><code class="language-java">mViewDragHelper = ViewDragHelper.create(viewGroup, callback);
+...
+or
+...
+mViewDragHelper = ViewDragHelper.create(viewGroup, sensitivity, callback);
+</code></pre>
+<h4 id="callback">Callback</h4>
+<p>这里仅列出我们需要使用到的一些回调方法：</p>
+<pre><code class="language-java">public abstract static class Callback {
+        /**
+         * 当子 View 被拖动改变位置时回调此方法
+         * 
+         * @param changedView 当前子 View
+         * @param left 当前子 View 的最新 X 坐标
+         * @param top 当前子 View 的最新 Y 坐标
+         * @param dx 当前子 View 的最新 X 坐标较上次 X 的位移量
+         * @param dy 当前子 View 的最新 Y 坐标较上次 Y 的位移量
+         */
+        public void onViewPositionChanged(@NonNull View changedView, int left, int top, int dx,
+                int dy) {
+        }
+
+
+        /**
+         * 当子 View 被释放后回调此方法
+         *
+         * @param releasedChild 当前子 View
+         * @param xvel X 子 View 被释放时，用户手指在屏幕上滑动的横向加速度
+         * @param yvel Y 子 View 被释放时，用户手指在屏幕上滑动的纵向加速度
+         */
+        public void onViewReleased(@NonNull View releasedChild, float xvel, float yvel) {}
+
+        /**
+         * 限制子 View 水平拖拽范围。
+         * 
+         * 如果返回 0，则不能进行水平拖动，如果要实现拖拽，返回值 &gt; 0 即可。
+         *
+         */
+        public int getViewHorizontalDragRange(@NonNull View child) {
+            return 1;
+        }
+
+        /**
+         * 限制子 View 纵向拖拽范围。
+         * 
+         * 如果返回 0，则不能进行纵向拖动， 我们要实现拖拽，返回值 &gt; 0 即可。
+         *
+         */
+        public int getViewVerticalDragRange(@NonNull View child) {
+            return 1;
+        }
+
+        /**
+         * 判断当前触摸的 View 能否被捕获进行拖拽，如果返回 true 则可以进行拖拽。
+         */
+        public abstract boolean tryCaptureView(@NonNull View child, int pointerId);
+
+        /**
+         * 限制当前 View 的横向拖拽范围，也可说是我们可以动态修正 View 的 top 坐标，比如我们想限制 View 只在容器内部拖动
+         *
+         * @param child 当前拖动的 View
+         * @param left View 上次的 x 坐标 + 手指移动的 x 轴位移量
+         * @param dx 手指移动的位移量
+         * @return  修正后的 x 坐标，直接返回 left 表示不限制水平拖拽范围，拖到哪儿就哪儿
+         */
+        public int clampViewPositionHorizontal(@NonNull View child, int left, int dx) {
+            return left;
+        }
+
+        /**
+         * 限制当前 View 的纵向拖拽范围，也可说是我们可以动态修正 View 的 top 坐标，比如我们想限制 View 只在容器内部拖动
+         *
+         * @param child 当前拖动的 View
+         * @param top View 上次的 y 坐标 + 手指移动的 y 轴位移量
+         * @param dx 手指移动的位移量
+         * @return  修正后的 x 坐标，直接返回 top 表示不限制纵向拖拽范围，拖到哪儿就哪儿
+         */
+        public int clampViewPositionVertical(@NonNull View child, int top, int dy) {
+            return top;
+        }
+    }
+</code></pre>
+<h4 id="处理-touch-事件">处理 Touch 事件</h4>
+<p>复杂的触摸逻辑就让 ViewDragHelper 接管即可。</p>
+<pre><code class="language-java">@Override
+    public boolean onInterceptTouchEvent(MotionEvent ev) {
+        return mViewDragHelper.shouldInterceptTouchEvent(ev);
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        mViewDragHelper.processTouchEvent(event);
+        return true;
+    }
+</code></pre>
+<h4 id="处理-view-自动复位效果">处理 View 自动复位效果</h4>
+<p>当拖拽操作不满足触发条件时，手指松开，View 需要自动回到初始位置，在 onViewReleased 里调用以下方法即可：</p>
+<pre><code class="language-java">mViewDragHelper.settleCapturedViewAt(originPoint.x, originPoint.y);
+invalidate();
+</code></pre>
+<p>同时需要覆写：</p>
+<pre><code class="language-java">    @Override
+    public void computeScroll() {
+        if (mViewDragHelper.continueSettling(true)) {
+            ViewCompat.postInvalidateOnAnimation(this);
+        }
+    }
+</code></pre>
+<h3 id="具体实现步骤">具体实现步骤</h3>
+<h4 id="1-自定义-draglayout内部使用-viewdraghelper-来处理拖拽操作">1. 自定义 DragLayout，内部使用 ViewDragHelper 来处理拖拽操作。</h4>
+<h4 id="2-创建-activity-展示图片使用-draglayout-作为根布局">2. 创建 Activity 展示图片，使用 DragLayout 作为根布局:</h4>
+<pre><code class="language-xml">&lt;com.liyu.fakeweather.widgets.DragLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;
+    android:id=&quot;@+id/drag_layout&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;
+    android:background=&quot;@color/black&quot;
+    android:fitsSystemWindows=&quot;true&quot;&gt;
+
+    &lt;ImageView
+        android:id=&quot;@+id/picture&quot;
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;match_parent&quot;
+        android:layout_centerInParent=&quot;true&quot;
+        android:adjustViewBounds=&quot;true&quot;
+        android:scaleType=&quot;fitCenter&quot; /&gt;
+
+&lt;/com.liyu.fakeweather.widgets.DragLayout&gt;
+</code></pre>
+<p>并设置 Activity 背景为透明：</p>
+<pre><code class="language-java">activity.getWindow().getDecorView().setBackgroundColor(Color.TRANSPARENT);// 当然也可以在 theme 里设置
+</code></pre>
+<h4 id="3-实现拖拽时动态改变背景透明度以及图片的缩放效果">3. 实现拖拽时动态改变背景透明度以及图片的缩放效果：</h4>
+<pre><code class="language-java">        @Override
+        public void onViewPositionChanged(@NonNull View changedView, int left, int top, int dx, int dy) {
+            if (top &gt; originPoint.y) {// 仅当向下拖拽时才处理
+                float a = (float) (top - originPoint.y) / (float) (getMeasuredHeight() - originPoint.y);
+                setBackgroundColor(ThemeUtil.changeAlpha(0xff000000, 1 - a));// 根据拖拽位移量动态改变背景透明度
+                targetView.setScaleX(1 - a);// 缩放图片
+                targetView.setScaleY(1 - a);// 缩放图片
+                if ((top - originPoint.y) &gt; getMeasuredHeight() / 5) {
+                    callEvent = true; // 下拽的位移量满足要求，可以触发关闭操作
+                } else {
+                    callEvent = false;// 不能触发关闭操作
+                }
+            }
+        }
+</code></pre>
+<h4 id="4-手指释放时逻辑处理">4. 手指释放时逻辑处理：</h4>
+<pre><code class="language-java">        @Override
+        public void onViewReleased(@NonNull View releasedChild, float xvel, float yvel) {
+            if (releasedChild == targetView) {
+                if (callEvent || yvel &gt; 8000) {// 除了判断下拽的位移量，还要判断快速下拽的速度，这边 yevl 为用户手指快速滑动的 Y 轴加速度，当加速度大于一定值时也可触发关闭操作
+                    if (listener != null) {
+                        listener.onDragFinished();
+                    }
+                    callEvent = false;
+                } else {
+					// 当拖拽不满足触发条件时，需要将 View 归位，这里使用自带的方法实现动画效果，传入初始坐标即可。
+                    mViewDragHelper.settleCapturedViewAt(originPoint.x, originPoint.y);
+                    invalidate();
+                }
+            }
+        }
+</code></pre>
+<h4 id="5-图片的转场动画">5. 图片的转场动画：</h4>
+<p>使用自带转场动画即可实现图片的打开和关闭动画。</p>
+<pre><code class="language-java">
+ActivityOptionsCompat optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                (Activity) context, transitView, PictureActivity.TRANSIT_PIC);
+
+ActivityCompat.startActivity(context, intent, optionsCompat.toBundle());
+
+...
+ViewCompat.setTransitionName(mImageView, TRANSIT_PIC);
+...
+
+</code></pre>
+<p>图片下拽返回的功能加入到了假装看天气的妹子图模块中，完整示例代码可前往 <a href="https://github.com/li-yu/FakeWeather/blob/master/app/src/main/java/com/liyu/fakeweather/widgets/DragLayout.java">https://github.com/li-yu/FakeWeather/blob/master/app/src/main/java/com/liyu/fakeweather/widgets/DragLayout.java</a> 查看。</p>
+<h3 id="总结">总结</h3>
+<p>依靠简单而又强大的 ViewDragHelper，不到 200 行的代码也实现了类似的效果。他山之石可以攻玉，翻看其源码，也学到一些很少用到的小技巧，比如获取当前触摸位置的子 View，逆向遍历全部子 View 集合然后判断触摸坐标是否在范围内，真是简单粗暴：</p>
+<pre><code class="language-java">    @Nullable
+    public View findTopChildUnder(int x, int y) {
+        final int childCount = mParentView.getChildCount();
+        for (int i = childCount - 1; i &gt;= 0; i--) {
+            final View child = mParentView.getChildAt(mCallback.getOrderedChildIndex(i));
+            if (x &gt;= child.getLeft() &amp;&amp; x &lt; child.getRight()
+                    &amp;&amp; y &gt;= child.getTop() &amp;&amp; y &lt; child.getBottom()) {
+                return child;
+            }
+        }
+        return null;
+    }
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[我的 2017]]></title>
+        <id>https://liyuyu.cn/post/My2017</id>
+        <link href="https://liyuyu.cn/post/My2017">
+        </link>
+        <updated>2017-12-31T03:04:15.000Z</updated>
+        <summary type="html"><![CDATA[<blockquote>
+<p>与往年不同，这一年生活成了我的全部。</p>
+</blockquote>
+]]></summary>
+        <content type="html"><![CDATA[<blockquote>
+<p>与往年不同，这一年生活成了我的全部。</p>
+</blockquote>
+<!--more-->
+<h3 id="生活">生活</h3>
+<p>年初和媳妇领完证，拍婚纱照，办酒席，两个人累得跟狗一样。蜜月目的地选在了巴厘岛，传说中明星结婚的圣地。第一次出国门，我们显得很是期待和兴奋，为了保证旅行质量，我们报了途牛的“精致 VIP 小团”，事后证明，所谓的“精致”都是忽悠，和平常的跟团没啥区别，下一次再去巴厘岛，我选自由行。</p>
+<p>作为一个程序员，做饭这门手艺简直就是一种天赋，这一年，媳妇说我比她妈做的好吃，哈。目前最拿手的几道菜是：土豆回锅肉片、清蒸鲈鱼、鲫鱼豆腐汤、油焖大虾。六月份买了电烤箱，学会了做戚风蛋糕和蛋挞，然而面包和吐司在失败了 N 次后，现已放弃。<br>
+『会做饭的人，可能也是个吃货』，我不记得谁说的这句话，反正挺有道理的，结婚前 65 kg 的我，现在 73 kg。<br>
+意识到体重的飙升，媳妇开始监督我锻炼，跑步、跳绳、打球、举铁，目前已坚持 2 个月了，不过目前气温骤降，加上雾霾天气，户外跑步已停止，等待明年春天继续。<br>
+长期久坐，缺乏锻炼导致程序员的体质普遍不好。这 2 个月的锻炼，虽然体质没有明显提升，但是我发现即使不午睡，下午敲代码也不困了。</p>
+<h3 id="工作">工作</h3>
+<p>年初，公司组织变动，加入了通用架构组，负责 Android 端通用框架开发维护以及新技术学习研究。这一年，除了 Java 和 Android，还学习了 ASP.NET MVC、Spring Boot 等后端技术，以及 Oracle 数据库，总体来讲，收获很多。<br>
+七月份，公司给每位员工发了一本《四书》，每天早晨 20 分钟，花了五个月的时间，读完了这本书，发现根本没学到什么。『我们听过无数的道理，却仍旧过不好这一生』应该是最真实的写照。<br>
+这一年，踏实敬业，应该算是个好员工吧。<br>
+明年计划学习下 Python 和 Web 前端开发。</p>
+<p>最后希望未来一切安好，努力赚钱养家。</p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=455359884&auto=1&height=66"></iframe>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[重构天气]]></title>
+        <id>https://liyuyu.cn/post/Refactor-fake-weather</id>
+        <link href="https://liyuyu.cn/post/Refactor-fake-weather">
+        </link>
+        <updated>2017-12-15T02:54:43.000Z</updated>
+        <summary type="html"><![CDATA[<p>时间过得很快，<a href="https://github.com/li-yu/FakeWeather">《假装看天气》</a>这个小项目诞生已经有一年了，因为是练手项目，写完之后也没过多的维护，直到有一次在站酷上看到一个<a href="http://www.zcool.com.cn/work/ZMjE1MDgwMjQ=.html">天气设计原型</a>，我被她简洁又漂亮的 UI 惊艳到，进而有了重构天气模块的念头。</p>
+<p>理想是丰满的，现实总是残酷的。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>时间过得很快，<a href="https://github.com/li-yu/FakeWeather">《假装看天气》</a>这个小项目诞生已经有一年了，因为是练手项目，写完之后也没过多的维护，直到有一次在站酷上看到一个<a href="http://www.zcool.com.cn/work/ZMjE1MDgwMjQ=.html">天气设计原型</a>，我被她简洁又漂亮的 UI 惊艳到，进而有了重构天气模块的念头。</p>
+<p>理想是丰满的，现实总是残酷的。</p>
+<!--more-->
+<p>站酷上的<a href="http://www.zcool.com.cn/work/ZMjE1MDgwMjQ=.html">原型</a>只有图片展示，并没有提供原始设计档下载，所以我只能“抄”图片了。由于没有 Mac 设备，自然用不了神器 <a href="http://www.sketchcn.com/">Sketch</a>，又畏惧于功能强大但复杂的 PS 和 AI，最后我选择了 <a href="https://www.figma.com/">Figma</a>，一个基于浏览器的 UI 设计工具，上手简单，功能强大。</p>
+<p>陆陆续续的花了几个晚上完成了天气场景中背景图片的绘制：<br>
+<img src="http://cdn.liyuyu.cn/TIM截图20171214153419.png" width = "50%" height = "50%" alt="设计图"/></p>
+<p>虽然完成的不够精细，但对于一个不懂设计的程序猿，我还挺满意。</p>
+<p>万事俱备，只差 coding，正好这段时间在看扔物线的<a href="http://hencoder.com/">《给高级 Android 工程师的进阶手册》</a>，收获颇多，拿天气模块开刀简直再合适不过了。</p>
+<p>重构天气模块主要涉及以下：</p>
+<ol>
+<li>页面布局重新设计</li>
+<li>动态天气的绘制</li>
+<li>多城市切换以及管理</li>
+<li>新的每日天气趋势图</li>
+<li>新的空气质量指示图</li>
+</ol>
+<h3 id="一-遇到的问题及踩过的坑">一、遇到的问题及踩过的坑</h3>
+<h4 id="1-动态天气用自定义-view-surfaceview-还是-textureview">1. 动态天气用自定义 View 、SurfaceView 还是 TextureView ？</h4>
+<p>在纠结这个问题之前，我们先简单的对比下它们：</p>
+<ul>
+<li><strong>View</strong> ：Android 基础类，内置画布，提供图形绘制、触屏事件、按键事件等，特点是：必须在 UI 主线程内更新画面。</li>
+<li><strong>SurfaceView</strong> ：本质上也是一个 View，但它与普通 View 不同的是，它的渲染绘制可以放到其他线程中进行，同时使用双缓冲机制，播放视频时画面更流畅。相对的缺点就是，因为不在 View Hierachy 中，它的显示不受 View 的属性控制，所以不能进行平移、缩放等变换。</li>
+<li><strong>TextureView</strong> ：官方定义是可以直接将视频流或 OpenGL 场景投影其中；与 SurfaceView 不同的是，TextureView 不会创建一个单独的窗口，而是像普通的 View 那样工作，所以它可以进行平移、缩放等变换。相对的缺点就是，必须在硬件加速的窗口中使用，占用内存比 SurfaceView 高，在 Android 5.0 以前在主线程渲染，5.0 以后有单独的渲染线程。</li>
+</ul>
+<p>简单对比后，回到问题本身，我们该如何选择？哪个性能更好？</p>
+<p>这里又不得不提到一个名词：<strong>硬件加速</strong>：Android 3.0(API 11) 开始，在绘制 View 的时候支持硬件加速，充分利用 GPU 的特性，使得绘制更加平滑，但是会多消耗一些内存。</p>
+<p>由于平时并没有深入了解过这一块的知识，网络上搜寻后找到了一些答案：</p>
+<ul>
+<li>普通 View 中的 Canvas 是默认开启硬件加速的。</li>
+<li>SurfaceView 和 TextureView 里面 <code>lockCanvas()</code> 方法得到的 Canvas 是没有硬件加速的。</li>
+<li>Android 6.0(API 23) 之后，<code>android.view.Surface</code> 里新增了 <code>lockHardwareCanvas()</code> 方法来提供硬件加速的 Canvas。</li>
+</ul>
+<p>所以说了这么多，一个简单的结论就是：如果需要绘制复杂逻辑场景以及视频流等内容，优选 SurfaceView，如果同时需要有动画效果，选 TextureView；一般的自定义控件以及被动刷新的控件，选择普通 View 可以获得更好的性能表现。<br>
+这里我们的动态天气选的是 SurfaceView，当然选择普通 View 或 TextureView也是可以的。更多相关资料可以参考以下链接：</p>
+<ul>
+<li><a href="https://developer.android.com/reference/android/view/SurfaceView.html">SurfaceView</a></li>
+<li><a href="https://developer.android.com/reference/android/view/TextureView.html">TextureView</a></li>
+<li><a href="http://www.jianshu.com/p/5a0c61c286e6">为什么你的 canvas 那么慢？浅析 Android 的 canvas 性能</a></li>
+<li><a href="http://blog.csdn.net/hejjunlin/article/details/58582919">视频画面帧的展示控件 SurfaceView 及 TextureView 对比</a></li>
+<li><a href="https://github.com/Bilibili/DanmakuFlameMaster">Android 开源弹幕引擎·烈焰弹幕使 使用多种方式(View/SurfaceView/TextureView)实现高效绘制</a></li>
+</ul>
+<h4 id="2-surfaceview-在某些设备上会出现-anr-错误">2. SurfaceView 在某些设备上会出现 ANR 错误</h4>
+<p>这个问题最初在一台刷了锤子 OS 的 Nexus 5 上出现，百思不得其解，在 Stack Overflow 上找到了一个相同的提问：<a href="https://stackoverflow.com/questions/34305937/anr-in-surfaceview-on-specific-devices-only-the-only-fix-is-a-short-sleep-tim">ANR in SurfaceView on specific devices only — The only fix is a short sleep time<br>
+</a>，虽然没找出问题根源，但是找到了一个奇葩的解决方案：</p>
+<pre><code class="language-java">mSurface.unlockCanvasAndPost(canvas);
+System.out.print(&quot;fuck&quot;); // 是的，没看错，加上这一句就不会报 ANR 错误
+</code></pre>
+<h4 id="3-天气源引发的思考">3. 天气源引发的思考</h4>
+<p>App 定位是练手项目，所以数据请求量不是很大，一直使用<a href="https://www.heweather.com/">和风天气</a>，期间有次 key 连续几天超额请求，猜想应该是哪位小伙伴 Fork 项目后直接拿去用了，问题不大，重置下即可。后面把 key 搬到了服务器上，再遇到这种问题就不需要尴尬的重新发布 Apk 了。</p>
+<p>重构期间也有考虑过<a href="https://github.com/TonnyL/Awesome_APIs/blob/master/Chinese.md#%E5%A4%A9%E6%B0%94">其他天气源</a>，不是收费就是难用。不过为了后期能快速扩展其他天气源，这次还是预留了接口。</p>
+<p>和风天气的免费接口，总体来说还算稳定，唯一的缺点就是夜间的时候，逐小时天气没有数据，导致 App 界面下面一截是空白的，貌似这个问题只有更换天气源或者等官方良心发现了，亦或等下次重构了。</p>
+<h3 id="二-可能对你有帮助的知识点">二、可能对你有帮助的知识点</h3>
+<blockquote>
+<p>如果你有幸看到这篇文章，并给你带来了一点点帮助，那么我会非常开心的。</p>
+</blockquote>
+<ol>
+<li>11 种动态天气效果，平滑渐变切换，还算优雅的动画效果<br>
+<img src="http://cdn.liyuyu.cn/switch_weather.gif" alt="" loading="lazy"></li>
+<li>一个滑动淡入淡出的 ViewPager 指示器<br>
+<img src="http://cdn.liyuyu.cn/SimplePagerIndicator.gif" alt="" loading="lazy"></li>
+<li>随波逐流的小船儿<br>
+<img src="http://cdn.liyuyu.cn/boat.gif" alt="" loading="lazy"></li>
+<li>一个简单粗暴的闪电生成算法<br>
+<img src="http://cdn.liyuyu.cn/flash.gif" alt="" loading="lazy"></li>
+<li>一个固定子控件高度比例的 LinearLayout<br>
+<img src="http://cdn.liyuyu.cn/LinearLayout.png" alt="" loading="lazy"></li>
+<li>一个新的气温折线图，更加直观<br>
+<img src="http://cdn.liyuyu.cn/day_weather.png" alt="" loading="lazy"></li>
+<li>一个新的空气质量 AQI 展示控件,附带动画效果<br>
+<img src="http://cdn.liyuyu.cn/AQI.png" alt="" loading="lazy"></li>
+<li>NestedScrollView 滚动时触发相关子控件动画执行</li>
+<li>Fragment 中 <code>public void setUserVisibleHint(boolean isVisibleToUser)</code> 可见&amp;不可见事件只有在 ViewPager 中使用时才会触发</li>
+</ol>
+<p>虽然这次重构难度不是很大，但是里面涉及的知识点还是挺有意思的，比如 <strong>SurfaceView 的使用</strong>、<strong>Canvas 的绘制</strong>、<strong>Path 贝塞尔曲线</strong>、<strong>属性动画</strong>等等，更多细节可以下载 APK 然后直接参考工程代码。</p>
+<h3 id="三-写在最后">三、写在最后</h3>
+<p>App 中还有很多细节待完善，一定也存在着诸多 Bug，任何问题和建议可以在项目 <a href="https://github.com/li-yu/FakeWeather/issues">Issues</a> 提出，当然也可以发邮件给<a href="http://liyuyu.cn/about/me@liyuyu.cn">我</a>。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[生命的意义]]></title>
+        <id>https://liyuyu.cn/post/The-meaning-of-life</id>
+        <link href="https://liyuyu.cn/post/The-meaning-of-life">
+        </link>
+        <updated>2017-04-09T03:17:52.000Z</updated>
+        <summary type="html"><![CDATA[<p>吃晚饭的时候，媳妇说，她们科室又有一位病人要”冬眠“了，我一阵唏嘘，感慨生命的脆弱，以及在病痛面前的无助，也就这几天，这位病人将通过输麻醉药和镇定剂的方式，缓慢放弃治疗，也就是她们说的“冬眠”。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>吃晚饭的时候，媳妇说，她们科室又有一位病人要”冬眠“了，我一阵唏嘘，感慨生命的脆弱，以及在病痛面前的无助，也就这几天，这位病人将通过输麻醉药和镇定剂的方式，缓慢放弃治疗，也就是她们说的“冬眠”。</p>
+<!--more-->
+<p>媳妇在肿瘤科，应该是医院里患者死亡率最高的科室之一了，有的时候，连着几天都会有病人去世，我以为她们目睹过太多的死亡，对于这些早就麻木了，然而每次她跟我说起这些，我都能从她的眼神里读懂对生命的敬畏和惋惜。<br>
+有时去医院接媳妇下班，我会在病房里瞎转转，偶尔也会打开他们的 HIS 看看最近收治的新病人，“我记得29床不是个小伙子吗，怎么是老太婆了？！“，”他前几天去世了！“。看着墙上密密麻麻的患者卡片，还有远处过道里，裹着被子睡在长椅上的患者家属，我仿佛听到了“滴答滴答”时间流逝的声音。<br>
+每个人对于生命意义的理解是不一样的，与此同时，每个人都在生活，就是在履行生命的意义，生命如艺术品一样，不论其长短，都在生命的过程中彰显着属于他的奇妙意义。这段生命也许只是为了一段旅程，也许只是为了一段风景，也许只是为了一段爱情，这正是生命的美好之处。“死亡权利”将使我们存在的这个世界处处充满生机、美和喜悦。<br>
+有一次我和媳妇说：“你在医院工作，我又从事医疗信息行业，原来我们都在为医疗事业贡献自己的力量，为生命保驾护航啊！”，媳妇笑了，我也笑了，这可能就是我们这一生的缘分吧。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[我的 2016]]></title>
+        <id>https://liyuyu.cn/post/My2016</id>
+        <link href="https://liyuyu.cn/post/My2016">
+        </link>
+        <updated>2016-12-25T03:06:48.000Z</updated>
+        <summary type="html"><![CDATA[<blockquote>
+<p>下雨的圣诞节，一个人在宿舍宅了两天。天已经黑透了，习惯性的打开手机，纠结着是点外卖还是出去吃。我猛地意识到，2016 年就要过去了。</p>
+</blockquote>
+]]></summary>
+        <content type="html"><![CDATA[<blockquote>
+<p>下雨的圣诞节，一个人在宿舍宅了两天。天已经黑透了，习惯性的打开手机，纠结着是点外卖还是出去吃。我猛地意识到，2016 年就要过去了。</p>
+</blockquote>
+<!--more-->
+<h3 id="离职">离职</h3>
+<p>时间留给我们的除了回忆还有那些写在脸上的沧桑。<br>
+年初，由于一些客观的原因，我离职了，待了一年都不到，走得很果断。我一直认为，如果干得不开心，要么忍，要么滚！成天的抱怨，跟临死的哀嚎有什么区别。但我一直对这家公司心存感激，我感激他在 2015 年给了我一次机会，现在回想 2015 年初回苏州的情景，刚买完房，背了一身债，面试的屡屡碰壁，那会儿的人生黑暗到了极点。临走的前一天晚上，我请部门经理和同事吃了饭，酒过三巡，菜过五味，大家各自道别，虽有不舍，但还是停不下来。</p>
+<h3 id="新公司">新公司</h3>
+<p>在离开上面那家公司的时候，已经收到 offer 了。年初决定离职的时候，我反反复复的想了好久，迈开这一步，就回不了头了。可能由于自己过去一年的努力和积累，面试的结果是欣慰的，面试了四家，都收到了 offer，经过谨慎的选择，我到了独墅湖这边。<br>
+新公司，什么都是新的，我又一次体会到了换工作带来的适应成本。来这边好几个星期了，项目少的可怜，莫名其妙的我有点发慌，没事做的我竟然有点忐忑。一天下午，毫无征兆的我，被“挖”到了另外一个项目组，没有一丝意外，我同意了。谁知道，危机四伏的新项目组，我仅仅干了两个星期就“被离职”了，Android 小组被一锅端。由于还在试用期，所以得不到任何离职赔偿。叒特么要出来找工作了，那一刻我是绝望的。<br>
+好在天无绝人之路，后面找工作虽有波折，但结果还算满意，经历了这些，面对 offer 的选择，我又对了一些思考：苏州的互联网氛围其实并不好，有多少公司能静下心来做产品和技术呢，没了业务，我们这些开发人员就是公司里的炮灰了。<br>
+一晃来这边大半年了，没啥开心的，也没啥烦心的，平平淡淡，也许这就是工作吧，这一次能走多远？</p>
+<h3 id="生活">生活</h3>
+<p>说了那么多工作上的事，突然发现生活上没什么可说的了，好像工作成了我们生活的全部。<br>
+开心的是，2016，买了人生第一辆车。</p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=402073823&auto=1&height=66"></iframe>]]></content>
     </entry>
 </feed>
