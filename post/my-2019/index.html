@@ -1,99 +1,90 @@
-<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" >
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
 
 <title>我的 2019 | 呵呵小鱼</title>
 
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://liyuyu.cn/favicon.ico?v=1595314820587">
 
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://liyuyu.cn/favicon.ico?v=1595314522253">
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://liyuyu.cn/styles/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
 
 
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-
-
-
-    <meta name="description" content="和往年一样，又到了写年终总结的时候，这一年发生了很多事情，最开心就是儿子出生了。
-
-年初老婆孕吐反应严重，不能长途坐车，加上新房子装修完也晾了大半年了，索性就把爸妈们都接到苏州来过年了。年后依旧是忙碌的工作和生活，老婆的肚子也一天天大了起来..." />
-    <meta name="keywords" content="" />
-  </head>
-  <body>
-    <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="https://liyuyu.cn">
-        <img src="https://liyuyu.cn/images/avatar.png?v=1595314522253" class="site-logo">
-        <h1 class="site-title">呵呵小鱼</h1>
-      </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            呵呵小鱼
+        </div>
     </div>
-    <div>
-      
-        
-          <a href="/" class="site-nav">
-            首页
-          </a>
-        
-      
-        
-          <a href="/archives" class="site-nav">
-            归档
-          </a>
-        
-      
-        
-          <a href="/post/about" class="site-nav">
-            关于
-          </a>
-        
-      
-    </div>
-  </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    </div>
-    <div class="site-description">
-      <p><a href="http://www.beian.miit.gov.cn" target="_blank">粤ICP备14087112号-1</a></p>
-    </div>
-    <div class="site-footer">
-      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://liyuyu.cn/atom.xml" target="_blank">RSS</a>
-    </div>
-  </div>
-</div>
-
-
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">我的 2019</h2>
-            <div class="post-date">2020-01-02</div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
             
-              <div class="feature-container" style="background-image: url('https://liyuyu.cn/post-images/my-2019.jpg')">
-              </div>
+                <div class="nav-item">
+                    
+                        <a href="/" class="menu gt-a-link">
+                            首页
+                        </a>
+                    
+                </div>
             
-            <div class="post-content" v-pre>
-              <p>和往年一样，又到了写年终总结的时候，这一年发生了很多事情，最开心就是儿子出生了。</p>
+                <div class="nav-item">
+                    
+                        <a href="/archives" class="menu gt-a-link">
+                            归档
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/post/about" class="menu gt-a-link">
+                            关于
+                        </a>
+                    
+                </div>
+            
+        </div>
+    </div>
+</nav>
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    我的 2019
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2020-01-02 ·
+                    </time>
+                    
+                </div>
+                <div class="post-content">
+                    <p>和往年一样，又到了写年终总结的时候，这一年发生了很多事情，最开心就是儿子出生了。</p>
 <!-- more -->
 <p>年初老婆孕吐反应严重，不能长途坐车，加上新房子装修完也晾了大半年了，索性就把爸妈们都接到苏州来过年了。年后依旧是忙碌的工作和生活，老婆的肚子也一天天大了起来，骑电驴上班不方便了，于是每天先把老婆送去单位，我再去上班，那段时间几乎天天迟到。7 月底，儿子顺利出生，比预产期提前了，我打了鸡血一样的在医院陪了三天三夜。其实老婆刚怀孕的时候，我挺希望是个女儿的，不过儿子一出生这种想法竟然就消失了，现在每天下班回到家看到他那萌萌的笑，再苦再累都值得。产后给老婆报名了 C2 驾照，她很努力，在产假结束时顺利拿到驾照，不得不说，真的厉害。至于为什么考 C2 而不是 C1，其实就是为了合法上路开个车，当然怎么简单怎么来，何苦为难自己呢，不过身边还是有很多人 C2 驾照有所偏见。</p>
 <p>说完生活再谈工作，年初公司组织架构又特么变动了，原通用架构组解散，人员分流到各产品组。我毫无悬念的加入到一个完全不熟悉的产品组。除了负责原先 Android 端的项目外，我花了一周的时间来学习 WPF 相关知识，于是很快就投入到了新团队的工作中，不得不说，WPF 和 Android 开发真的有很多异曲同工之处，上手并不难，当然深入学习还是一个漫长的积累过程。年中，小组产品转型，需要开发配套移动端 App，组里讨论后一致采用 Web App + 壳子的形式，方便后期维护升级。然而组里就我一个移动端开发，任务自然落到了我头上，令人欣慰的是，在组里一位前端大神的带领下我又开启了前端学习之路。没过多久，大神因为项目需要调去了其他产品组，后来这个项目也慢慢没什么新需求了。后来我还用学了半吊子的前端撸了个简易 App 管理平台，发给一个项目现场试用，反馈竟然很好。</p>
@@ -105,50 +96,56 @@
 <p>2019 收获满满，2020 整装待发。</p>
 <p>最后希望未来一切安好，努力赚钱养家，这才是最好的 Flag。</p>
 
-            </div>
-            
-            
-              <div class="next-post">
-                <div class="next">下一篇</div>
-                <a href="https://liyuyu.cn/post/RecyclerViewScrollToCenter/">
-                  <h3 class="post-title">
-                    RecyclerView 指定 Item 滚动居中显示
-                  </h3>
-                </a>
-              </div>
-            
-
-            
-
-          </div>
-
+                </div>
+            </article>
         </div>
-      </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://liyuyu.cn/post/RecyclerViewScrollToCenter/" class="post-title gt-a-link">
+                    RecyclerView 指定 Item 滚动居中显示
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first"><p><a href="http://www.beian.miit.gov.cn" target="_blank">粤ICP备14087112号-1</a></p></div>
+    <div class="social-container">
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
     </div>
+    <div class="footer-info">
+        Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+    </div>
+    <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://liyuyu.cn/atom.xml" target="_blank">RSS</a></a>
+    </div>
+</div>
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script type="application/javascript">
-
-AOS.init();
-
-var app = new Vue({
-  el: '#app',
-  data: {
-    menuVisible: false,
-  },
-})
-
+<script>
+    hljs.initHighlightingOnLoad()
 </script>
 
-
-  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-  <script>
-    hljs.initHighlightingOnLoad()
-  </script>
-
-
-
-
-
-  </body>
+    </div>
+</div>
+</body>
 </html>
