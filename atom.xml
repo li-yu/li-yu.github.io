@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://liyuyu.cn</id>
     <title>呵呵小鱼</title>
-    <updated>2020-12-29T02:56:15.283Z</updated>
+    <updated>2020-12-29T02:57:29.753Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://liyuyu.cn"/>
     <link rel="self" href="https://liyuyu.cn/atom.xml"/>
@@ -12,8 +12,8 @@
     <rights>All rights reserved 2020, 呵呵小鱼</rights>
     <entry>
         <title type="html"><![CDATA[我的 2020]]></title>
-        <id>https://liyuyu.cn/post/wo-de-2020/</id>
-        <link href="https://liyuyu.cn/post/wo-de-2020/">
+        <id>https://liyuyu.cn/post/my-2020/</id>
+        <link href="https://liyuyu.cn/post/my-2020/">
         </link>
         <updated>2020-12-29T02:49:59.000Z</updated>
         <summary type="html"><![CDATA[<p>上周在公众号得知郭神要去苏州微软了，祝福的同时也感慨万千。2014 年的《第一行代码 第 1 版》，这本书彻底结束了我为期两年半的测试工程师生涯，2015 年初我辞职，离开深圳回到了苏州，正式走上了 Android 开发之路，然而。</p>
