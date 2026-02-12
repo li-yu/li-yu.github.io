@@ -1,0 +1,688 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://liyuyu.cn</id>
+    <title>呵呵小鱼</title>
+    <updated>2026-02-12T00:35:14.413Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://liyuyu.cn"/>
+    <link rel="self" href="https://liyuyu.cn/atom.xml"/>
+    <subtitle>&lt;p&gt;&lt;a href=&quot;http://beian.miit.gov.cn&quot; target=&quot;_blank&quot;&gt;粤ICP备14087112号-1&lt;/a&gt;&lt;/p&gt;</subtitle>
+    <logo>https://liyuyu.cn/images/avatar.png</logo>
+    <icon>https://liyuyu.cn/favicon.ico</icon>
+    <rights>All rights reserved 2026, 呵呵小鱼</rights>
+    <entry>
+        <title type="html"><![CDATA[我的 2025]]></title>
+        <id>https://liyuyu.cn/post/my-2025/</id>
+        <link href="https://liyuyu.cn/post/my-2025/">
+        </link>
+        <updated>2026-01-18T07:19:57.000Z</updated>
+        <summary type="html"><![CDATA[<p>光阴如骏马加鞭，日月如落花流水，2025 年转瞬已过。翻看这些年写下的年终总结，竟发现已经坚持了整整 10 年。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>光阴如骏马加鞭，日月如落花流水，2025 年转瞬已过。翻看这些年写下的年终总结，竟发现已经坚持了整整 10 年。</p>
+<!-- more -->
+<p>过去的这一年，无论是工作中的管理思路，还是家庭中的子女教育理念，都可以说是冲突最为激烈的一年。有迷茫，有焦虑，当然，也有收获。</p>
+<h4 id="工作挑战与机遇">工作：挑战与机遇</h4>
+<p>今年团队规模在峰值时达到了 32 人，这是前所未有的体量，也给我带来了巨大的管理挑战。如此多人分散在不同项目之中，并不是每个人都具备强烈的自驱力和责任心，因此，建立合适的分层管理体系、培养 Project Leader，成了我的重中之重。</p>
+<p>我始终认为：抗压能力、对目标的执着感这类特质更多还是源于一个人的内在底色，与生俱来。一年下来，PL 群体的整体表现超出预期，既定目标也得到了很好的达成，给他们点个赞。</p>
+<p>今年团队顺应公司战略目标，完成了从 Android、iOS 原生技术栈向 React Native 跨端体系的迁移。借助既有 RN 小组的技术支持，以及各类 AI 工具的引入，整体迁移速度和完成率同样超出预期。</p>
+<p>至此，整个大前端部门逐步形成了以 React 为核心的 Web 与 App 开发体系，实现了逻辑共享与组件复用。同时，人员的调配与支援也变得更加灵活，内部协作的壁垒显著降低。</p>
+<p>“养成一个习惯只需要 21 天”， 2025 年，我第一次尝试以工作周记的形式记录日常流水账，并成功坚持了下来。借助飞书文档，把待办事项、紧急任务、偶发灵感以及阶段性的感悟思考都沉淀其中。回看文档统计，这一年已累计写下了 2 万余字。</p>
+<p>同时，借助飞书文档的 AI 总结能力，这一年究竟做了什么、哪些是有价值的、哪些仍需改进，都变得一目了然。</p>
+<h4 id="家庭陪伴与焦虑">家庭：陪伴与焦虑</h4>
+<p>在现阶段，工作与家庭之间的平衡，或许已经变成一件近乎“不可能”的事。我们这一代父母，与其说是在带孩子，不如说是在弥补自己童年的缺失。</p>
+<p>今年 6 月初，一家四口去了期待已久的珠海长隆。两个孩子第一次坐飞机，兴奋又新奇。因为是错峰出行，暑假尚未开始，整体游玩体验相当不错。以至于大半年过去了，小儿子还时不时念叨着，什么时候能再去海洋王国。</p>
+<p>或许也正因为平时工作忙碌，对孩子产生了一种“报复性补偿”的心理。玩具买了不少，外出游玩的次数也比往年明显增加。今年还自驾去了岱山岛，除了沿途的大桥风景和岛上的希尔顿酒店，其他体验并不理想，大概率不会再去第二次了。</p>
+<p>今年 9 月，大儿子正式步入义务教育阶段。一年级刚开始那种手足无措、满脸懵逼的状态，到现在我都挥之不去。</p>
+<p>也说不清是因为狮子座、月份小的缘故，还是他本身的节奏就是这样慢。一年级的英语学习一开始几乎处处碰壁：单词不会读，歌曲不会唱。那段时间，我陷入了深深的焦虑：为什么别人家的孩子打卡那么快，而我们却走得如此艰难。</p>
+<p>不过令人欣慰的是，这种困难并没有持续太久。他慢慢找到了节奏，打卡变得轻松起来，期末考试也取得了满分。虽然都说小学阶段的成绩含金量有限，但至少说明他在跟着大部队往前走。这期间焦虑难免存在，不过我的心态已经逐渐变得相当佛系了。</p>
+<p>相比之下，孩子妈妈这半年的情绪明显更容易波动，我反而成了家里相对冷静的那一个。我和她在孩子教育的大方向上是一致的，但在执行细节上差异不小。辅导孩子时，她更容易着急、情绪上头，孩子一被批评就进入发懵状态，场面常常让人心疼。我有时也在想，我们小时候似乎并不是这样的。只是到了自己当父母，才真正体会到：家家都有本难念的经。</p>
+<h4 id="自己折腾与尝试">自己：折腾与尝试</h4>
+<p>如果说工作和家庭更多是责任驱动，那么这一部分，更像是留给自己的空间。不是 KPI，不是必须完成的任务，而是出于兴趣、好奇心和一点点不安分，主动去折腾、去尝试的东西。</p>
+<p>这些事情未必立刻产生价值，也不一定都能坚持很久，但它们让我在日复一日的角色切换之外，仍然保留着对新事物的敏感度和对“成长”这件事的真实体感。某种程度上，这些零散的折腾，反而构成了我这一年最有生命力的一部分。</p>
+<p>2023 那一年心血来潮，“染”上了骑行。从开始的年骑 3000 公里，到 2025 年仅骑了 300 公里，自行车大部分时间都在角落里吃灰。</p>
+<p>一方面，想从日常节奏里挤出一段完整的骑行时间变得越来越难；另一方面，今年换了一个让我幸福指数明显提升的通勤工具：九号电动车 Mz MIX。它带来的便捷与舒适体验，让我很自然地对“费劲出汗”的通勤方式失去了动力，续航和智能体验也大大超过家里的其他电动车。人一下子就变得懒了起来，带来的副作用也肉眼可见，身体素质大不如从前。</p>
+<p>都说人到中年，偏爱养鸟，今年斥“巨资”，养了几只虎皮鹦鹉，除了一只刚到家没几天就死了，剩下的两只都活得挺好的。</p>
+<p>每天清晨，阳台都会传来它们叽叽喳喳的声音，那种细碎又充满生命力的动静，让人有种说不出的奇妙感受。忙碌生活的缝隙里，多了一点很轻、却很真实的陪伴。</p>
+<h5 id="今年折腾的其他好物">今年折腾的其他好物</h5>
+<ul>
+<li>丁腈手套：排在第一位的好物，相见恨晚。之前做饭和家务时，手经常干裂起皮，偶然发现这款手套，堪称神器，真后悔没早点知道。</li>
+<li>Apple Watch S11：今年生日老婆送的礼物。两天一充，续航比预期好很多。配合 iPhone 和 MacBook Pro 无缝解锁，体验感加分。</li>
+<li>添可洗地机：家里的扫地机器人清洁力度不足，这款洗地机弥补了短板。操作简单高效，推着走就行，关键是不用中途洗拖把。</li>
+<li>米家破壁机 S2：这几年家里新增的小米白色家电表现都不错，没有翻车过。这款破壁机支持 App 预约定时，交互简单易用，很方便。</li>
+<li>国文 OBOOK 5 阅读器：迷你小巧，可网络传书。灰阶显示不如 Kindle 细腻，但轻巧便携，还能用来给孩子读古诗、学汉字。</li>
+<li>米家净烟机 P2：种草已久，618 入手，替换了开发商送的油烟机。厨房终于清爽了，吸力强劲，唯一不足是噪音略大。</li>
+<li>三星 Galaxy S24：作为双持党，今年尝试把 S24 当主力机，但失败了。主要缺点是消息推送不及时，最终还是老老实实换回了 iPhone。</li>
+<li>米家智能桌面鱼缸：家里一代鱼缸因大鱼小鱼混养，小鱼存活率不高。看到新款鱼缸，体积更小、颜值也行。不过使用下来有个通病：水泵异响，以后买鱼缸还是考虑 DIY 吧。</li>
+</ul>
+<p>一年匆匆而过，忙碌、焦虑、折腾与惊喜都交织其中。愿 2026 年，依旧能在工作、家庭与自己喜欢的事情里，找到属于我的节奏和乐趣吧。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Project Leader: 以终为始，自驱成长]]></title>
+        <id>https://liyuyu.cn/post/project-leader-yi-zhong-wei-shi-zi-qu-cheng-chang/</id>
+        <link href="https://liyuyu.cn/post/project-leader-yi-zhong-wei-shi-zi-qu-cheng-chang/">
+        </link>
+        <updated>2025-07-01T07:50:34.000Z</updated>
+        <summary type="html"><![CDATA[<blockquote>
+<p>项目的主心骨，不只是项目的执行者，更是团队节奏的掌舵人。</p>
+</blockquote>
+]]></summary>
+        <content type="html"><![CDATA[<blockquote>
+<p>项目的主心骨，不只是项目的执行者，更是团队节奏的掌舵人。</p>
+</blockquote>
+<!-- more -->
+<p>有次和团队小伙伴聊绩效时，问及团队里最认可谁，他说 XX（角色是 Project Leader，以下简称 PL），我问他原因，他列举了很多事例，我又问他，为啥 XX 做得好呢？他说可能是因为把 XX 架在了 PL 的位置，所以他干的活和大家不一样了，得到了更多的曝光机会，于是更加卖命，自然干得很好。</p>
+<p>不可否认，确实可能有这方面原因，但背后的低层逻辑真的是这样吗？看似又回到了最初的问题：“到底先有鸡还是先有蛋？”。</p>
+<h3 id="pl-的核心特质很难培养更像是识别">PL 的核心特质很难“培养”，更像是“识别”</h3>
+<p><strong>某些特质是天生的，比如责任心、上进心、自驱力，还有抗压能力和对目标感的执着。</strong></p>
+<p>这些特质，不是安排个培训、布置个任务他就能突然具备的，更多是骨子里的东西。<br>
+所以，我更倾向于把“培养 PL”理解成：<strong>识别 + 赋能</strong>：</p>
+<ul>
+<li>通过观察工作状态，比如谁在项目中主动补位、愿意操心整体节奏、愿意为结果负责，而不是只做份内的任务。</li>
+<li>不是告诉他具体怎么做，而是提供一些项目或者活动让他尝试，看他有没有全局意识和成长能力。</li>
+<li>真正具备 PL 潜质的人，其实内驱很强，反而是需要帮他构建框架感、决策感，而不是从零培养他“怎么当一个 project leader”。</li>
+</ul>
+<p>简单来说：识别潜质、给予舞台、拉齐认知</p>
+<h3 id="实践经验">实践经验</h3>
+<p>去年一个新加入的小伙伴，本身技术能力和沟通能力都不错，进来做了一个中等体量的功能移植开发，整体交付也算顺利，没过多操心，但是到了后期我发现，面对一些枯燥的 bug 时，他的解决效率是相当慢，了解完背后的真实原因，发现他在面对这些琐碎、重复且缺乏成就感的问题时，容易陷入一种“<strong>过度分析</strong>”或“<strong>等待完美解法</strong>”的状态。一开始我以为是当时状态不佳，但深入聊过之后才意识到，他其实是比较在意工作带来的价值感和挑战性，一旦任务本身无法激发兴趣，就容易陷入“拖延性思考”，甚至烦躁状态，而不是快速行动。</p>
+<p>后面我尝试做了两件事：</p>
+<ol>
+<li><strong>查看了他入职时的大五人格测评</strong>，分析了强弱项，之后调整了其工作安排，让他带领一个三人小队进行 App 架构优化和新功能预研</li>
+<li><strong>明确阶段性目标和优先级</strong>，让他明白“先解决最小闭环”，而不是追求一次性完美。</li>
+</ol>
+<p>目前看，效果还是不错的。</p>
+<blockquote>
+<p><strong>🎯 大五人格测评理论基础扎实</strong></p>
+<ul>
+<li>全球最被广泛验证的人格模型之一</li>
+<li>多语言、多文化中重复验证</li>
+<li>被用于人才评估、职业匹配、领导力发展等领域</li>
+<li>对于 PL <strong>角色识别</strong>的时候，可以作为参考，再结合实际情况做决策。</li>
+</ul>
+</blockquote>
+<h3 id="一些困惑">一些困惑</h3>
+<h4 id="1-亲力亲为是责任感还是不信任">1. “亲力亲为”是责任感，还是不信任？</h4>
+<p>包括自己在内，一些 PL 在项目过程中经常会陷入<strong>亲力亲为</strong>的状态：</p>
+<ul>
+<li>自己盯需求、自己拆任务、自己写核心代码、自己扛上线、甚至自己亲自拉通……</li>
+<li>好像只有自己动手，才“保险”、才“不掉链子”。</li>
+</ul>
+<h4 id="2-pl-的绩效到底该怎么打才公平">2. PL 的绩效，到底该怎么打才公平？</h4>
+<p>PL 的工作不像开发那样好量化，他们更多是协调、把控和责任。那打分的时候，到底是：</p>
+<ul>
+<li>和别的 PL 横向比？</li>
+<li>还是和他自己负责的项目结果比？</li>
+<li>还是我的主观感受？</li>
+</ul>
+<p>这到底谁更“好”？分数上怎么体现？其实挺难量化的。</p>
+<h3 id="总之">总之</h3>
+<p>PL 不只是一个角色，更是一种成长方式。<br>
+在目标与混乱之间找平衡，在责任与信任之间做选择，既要扛得住压力，也要带得动团队。<br>
+与其说是培养别人，不如说是我们每个人在不断成为更好的自己。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[App Widgets 设计与开发]]></title>
+        <id>https://liyuyu.cn/post/app-widgets-design-and-develop/</id>
+        <link href="https://liyuyu.cn/post/app-widgets-design-and-develop/">
+        </link>
+        <updated>2025-02-11T01:01:24.000Z</updated>
+        <summary type="html"><![CDATA[<p>App 小部件（widgets）可以把重要的内容直接在桌面中呈现给用户，以提升用户在桌面获取信息与直达服务的效率。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>App 小部件（widgets）可以把重要的内容直接在桌面中呈现给用户，以提升用户在桌面获取信息与直达服务的效率。</p>
+<!-- more -->
+<p>不过因平台的差异性，Android 和 iOS 对于小部件的规范和实现也不一样，同时国内基于 Android 系统定制的各厂商也对小部件有着各自的开发规范。</p>
+<h1 id="android">Android</h1>
+<figure data-type="image" tabindex="1"><img src="https://liyuyu.cn/post-images/1739235897245.png" alt="Android" loading="lazy"></figure>
+<h2 id="设计">设计</h2>
+<ul>
+<li>
+<p><strong>布局</strong>（<a href="https://developer.android.com/design/ui/mobile/guides/widgets/layouts">Layouts</a>）：对于文字、图片、按钮、列表、网格布局的指导规范</p>
+</li>
+<li>
+<p><strong>大小</strong>（<a href="https://developer.android.com/design/ui/mobile/guides/widgets/sizing">Sizing</a>）：官方推荐的尺寸作为起点，并在不同尺寸上测试布局，以确保最佳的可读性和用户体验</p>
+</li>
+<li>
+<p><strong>样式</strong>（<a href="https://developer.android.com/design/ui/mobile/guides/widgets/style">Style</a>）：定义颜色和排版的关键概念和技术，主要涉及颜色和黑暗主题等等</p>
+</li>
+<li>
+<p><strong>发现和推广</strong>（<a href="https://developer.android.com/design/ui/mobile/guides/widgets/discovery-promotion">Discovery &amp; promotion</a>）：用户可以通过小部件选择器发现和添加您的小部件</p>
+</li>
+</ul>
+<h2 id="开发">开发</h2>
+<p>除了传统的 XML 体系，Android 官方 Jetpack Glance 也提供了一种使用 Compose 语法构建 widget 的新式方法， 但受 <strong><code>AppWidgets</code></strong> 和 <strong><code>RemoteViews</code></strong> 的限制，Glance 使用的 Compose 与 Jetpack Compose 本质上是不一样的。</p>
+<h4 id="布局类型">布局类型</h4>
+<p>Android 小部件支持的布局形式和控件类型是有限的：</p>
+<figure data-type="image" tabindex="2"><img src="https://liyuyu.cn/post-images/1739235961652.png" alt="" loading="lazy"></figure>
+<p>对应的其实就是传统布局上的 <strong><code>RelativeLayout</code></strong> 和 <strong><code>LinearLayout</code></strong></p>
+<p>此外，可滚动的列表，Glance 会将 <strong><code>LazyColumn</code></strong> 转换为实际的 <strong><code>ListView</code></strong></p>
+<h4 id="控件类型">控件类型</h4>
+<p>仅支持 Text、Image 等基础控件，Android 12 及以后支持<strong><code>CheckBox</code></strong>、<strong><code>Switch</code></strong> 和 <strong><code>RadioButton</code></strong>等复合控件，集合视图支持 <strong><code>ListView</code></strong>、<strong><code>GridView</code>、<code>StackView</code></strong>和<strong><code>AdapterViewFlipper</code></strong></p>
+<blockquote>
+<p>Android 平台的小部件不支持 WebView 以及自定义 View，包括 Canvas 的操作，所以一些复杂炫酷的图表曲线无法直接呈现</p>
+</blockquote>
+<h4 id="注意事项">注意事项</h4>
+<ul>
+<li>
+<p>针对小部件的<strong>进程和内存</strong>占用，有严重要求</p>
+</li>
+<li>
+<p>刷新时间限制<strong>最小间隔</strong>，不同系统和厂家略有不同</p>
+</li>
+<li>
+<p>由于不同设备分辨率各不同，桌面支持不同的网格模式，是否使用虚拟按键等原因，小部件最终展示并没有按绝对尺寸实现，会在不同情况下进行自适应，所以跟设计稿有<strong>一定出入</strong>；业务需要根据情况进行自适应</p>
+</li>
+<li>
+<p>部分国内手机厂商对于小部件会有<strong>独立的审核</strong>机制和附加的开发规范</p>
+</li>
+<li>
+<p>从 Android 12 开始，小部件有了很大的变动和改进，需留意适配</p>
+</li>
+</ul>
+<h2 id="参考资料">参考资料</h2>
+<ul>
+<li>
+<p>Android UI Kit Figma 设计 <a href="https://www.figma.com/community/file/1237551184114564748">https://www.figma.com/community/file/1237551184114564748</a></p>
+</li>
+<li>
+<p>Widget 设计概览 <a href="https://developer.android.com/design/ui/mobile/guides/widgets?hl=zh-cn">https://developer.android.com/design/ui/mobile/guides/widgets?hl=zh-cn</a></p>
+</li>
+<li>
+<p>Jetpack Glance <a href="https://developer.android.com/develop/ui/compose/glance?hl=zh_cn">https://developer.android.com/develop/ui/compose/glance?hl=zh_cn</a></p>
+</li>
+<li>
+<p>应用 Widget 开发 <a href="https://developer.android.com/develop/ui/views/appwidgets/overview?hl=zh-cn">https://developer.android.com/develop/ui/views/appwidgets/overview?hl=zh-cn</a></p>
+</li>
+<li>
+<p>Vivo 原子组件规范 <a href="https://dev.vivo.com.cn/documentCenter/doc/834">https://dev.vivo.com.cn/documentCenter/doc/834</a></p>
+</li>
+<li>
+<p>Xiaomi 小部件规范 <a href="https://dev.mi.com/xiaomihyperos/documentation/detail?pId=1664">https://dev.mi.com/xiaomihyperos/documentation/detail?pId=1664</a></p>
+</li>
+</ul>
+<h1 id="ios">iOS</h1>
+<figure data-type="image" tabindex="3"><img src="https://liyuyu.cn/post-images/1739235982774.png" alt="" loading="lazy"></figure>
+<p>iOS <strong>从 iOS 8 开始</strong>支持小部件（Widget）开发，当时使用的是 <strong>Today Extension</strong>，小部件只能放在<strong>通知中心的“今天”视图</strong>中。</p>
+<p>后来，<strong>iOS 14 引入了 WidgetKit</strong>，允许小部件直接放在主屏幕（桌面）上，并支持多种尺寸。但 WidgetKit 使用的是 <strong>SwiftUI</strong>，与 Today Extension 的 UIViewController 方式不同。</p>
+<table>
+<thead>
+<tr>
+<th><strong>iOS 版本</strong></th>
+<th><strong>开发方式</strong></th>
+<th><strong>位置</strong></th>
+<th><strong>主要技术</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>iOS 8+</strong></td>
+<td><strong>Today Extension</strong></td>
+<td>通知中心 “今天” 视图</td>
+<td>UIViewController</td>
+</tr>
+<tr>
+<td><strong>iOS 10+</strong></td>
+<td><strong>Today Extension</strong></td>
+<td>负一屏（Spotlight 搜索）</td>
+<td>UIViewController</td>
+</tr>
+<tr>
+<td><strong>iOS 14+</strong></td>
+<td><strong>WidgetKit</strong></td>
+<td>主屏幕 &amp; 负一屏</td>
+<td>SwiftUI</td>
+</tr>
+<tr>
+<td><strong>iOS 16+</strong></td>
+<td><strong>WidgetKit（增强）</strong></td>
+<td>新增锁屏小部件</td>
+<td>SwiftUI</td>
+</tr>
+<tr>
+<td><strong>iOS 16.1+</strong></td>
+<td><strong>Live Activities（实时活动）</strong></td>
+<td>新增锁屏 &amp; 动态岛（iPhone 14 Pro 及以后）</td>
+<td>ActivityKit + SwiftUI</td>
+</tr>
+</tbody>
+</table>
+<p><strong>现代</strong> Apple 的小部件分为以下几大类场景：</p>
+<ul>
+<li>
+<p>锁屏界面</p>
+</li>
+<li>
+<p>手机桌面</p>
+</li>
+<li>
+<p>堆栈视图</p>
+</li>
+<li>
+<p>手表场景</p>
+</li>
+<li>
+<p>实时活动</p>
+</li>
+</ul>
+<h2 id="设计-2"><strong>设计</strong></h2>
+<ul>
+<li>
+<p><strong>布局（Layouts）</strong>：iOS 小部件（Widget）遵循 Apple 设计规范，支持文字、图片、按钮等基础 UI 组件，使用 SwiftUI 进行布局</p>
+</li>
+<li>
+<p><strong>大小（Sizing）</strong>：官方提供了三种标准尺寸（小、中、大），不同设备的组件尺寸会有所不同，需要适配</p>
+</li>
+<li>
+<p><strong>样式（Style）</strong>：支持浅色和深色模式，颜色应与应用整体风格保持一致。组件的背景可以设置为透明，以与桌面壁纸融合</p>
+</li>
+<li>
+<p><strong>发现和推广（Discovery &amp; Promotion）</strong>：用户可以在“添加小组件”界面（长按主屏幕 → 编辑小组件）找到并添加应用的小组件</p>
+</li>
+</ul>
+<h2 id="开发-2"><strong>开发</strong></h2>
+<p>iOS Widget 使用 SwiftUI 开发，并通过 WidgetKit 框架进行管理。其数据刷新依赖 TimelineProvider 进行定时更新，或者使用 WidgetCenter 进行手动刷新。</p>
+<h4 id="布局类型-2"><strong>布局类型</strong></h4>
+<p>iOS 小组件的布局基于 SwiftUI，支持 VStack、HStack 和 ZStack 进行层次排列，以及网格布局 Grid (iOS 16+)。由于小组件是静态 UI，不支持 ScrollView 或动态交互</p>
+<h4 id="控件类型-2"><strong>控件类型</strong></h4>
+<p>仅支持 Text、Image、ProgressView、Gauge (iOS 16+) 等基础控件，iOS 17 及以后版本支持 Gauge、ProgressView 等额外组件，不支持 WebView ，但可以使用 SwiftUI 的 Path 和 Shape 进行简单的图形绘制，例如绘制曲线、折线图等。</p>
+<h4 id="注意事项-2"><strong>注意事项</strong></h4>
+<ul>
+<li>
+<p><strong>刷新机制</strong>：小组件的更新受 TimelineProvider 限制，不能随意刷新，最小间隔一般为 15 分钟</p>
+</li>
+<li>
+<p><strong>交互限制</strong>：小组件不支持复杂交互，用户点击后只能打开 App 或触发 AppIntent 进行操作</p>
+</li>
+<li>
+<p><strong>适配性</strong>：iOS 小组件会根据设备和屏幕尺寸自动调整大小，可能与设计稿存在细微差异</p>
+</li>
+<li>
+<p><strong>平台兼容性</strong>：iOS 14 引入 WidgetKit，iOS 16 以后支持 Lock Screen Widget（锁屏小组件），iOS 17 进一步增强了交互能力，需留意不同系统的兼容</p>
+</li>
+<li>
+<p><strong>iOS Widget 适合静态内容</strong>（文本、图片、进度、绘制）。</p>
+</li>
+<li>
+<p><strong>不支持交互控件</strong>（Button、输入框、滚动列表）。</p>
+</li>
+<li>
+<p><strong>支持一定的自定义绘制</strong>（Path、Shape、Canvas）。</p>
+</li>
+<li>
+<p><strong>不能动态加载网络图片</strong>，但可以预加载到本地。</p>
+</li>
+</ul>
+<h2 id="参考资料-2">参考资料</h2>
+<ul>
+<li>
+<p>iOS 小组件设计指南：<a href="https://developer.apple.com/design/human-interface-guidelines/widgets">https://developer.apple.com/design/human-interface-guidelines/widgets</a></p>
+</li>
+<li>
+<p>iOS Widgets 开发概述 <a href="https://developer.apple.com/widgets/">https://developer.apple.com/widgets/</a></p>
+</li>
+<li>
+<p>iOS WidgetKit 开发文档 <a href="https://developer.apple.com/documentation/WidgetKit">https://developer.apple.com/documentation/WidgetKit</a></p>
+</li>
+<li>
+<p>创建一个 Widget <a href="https://developer.apple.com/documentation/widgetkit/creating-a-widget-extension">https://developer.apple.com/documentation/widgetkit/creating-a-widget-extension</a></p>
+</li>
+<li>
+<p>开发 Widget 策略 <a href="https://developer.apple.com/documentation/WidgetKit/Developing-a-WidgetKit-strategy">https://developer.apple.com/documentation/WidgetKit/Developing-a-WidgetKit-strategy</a></p>
+</li>
+</ul>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[我的 2024]]></title>
+        <id>https://liyuyu.cn/post/my-2024/</id>
+        <link href="https://liyuyu.cn/post/my-2024/">
+        </link>
+        <updated>2025-02-07T10:16:55.000Z</updated>
+        <summary type="html"><![CDATA[<p>现在年终总结写的是越来越晚，其实很早就想开始写的，但是总被很多事情打断。就像过去的这一年，很多事情规划了，但是却没有完成。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>现在年终总结写的是越来越晚，其实很早就想开始写的，但是总被很多事情打断。就像过去的这一年，很多事情规划了，但是却没有完成。</p>
+<!-- more -->
+<p>回望整个 2024 年，无论是工作还是家庭，可谓是近 10 年来最忙的一年了。</p>
+<h4 id="工作摸索与成长">工作：摸索与成长</h4>
+<p>如果说去年 2023 年是我职业生涯中的重要转折点，那今年就是我真正意义上尝试角色转变的一年。这一过程充满挑战和艰辛，但也蕴含成长机遇。</p>
+<p>四个字总结下过去一年的工作表现：差强人意。</p>
+<p>年初，顺利通过晋升答辩，从部门“代管负责人”正式晋升为部门经理，工作范畴不变，仅仅算是给了官方正式 Title 而已吧。</p>
+<p>为什么说刚开始自己有些地方做的并不好，毕竟做了那么多年的开发，总是习惯于亲自解决问题，习惯于用个人能力推动项目前进；慢慢到了后期，随着我涉猎的越多，很多业务盲区也被覆盖到，自然而然的多了一丝从容和信心，我逐渐意识到，团队管理的核心不是自己完成更多，而是让团队整体能力提升，让每个人都能高效地贡献价值，后面其实需要将更多精力放在目标拆解、资源协调、团队赋能上。</p>
+<p>过去的这一年，遇到了很多人和事，让我深刻感悟到，做很多事情都是有方法论的。</p>
+<h4 id="游戏难得的闲暇时刻">游戏：难得的闲暇时刻</h4>
+<p>严格意义上，我不是一个爱玩游戏的人，手机里更是一款游戏 App 都没有，家里的 PS5 也沦为吃灰的摆设。</p>
+<p>然而今年《黑神话-悟空》的爆火，让我也忍不住购买了它。从新手村的大头，磕磕绊绊打到现在的火焰山，一直都是用零散时间抽空玩，半年多竟然一周目还没通关。不过令我开心的是，它竟然让我找回了 10 多年前第一次玩《使命召唤-现代战争》的惊喜和震撼。单机游戏有个好处，就是玩起来没有压力，不像以前玩的《DNF》，半年不上线你就落后其他玩家了。这么多年还有一款游戏也是自己的执念：《PUBG》，一款无论从游戏机制还是射击手感，在我心中都是堪称一绝的游戏，可惜玩它的时间也是越来越少。</p>
+<p>中国传统父母，包括我的父母辈，普遍对玩游戏持谨慎甚至否定的态度。但是随着我们这一代 80、90 开始做父母，这一观点正在改变，我们开始认识到游戏的正面价值，而不是一味的排斥。</p>
+<h4 id="家庭乔迁新居">家庭：乔迁新居</h4>
+<p>7 月份，挑了个黄道吉日，搬进新家。</p>
+<p>其实 2023 年底买这个房子，算得上是冲动消费了，明知道房价不稳定，还是下手了。到现在，满打满算亏了有七八十个 W 了，想哭却怎么也哭不出来，自己选的路，跪着也要走完。</p>
+<p>不过，除了房价下跌带来的伤痛，剩下的可全是开心了：我终于有自己的独立书房了，配了三米多长的书桌，满墙的洞洞板，满心欢喜。</p>
+<h4 id="骑行坚持与热爱">骑行：坚持与热爱</h4>
+<p>看了下行者 App 里的年度统计，2024 年累计骑行 1384 km，运动时长 68 小时，188 次。整体运动量不如 2023 年，根本原因还是没时间，希望今年能继续坚持下去。</p>
+<h4 id="剁手折腾的新东西">剁手：折腾的新东西</h4>
+<ul>
+<li>心心念的 M4 Pro + 48G + 1T 的 MacBook Pro 终于拿下，工作 10 多年来，第一次用上苹果本，却没有想象中的惊喜</li>
+<li>618 老婆送我种草已久的运动相机 Insta360 GO 3S，虽然一直在吃灰，可以不用但不能没有啊</li>
+<li>我也送了老婆一台 iPhone 15 Pro，原来她用的 12 已经肉眼可以见的卡顿，以旧换新，抵了 2000，还算不错</li>
+<li>今年生日，老婆送我 Shokz OpenFit Air 开放式耳机，终于淘汰了 5 年多的 AirPods（续航严重缩水）</li>
+<li>用了 7 年多的 IKBC C87 终究还是扛不住了，出现了按键失灵，遂入手京造 K3 Max 矮轴三模键盘，手感刚开始不适应，后面转为大爱</li>
+<li>今年还入手了正点原子的 T80P 智能电烙铁，使用感受非常棒，秒杀以前用过任何一款，简直是降维打击</li>
+<li>年初入手的红米 Watch4，小米作为最强苹果生态拥护者，消息来电通知与食堂刷卡神器，一年下来，真是便宜又好用</li>
+<li>今年堪称剁手的一年，搬新家购置了若干电器和家具，包括但不限于：东芝系烘套装、壁挂洗衣机、石头 G20S 扫地机器人、米家智能电热水瓶、米家保险箱以及各种米家智能家居等</li>
+</ul>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[另一种 App 网页加载方式]]></title>
+        <id>https://liyuyu.cn/post/another-app-load-web/</id>
+        <link href="https://liyuyu.cn/post/another-app-load-web/">
+        </link>
+        <updated>2024-11-01T02:14:17.000Z</updated>
+        <summary type="html"><![CDATA[<p>很多 App 都会有加载网页的场景</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>很多 App 都会有加载网页的场景</p>
+<!-- more -->
+<p>一般有如下几种方式：</p>
+<ul>
+<li>跳转<code>外部浏览器</code>打开（简单粗暴，一行代码，但是业务形态割裂，我们自己的 App 会进入后台）</li>
+<li>内嵌 <code>WebView/WKWebView</code> 实现（页面交互逻辑可控，细节可定制，为主流方式，但缺点是性能以及兼容问题，同时也无法与外部浏览器共享 cookies 等数据）</li>
+<li>Android <code>Custom Tabs</code>/iOS <code>SFSafariViewController</code> 🎉</li>
+</ul>
+<p>Android <code>Custom Tabs</code> 基于 Intent 调用，依赖手机里 Chrome 浏览器（或基于 Chromium 内核的浏览器）实现，不同版本可能会有差异。<br>
+早在 2015 年 Google 就发布了对应的 <code>support</code> 依赖库，后在 2018 年迁移到了 AndroidX，更名为 <code>browser</code>。目前国外的主流 App 都实现了该功能，例如 X、Telegram 等，而国内却寥寥无几。</p>
+<p>iOS 平台也提供了类似的解决方案：<code>SFSafariViewController</code><br>
+WKWebView 是 WebKit 框架的一部分，<code>SFSafariViewController</code> 是 SafariServices 框架的一部分，可让用户直接在应用内浏览网页，享受与在 Safari 中相同的网页浏览体验 - 包括密码自动填充、阅读器和安全浏览等功能，而无需离开我们的应用。</p>
+<h4 id="开始使用">开始使用</h4>
+<ol>
+<li>添加依赖</li>
+</ol>
+<pre><code>dependencies {
+   implementation 'androidx.browser:browser:1.8.0'
+}
+</code></pre>
+<ol start="2">
+<li>判断手机系统是否支持<br>
+手机需要安装 Chrome 45 或以上版本，并且设为默认浏览器，实测 Edge 浏览器也支持<br>
+如果条件都不满足，则跳转其他外部浏览器打开</li>
+</ol>
+<pre><code class="language-java">String packageName = CustomTabsClient.getPackageName(context, Collections.emptyList());
+if (packageName == null) {
+    // not supported
+}
+Intent activityIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(&quot;http://www.example.com&quot;));
+PackageManager packageManager = context.getPackageManager();
+List&lt;ResolveInfo&gt; viewIntentHandlers = packageManager.queryIntentActivities(activityIntent, 0);
+String packageName = CustomTabsClient.getPackageName(context, viewIntentHandlers, true);
+if (packageName == null) {    
+    // not supported
+}
+</code></pre>
+<ol start="3">
+<li>AndroidManifest.xml 处理包可见性（Android 11 及以上）</li>
+</ol>
+<pre><code class="language-xml">&lt;queries&gt;
+    &lt;intent&gt;
+        &lt;action android:name=
+            &quot;android.support.customtabs.action.CustomTabsService&quot; /&gt;
+    &lt;/intent&gt;
+&lt;/queries&gt;
+</code></pre>
+<ol start="4">
+<li>发起调用</li>
+</ol>
+<pre><code class="language-java">String url = &quot;https://developers.android.com&quot;;
+CustomTabsIntent intent = new CustomTabsIntent.Builder().build();
+intent.launchUrl(MainActivity.this, Uri.parse(url));
+</code></pre>
+<p>详细特性</p>
+<ul>
+<li>支持定制部分 UI</li>
+<li>支持预热和预加载</li>
+<li>支持最小化（画中画）</li>
+<li>支持 ToolBar 自定义按钮</li>
+<li>支持指定高度打开</li>
+<li>支持设置进入和退出动画</li>
+<li>支持传递 HTTP headers 等</li>
+</ul>
+<h4 id="优点">优点</h4>
+<ul>
+<li>Custom Tabs 提供了一致的浏览体验，与 Chrome 浏览器的外观和功能保持一致，用户在使用时感到熟悉和舒适。</li>
+<li>由于使用 Chrome 浏览器，Custom Tabs 在性能上通常优于 WebView，能够更快地加载网页。</li>
+<li>Custom Tabs 在安全性上更强，利用 Chrome 的安全功能，例如对恶意软件的防护和强大的隐私设置。</li>
+<li>可以利用浏览器的所有功能，包括自动填充、书签和跨设备的同步，使得用户能够享受到更全面的浏览体验。</li>
+<li>与 WebView 相比，Custom Tabs 不需要开发者维护网页内容的呈现，减少了开发和维护的工作量。</li>
+<li>开发者可以对 Custom Tabs 进行一些定制，比如修改颜色和添加自定义菜单，增强品牌识别度。</li>
+</ul>
+<h4 id="缺点">缺点</h4>
+<ul>
+<li>开发者对 Custom Tabs 的控制相对有限，无法像使用 WebView 那样对网页的行为和外观进行全面控制。</li>
+<li>Custom Tabs 依赖于用户的 Chrome 浏览器或其他支持 Custom Tabs 的浏览器。如果用户没有安装支持的浏览器，可能会导致体验不佳。</li>
+<li>某些特定的 WebView 功能可能无法在 Custom Tabs 中使用，例如与 JavaScript 的深度交互。</li>
+</ul>
+<h4 id="最佳实践场景">最佳实践场景</h4>
+<ul>
+<li>展示类：隐私协议、用户协议等</li>
+<li>互动类：论坛、帮助手册、视频教程等</li>
+</ul>
+<p>参考资料</p>
+<ul>
+<li>https://developer.chrome.com/docs/android/custom-tabs</li>
+<li>https://www.chromium.org/Home/</li>
+<li>https://developer.apple.com/news/?id=trjs0tcd</li>
+</ul>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[我的 2023]]></title>
+        <id>https://liyuyu.cn/post/my-2023/</id>
+        <link href="https://liyuyu.cn/post/my-2023/">
+        </link>
+        <updated>2024-02-06T11:53:57.000Z</updated>
+        <summary type="html"><![CDATA[<p>这次年终总结比以往来得晚了些。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>这次年终总结比以往来得晚了些。</p>
+<!-- more -->
+<p>此刻已经到了 2024 年的 2 月初，快过年了，部分同事已经陆续请假回家了，趁着年底不忙，慢慢总结下 2023 这一年。</p>
+<h5 id="离职">离职</h5>
+<p>待了七年的公司，期间动过无数次离开的念头，而这次我终于勇敢地跨出了这一步。这七年里，我买了车、结了婚、还生了两娃，我把我最美好的青春都留在了这里。从刚进来时的 Android 开发，到后面的 .NET、Angular 以及 Vue， 实现了前后端一把梭，这几年不但经历了自身的成长，也见证了公司的兴衰。</p>
+<p>记得 2016 年公司在 A 股上市，全体上下无不憧憬着美好的未来，新来的我也卯足了干劲。但好景不长，到了 2018 年，公司进行了一次相对大规模的裁员，历史上绝无仅有，一些“能力不足”的同事走了，而我侥幸逃过一劫。在接下来的几年里，可能是由于自己的努力和机遇，虽然经历了几次架构调整和产品线变更，但好在一切都在往好的方向发展，团队相处融洽，领导也青睐，我感觉似乎可以在这里一直干到退休了。</p>
+<p>然而 2022 年底的一通电话突然拉起了“躺平”的我，电话那头是七年前的老东家领导，他问我最近有没有换工作的想法，他那边新成立了大前端部门，负责人岗位空缺，想让我过去带团队。这一刻，命运的齿轮开始转动。</p>
+<h5 id="转型">转型</h5>
+<p>时隔七年，再次回到原来的公司，早已物是人非，刚开始的一个月，我是极度不适应的，甚至萌生了退缩的念头。一是从开发转为基层管理的思维转变，团队二十多号人，很多东西都需要主动去识别和了解，否则无法支撑自己做好管理和决策；二是部门事项繁杂，累是真的累，不夸张得讲，在这里三个月的加班量比过去的七年都多；所以我不争气地怀恋起上家公司的躺平氛围。</p>
+<p>熬过了这一年，现在回头看看，这期间的转变其实是巨大的，心态也和刚开始完全不一样了，对于这次的机会我是非常庆幸的，也不后悔。</p>
+<h5 id="骑行">骑行</h5>
+<p>由于换了工作，单程通勤距离由原来的 25 km 缩短为 6 km，虽然还是开车上下班，但是没了堵车，没了路怒症，带来的幸福感提升是巨大的。八月份过生日，老婆问我想要什么礼物，我说要么整辆自行车吧，我上下班骑。没想到买自行车却成了 2023 年做的最正确的一件事。为了兼顾山地车的舒适性和公路车的速度，最终选中了入门平把公路车-喜德盛极速 380。</p>
+<p>从九月份开始，除非下雨天，几乎每天都坚持骑行通勤，6 km 骑行时间也从刚开始的 25 分钟，到后面能达到18分钟左右，体能的提升肉眼可见；每天迎着朝阳，骑到公司的大汗淋漓，运动带来的荷尔蒙提升，一扫清晨的疲惫，同时骑行带来的变化也会影响着身边的人，好几个同事也陆续加入了骑行队伍，于是我们组建了一个骑行车队，每个周末的集体骑行活动成了最大的期待。在过去的这几个月，月均骑行里程超过 300 km，2024 年，希望能有更大的挑战和突破。</p>
+<h5 id="折腾的新东西">折腾的新东西</h5>
+<ul>
+<li>今年重新回到了 iOS 平台，14 Pro Max 续航真的很顶</li>
+<li>莫名又对养鱼产生了浓厚兴趣，399 的米家智能鱼缸体验下来没有翻车</li>
+<li>用了多年的 DeskMini 今年终于装上了黑苹果，搭配 BCM94360CS2 网卡，与秒控板的使用，稳定得不像黑的</li>
+<li>2018 年买的蝰蛇 2000 有线鼠标突然右键失灵，这款鼠标我是非常满意的，手感真的无可挑剔，于是决定自己动手维修，遗憾的是更换微动时不小心把焊盘搞坏，彻底报废。于是转头眼瞎看中了炼狱蝰蛇 V2 X 极速版双模无线鼠标，这名字确实很顶，但是实际体验下来，一言难尽。</li>
+<li>今年还新增了一整套露营装备，包括：露营车、卡式炉、折叠桌椅、帐篷以及各种锅碗瓢盆等等，露营体验感爆棚</li>
+</ul>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[面试官赋能培训总结]]></title>
+        <id>https://liyuyu.cn/post/summary-of-interviewer-training/</id>
+        <link href="https://liyuyu.cn/post/summary-of-interviewer-training/">
+        </link>
+        <updated>2023-12-07T14:47:55.000Z</updated>
+        <summary type="html"><![CDATA[<p>人才是关键，商业成功 = 战略 x 组织能力，所以做好人才招聘是重中之重。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>人才是关键，商业成功 = 战略 x 组织能力，所以做好人才招聘是重中之重。</p>
+<!-- more -->
+<h4 id="公司人才价值观">公司人才价值观</h4>
+<p>聪明、乐观、皮实、自省、自律</p>
+<h4 id="什么情况下不招">什么情况下不招？</h4>
+<ul>
+<li>工作内容不明确的</li>
+<li>招过来没人培养的</li>
+<li>能由内部调转岗</li>
+<li>简单的换人需求</li>
+</ul>
+<h4 id="面试时避免的问题">面试时避免的问题</h4>
+<p>有套路的问题，有标准答案的问题，容易造假的问题在面试时尽量避免，它们不能很好的让自己清楚得认识到候选人的真实情况，因为问完这些问题你可能还不能判断是否录用。</p>
+<p>最重要的一点：业务面试官不要聊涉及薪资待遇话题。</p>
+<h4 id="面试之术">面试之术</h4>
+<p>一场有效的面试 = 充分准备 + 过程记录 + 跟进及时</p>
+<p>可以围绕职业发展情况、过往业绩点以及疑惑点展开。</p>
+<p>理念淮备</p>
+<ul>
+<li><strong>企业相关</strong> - 公司的发展史，主营业务，行业优势、技术</li>
+<li><strong>岗位相关</strong> - 岗位职责，岗位工作环境、发展通道，培训福利等</li>
+<li><strong>数据相关</strong> - 可提供具有信服力的数据</li>
+</ul>
+<p><strong>2</strong> 分钟氛围创设和自我介绍<br>
+<strong>15-60</strong> 分钟专业背景、过往行为、动力适配以及其他信息<br>
+<strong>2-5</strong> 分钟候选人提问，提供关于职位的补充信息</p>
+<p>面试时直接在简历上做记录，圈好关键字，最后做好面试评价，为下一轮面试官做提供数据支持。</p>
+<h4 id="面试之器">面试之器</h4>
+<p>情景面试法</p>
+<ul>
+<li>复盘过往，换位思考，假如你是 xxx，你会怎么做才能让结果更好？</li>
+</ul>
+<p>STAR 面试法</p>
+<ul>
+<li><strong>Situation</strong> 情况为什么</li>
+<li><strong>Task</strong> 任务目标是什么</li>
+<li><strong>Action</strong> 行动怎么做的</li>
+<li><strong>Result</strong> 结果怎么样</li>
+</ul>
+<p>压力面试法</p>
+<ul>
+<li>细节追问、故意找茬、指出失误、时间压力</li>
+</ul>
+<p>Probing 面试法<br>
+其目的是深入挖掘和了解面试者的经验、技能和适应性。这种方法通常涉及提出开放性问题，以激发详细的回答，以便更全面地评估候选人的能力和适应性。</p>
+<p>3W 面试法<br>
+侧重于收集求职者的工作经历和能力。&quot;3W&quot; 代表 What（做了什么）、Why（为什么这么做）、和结果（取得了什么结果）。</p>
+<h4 id="大五模型">大五模型</h4>
+<ul>
+<li>开放性</li>
+<li>尽责性</li>
+<li>外向性</li>
+<li>宜人性</li>
+<li>情绪稳定性</li>
+</ul>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[我的 2022]]></title>
+        <id>https://liyuyu.cn/post/my-2022/</id>
+        <link href="https://liyuyu.cn/post/my-2022/">
+        </link>
+        <updated>2022-12-30T08:41:41.000Z</updated>
+        <summary type="html"><![CDATA[<p>这一年，过得有多苦，恐怕只有亲身经历的人才能体会。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>这一年，过得有多苦，恐怕只有亲身经历的人才能体会。</p>
+<!-- more -->
+<p>2022 年初的一波疫情，让原本有序的生活变得一团糟，快递停摆、居家办公、全员核酸，搞得人心惶惶。然而回头看，竟有点怀念那种生活，谁又能想到，现在以这种方式结束，就像那轰轰烈烈的爱情，说散就散了。</p>
+<h4 id="爷爷走了">爷爷走了</h4>
+<p>年初爷爷意外摔倒，住进了医院，一待就是一个月，没有半点好转的迹象，临近春节，奶奶叮嘱我，今年无论如何一定要拍个全家福照片。大年初六，在姑姑家新房里，拍了最后一张满员的全家福，一个月后，爷爷与世长辞，我从苏州赶回去，送了他最后一程。</p>
+<h4 id="意外的手术">意外的手术</h4>
+<p>去年八月公司体检，发现右侧甲状腺结节，体检中心说问题不大，定期复查就行，于是没太放在心上。今年三月份，咽部突然有异物感，10 多天都没有好转，心里慌了，担心是不是结节长大了？好在几天后，异物感好转，加上疫情原因，就没有去医院，最终不了了之。时间一晃来到了今年六月初，咽部又突发异物感，这次没有犹豫了，直接去了医院，确诊 ACR TI-RADS：5 级，结节实质钙化。在咨询了医生后，决定手术切除。手术那天的场景我这辈子都不会忘记，去往手术室的路上，天花板和灯光在眼前飞速划过，不停变换，就像人生的一场幻灯片，而我从未看过。好在手术很成功，术后恢复也很好，休息了两周就回公司上班了。挨了一刀，带来了更多的感悟和思考，我觉得是幸运的，身体才是革命的本钱啊！</p>
+<h4 id="幼儿园">幼儿园</h4>
+<p>今年小橙子三周岁了，到了上幼儿园的年纪，然而对于一天早教和托班都没上过的他，我又是忐忑和紧张的。父母和孩子一样，都有分离焦虑，开学的第一个星期我们都过得很痛苦，每天老师发的照片里他都在哭，不合群，甚至连续三天尿湿裤子，想想又心疼，但又不得不放手成长。不过令人欣慰的是，一切都在第二个星期得到好转，他开始积极参与集体活动，吃饭睡觉都很乖，老师反馈互动表现都很棒，老父亲终于长舒了一口气。</p>
+<h4 id="躺平的惊喜">躺平的惊喜</h4>
+<p>来公司的第 7 个年头，今年没有了以往骚动的心，可能也是因为生了二胎的缘故，动不了也动不起。今年的工作内容没有任何变化，身边的一切也都是老样子，但好在领导看来，我是兢兢业业的，对得起自己，也对得起公司。我以为今年又这样趟过去时，年底的一封加薪邮件，让这阴冷的冬天多了一丝暖意和惊喜，明年好似又多了一份期待啊，加油，打工人。</p>
+<h4 id="学习和创造">学习和创造</h4>
+<p>今年业余时间捣鼓了两个新 App，<a href="https://liyuyu.cn/post/one-clip-wiping/">《一剪没》</a>以及<a href="https://liyuyu.cn/post/fuck-wx-scan/">《扫你码》</a>，都是基于 Android 最新技术体系，比如 Jetpack Compose。明明工作内容已经不涉及 Android 了，但我还是怕把它弄丢了，这可能也是一种偏执。</p>
+<h4 id="最开心的事">最开心的事</h4>
+<p>今年最开心，最传奇的事莫过于帮老爸找回被偷的手机了，简直堪称奇迹，能吹几百年的<a href="https://liyuyu.cn/post/amazing-phone-story/">牛逼</a>。</p>
+<h4 id="折腾的新东西">折腾的新东西</h4>
+<ul>
+<li>年初把新区的房子重新装修了一遍，疫情原因，陆陆续续搞了半年才完工，家里多了很多智能家居设备，用起来很是满意。</li>
+<li>为了配合智能家居，购置了一台小爱音响 Pro，并改装了射频模块，啥都能控制了。</li>
+<li>6 月份老婆送了台 PS5，心心念了很久，然而玩游戏的时间却很少，不过即使看到它在那儿吃灰我也很满足。</li>
+<li>11 月在日本亚马逊海淘了一个 Apple TV 2022，观影体验那叫一个绝，遥控器简直爱不释手。家里的 N1 刷了 OpenWrt 系统，在家随时随地的科学上网，也算是继续发光发热。</li>
+<li>今年换了 4K 显示器，装了一台净水器，这些可有可无的东西，带来的生活品质提升却是很大的。</li>
+<li>今年拼多多买了一部入门 HiFi 耳机，飞利浦 SHP9500，音质好到爆。</li>
+<li>今年还给 NAS 扩容了一块 4T 硬盘，满满的安全感。</li>
+<li>今年最大的一笔开销莫过于给妻儿老小配置全套商业保险了，花钱买安心，以备不时之需。</li>
+</ul>
+<h4 id="写在最后">写在最后</h4>
+<p>2012 年大学毕业至今，一晃整整 10 年过去了，曾经的少年已是中年大叔，也被生活磨平了棱角，下一个 10 年又会怎样呢？</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[扫你码]]></title>
+        <id>https://liyuyu.cn/post/fuck-wx-scan/</id>
+        <link href="https://liyuyu.cn/post/fuck-wx-scan/">
+        </link>
+        <updated>2022-10-18T06:31:56.000Z</updated>
+        <summary type="html"><![CDATA[<blockquote>
+<p>一个可能让你在微信里更舒服地扫码小工具。</p>
+</blockquote>
+]]></summary>
+        <content type="html"><![CDATA[<blockquote>
+<p>一个可能让你在微信里更舒服地扫码小工具。</p>
+</blockquote>
+<!-- more -->
+<p>当我们在微信里吃瓜，或者查看朋友分享的一些好东西时：<br>
+<img src="https://liyuyu.cn/post-images/1666079643926.png" alt="" loading="lazy"><br>
+<img src="https://liyuyu.cn/post-images/1666079700885.jpg" alt="" loading="lazy"><br>
+长按识别二维码后，经常会遇到以下几种情况，这严重影响我们的使用体验：<br>
+<img src="https://liyuyu.cn/post-images/1666079654653.jpg" alt="" loading="lazy"><br>
+<img src="https://liyuyu.cn/post-images/1666079705007.jpg" alt="" loading="lazy"></p>
+<p>此时我们只能保存图片到本地，然后再打开对应 App 去识别这些二维码。如此繁琐的操作背后，究其原因无非就是大厂的生态壁垒以及国内互联网的内容审查，有没有一种更加快捷的方式，实现即时在屏幕上扫码，也不局限于微信？答案是有的。</p>
+<h4 id="技术原理">技术原理</h4>
+<p>利用录屏 MediaProjection 获取到当前屏幕画面，然后 ZXing 识别其中的二维码，最后打开网页，一气呵成。理想和现实的差距就体现在：如何在微信里一触即发？</p>
+<ul>
+<li>悬浮窗按钮（可以实现，但是涉及权限和视觉污染，有点不妥）</li>
+<li>通知栏常驻（可以实现，但下拉通知栏然后再点按，差点意思）</li>
+<li>摇一摇触发（可以实现，但涉及应用保活以及其他应用冲突问题）</li>
+<li>侧边栏快速启动（堪称国产 ROM 一绝，从我自己使用的 OriginOS Ocean 到测试机的 MIUI 13，都是支持的，用过这一功能，iPhone 真的就回不去了）</li>
+</ul>
+<p>其实还有类似的“悬浮球”功能也能快速打开指定 App，每家手机系统可能实现不一，但是原理都是一致的。</p>
+<p>各大 App 分享的图片二维码内容几乎都是 URL，我们只要调起外部浏览器打开就能突破微信的限制，实现吃瓜自由。由于 Android 11（API 30）调整了软件包可见性，当应用 targetSdkVersion &gt;= 30 时，需要在清单文件中添加 <code>&lt;queries&gt;</code> 元素进行适配，否则无法调起外部浏览器。</p>
+<p>最后把 Activity 的背景色改为透明，修改默认的进入和退出动画，这样在打开时就不会有明显的割裂感了，堪称完美，一个全新的“扫你码”App 就此诞生。</p>
+<p>项目地址：<a href="https://github.com/li-yu/FuckWxScan">https://github.com/li-yu/FuckWxScan</a></p>
+<h4 id="使用方法">使用方法</h4>
+<ol>
+<li>安装后，把 App 加入侧边栏快速启动，具体方法每家系统大同小异。</li>
+<li>在需要扫码的界面，通过侧边栏打开<strong>扫你码</strong>，冷启动时屏幕会有提示，点击“立即开始”即可，后面<br>
+再次扫码不会有提示。</li>
+<li>当成功识别到二维码后，会有吐司提示，并通过外部浏览器打开。</li>
+</ol>
+<h4 id="演示效果">演示效果</h4>
+<figure data-type="image" tabindex="1"><img src="https://liyuyu.cn/post-images/1666079552632.gif" alt="" loading="lazy"></figure>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[老爸手机被偷始末]]></title>
+        <id>https://liyuyu.cn/post/amazing-phone-story/</id>
+        <link href="https://liyuyu.cn/post/amazing-phone-story/">
+        </link>
+        <updated>2022-09-29T08:48:33.000Z</updated>
+        <summary type="html"><![CDATA[<p>8 月 28 号上午，一个陌生的来电打破了本该属于周末的轻松氛围，是老爸，借朋友的手机打给我，说手机刚被偷了，听得出来他很慌张。我安慰了下，让他不要担心，首要的事情是去补办手机卡（一张电信，一张移动），随后便挂了电话。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>8 月 28 号上午，一个陌生的来电打破了本该属于周末的轻松氛围，是老爸，借朋友的手机打给我，说手机刚被偷了，听得出来他很慌张。我安慰了下，让他不要担心，首要的事情是去补办手机卡（一张电信，一张移动），随后便挂了电话。</p>
+<!-- more -->
+<h4 id="丢失模式">丢失模式</h4>
+<p>老爸用的手机是红米 K40，我依稀记得去年给他设置并登录了小米云服务，抱着试试的心态，我登录了小米云服务，值得庆幸的是，他的小米账号密码竟然是我常用的密码（其实我都忘了我设置的啥密码了），凭直觉一次就登录成功，然后便是查找设备，然而手机早已关机，最后一次定位显示在老爸上班的地方，时间为 8:57，最后我打开了丢失模式，留下了我的号码。</p>
+<h4 id="补卡风波">补卡风波</h4>
+<p>大概半小时后，接到了老爸电信卡打来的电话（身边有个旧的坚果手机备用），告知电信补卡成功，而移动的却补卡失败，移动异地补卡被要求提供三个月内通话记录，由于平时联系都是电信卡，移动的因为绑定了多张银行卡，遂改成8元套餐当副卡使用，根本没法提供通话记录。于是没办法，只能先打电话给归属地 10086，进行了紧急停机。根据客服指引，下载中国移动 App，进行了在线补卡操作，期间由于微信和支付宝都是绑定的移动卡，5 元补卡费的支付陷入了死循环，好在最后通过我的银联卡完成了支付。</p>
+<h4 id="报警">报警</h4>
+<p>一通操作后，我才让老爸进行了报警，警察来后，询问了丢失经过，便走了，其实这会儿已经不抱任何希望了。毕竟丢手机这件事，我觉得老爸也有责任，据他描述，早上接了老板一个电话，随手放在桌上，然后去倒了杯水的功夫（隔壁房间），前后不超过 5 分钟，回来就发现手机没了。由于事发楼层没有监控，人员也杂，一时也毫无头绪，我让他安心等警察破案。</p>
+<h4 id="了无音讯">了无音讯</h4>
+<p>说实话，我自己也对找回手机没有信心，身边太多这样的案例了。往后的几天，我时不时的就打开小米云服务网站看看手机定位，都魔怔了，倒不是心疼这 2000 多的手机，而是这件事让老爸慌得不行，担心银行卡的钱，担心微信里的钱，他觉得他辛辛苦苦赚的钱都会没有了，我说不会的。两天后，他收到了邮寄过来的移动 SIM 卡并完成了激活，这期间，小米云服务也一直没有显示新的定位信息，我以为这件事就这么过去了。</p>
+<h4 id="意外的短信">意外的短信</h4>
+<blockquote>
+<p>【小米】您丢失的M2012K11AC手机已于2022-08-31 12:04:21上线，可访问i.mi.com使用查找手机功能定位丢失的手机。</p>
+</blockquote>
+<p>三天后的 31 号中午，我刚吃完午饭，突然一条短信让我血脉膨胀，本着警惕的原则，加上钓鱼短信很多，我随即登录了网站，确认了定位信息，然后立马打电话给老爸，告知了他位置，是一家手机店附近，距离事发地大约 12 公里，不算太远，我让他赶紧过去。卧槽，说实话，我这会儿激动到说话都是颤抖的，有种破案后仿佛胜利就在眼前的感觉。</p>
+<h4 id="手机店的线索">手机店的线索</h4>
+<p>大约 13 点左右，老爸赶到了这个手机店，不得不服小米的定位信息很准确的，营业员说刚才确实有个人过来解锁手机，说是刚买的手机，不知道怎么操作锁起来了，但是这家手机店最终解锁失败，说 10 几分钟前刚走，让其提供监控信息，营业员表示拒绝，我们也能理解，没再多废话，于是便报警。警察来后，顺利调取到监控，拿到了录像和嫌疑人的截图，由于摄像头是俯视，正面拍的不是很清楚，但是大概体貌特征是可以掌握了，男性，白色T血，年纪大概 40 左右。警察说，证据会交由事发地派出所继续处理，说完便走了。（后话：这家手机店其实明明知道手机是偷的，毕竟丢失信息都显示在屏幕上，不过大部分人都会选择无视的）</p>
+<h4 id="神助攻">神助攻</h4>
+<p>中午的亢奋劲头消去，下午整个人都昏昏沉沉的。17 点左右，一个归属地显示浙江金华的电话打了进来，对方表示是xx手机店老板，说刚才有个人来店里解锁手机，发现屏幕上留有我的丢失信息，疑似偷盗机，想进一步确认下，并表示已记录了“嫌疑人的信息”：名字和手机号码，并告知了店铺位置也表示会积极配合调查。我把掌握的信息发给老爸，让他直接去派出所，让民警处理，不要私自联系。不得不感慨，这世间还是有好人的。事已至此，直觉告诉我，快结案了。</p>
+<h4 id="嫌疑人的来电">嫌疑人的来电</h4>
+<p>接完手机店老板电话大约 20 多分钟后，一个电话打了进来，号码正是店主提供的“嫌疑人”的，一开口对方就表示前几天在万达广场捡到一个手机，问是不是我的，并问我现在在哪儿，要立马给我送过来。听得出来，对方很激动也很紧张，但是这番操作是我万万没想到的，我没多说什么，毕竟对方愿意归还手机，随即让他送到事发地派出所，对方表示半小时送到。</p>
+<h4 id="拿到手机">拿到手机</h4>
+<p>半个多小时后，老爸顺利拿到手机，钢化膜、手机壳以及 SIM 卡不见踪影，好在手机完好无损，顺利解锁后，发现已被刷机，资料全无。</p>
+<h4 id="剧终">剧终</h4>
+<p>回顾整个事件，最关键的一点就是遇到了一个好人店主，以及给老爸的手机开启了查找设备功能，最终能顺利拿回手机，简直堪称奇迹。至于对方为啥突然这么急的归还手机，竟然是被手机店主吓的。虽然用了一年多的 K40 值不了几百块，但是事后老爸还是买了点水果专程上门进行了感谢。最终从店主口中的得知了原委：小偷下午到达了这个手机店，拿出手机让解锁，店主看到锁屏丢失信息后表示这种丢失模式很难解锁，并委婉询问这个手机的来历，对方表示是自己的。因为解锁刷机需要时间，店主表示可以把手机留在店里，等解锁成功后通知对方来取，对方同意，留下了姓名和电话便离开了。谁知仅仅过了几分钟，对方竟折返取了回手机，表示不解锁了。等对方走后，店主根据锁屏上的电话信息联系到了我，在和我通话后，店主也联系了小偷，表示他这个手机是偷的，失主已经报警定位到了店铺位置，警察过来办案追回和自己主动归还性质是不一样的，估计会被判个半年几个月啥的，让对方考虑清楚，于是便有了后面小偷主动联系我的情节。</p>
+]]></content>
+    </entry>
+</feed>

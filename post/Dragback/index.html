@@ -1,0 +1,363 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>使用 ViewDragHelper 实现图片下拽返回 | 呵呵小鱼</title>
+
+<link rel="shortcut icon" href="https://liyuyu.cn/favicon.ico?v=1770856511184">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.6.0/style.css" />
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://liyuyu.cn/styles/main.css">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css"> -->
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages//dart.min.js"></script>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script> -->
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+    
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="/">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            呵呵小鱼
+        </div>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="changeNavbar">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+            <div class="nav-item">
+                
+                <a href="/" class="menu gt-a-link">
+                    首页
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/archives" class="menu gt-a-link">
+                    归档
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/post/about" class="menu gt-a-link">
+                    关于
+                </a>
+                
+            </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1770856511184"
+                action="/search/">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+<script>
+    /* 移动端导航栏展开/收起切换 */
+    document.getElementById('changeNavbar').onclick = () => {
+        var element = document.getElementById('navbarSupportedContent');
+        if (element.style.display === 'none' || element.style.display === '') {
+            element.style.display = 'block';
+        } else {
+            element.style.display = 'none';
+        }
+    }
+</script>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    使用 ViewDragHelper 实现图片下拽返回
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2018-08-09 ·
+                    </time>
+                    
+                </div>
+                <div class="post-content">
+                    <p>微信的图片下拽返回功能在日常使用中非常方便，同时在很多 App 中都见到了类似的设计，可以说一旦习惯这种操作再也回不去了。</p>
+<!--more-->
+<p>这几天逛 GitHub，发现一个很赞的库 <a href="https://github.com/iielse/ImageWatcher">https://github.com/iielse/ImageWatcher</a> 高度还原了微信的效果，粗看了下源码，我觉得可以更简单的实现类似的效果，动手实现后，发现 ViewDragHelper + ActvitySceneTransition 的方案简单粗暴。</p>
+<figure data-type="image" tabindex="1"><img src="https://liyuyu.cn/post-images/draglayout.gif" alt="" loading="lazy"></figure>
+<h3 id="什么是-viewdraghelper">什么是 ViewDragHelper</h3>
+<p>具体实现之前先简单介绍下什么是 ViewDragHelper。</p>
+<p>ViewDragHelper 是 support v4 兼容包中的一个工具类，用来简化自定义 ViewGroup 中的手势处理。</p>
+<p>使用 ViewDragHelper 可以轻松实现 ViewGroup 里 View 的拖拽操作，这里介绍下使用 ViewDragHelper 里几个重要步骤。</p>
+<h4 id="初始化">初始化</h4>
+<p>通过静态方法创建：viewGroup 即为当前容器；sensitivity 为拖拽的灵敏度，默认为 1；callback 为配置拖拽中的各种逻辑处理。</p>
+<pre><code class="language-java">mViewDragHelper = ViewDragHelper.create(viewGroup, callback);
+...
+or
+...
+mViewDragHelper = ViewDragHelper.create(viewGroup, sensitivity, callback);
+</code></pre>
+<h4 id="callback">Callback</h4>
+<p>这里仅列出我们需要使用到的一些回调方法：</p>
+<pre><code class="language-java">public abstract static class Callback {
+        /**
+         * 当子 View 被拖动改变位置时回调此方法
+         * 
+         * @param changedView 当前子 View
+         * @param left 当前子 View 的最新 X 坐标
+         * @param top 当前子 View 的最新 Y 坐标
+         * @param dx 当前子 View 的最新 X 坐标较上次 X 的位移量
+         * @param dy 当前子 View 的最新 Y 坐标较上次 Y 的位移量
+         */
+        public void onViewPositionChanged(@NonNull View changedView, int left, int top, int dx,
+                int dy) {
+        }
+
+
+        /**
+         * 当子 View 被释放后回调此方法
+         *
+         * @param releasedChild 当前子 View
+         * @param xvel X 子 View 被释放时，用户手指在屏幕上滑动的横向加速度
+         * @param yvel Y 子 View 被释放时，用户手指在屏幕上滑动的纵向加速度
+         */
+        public void onViewReleased(@NonNull View releasedChild, float xvel, float yvel) {}
+
+        /**
+         * 限制子 View 水平拖拽范围。
+         * 
+         * 如果返回 0，则不能进行水平拖动，如果要实现拖拽，返回值 &gt; 0 即可。
+         *
+         */
+        public int getViewHorizontalDragRange(@NonNull View child) {
+            return 1;
+        }
+
+        /**
+         * 限制子 View 纵向拖拽范围。
+         * 
+         * 如果返回 0，则不能进行纵向拖动， 我们要实现拖拽，返回值 &gt; 0 即可。
+         *
+         */
+        public int getViewVerticalDragRange(@NonNull View child) {
+            return 1;
+        }
+
+        /**
+         * 判断当前触摸的 View 能否被捕获进行拖拽，如果返回 true 则可以进行拖拽。
+         */
+        public abstract boolean tryCaptureView(@NonNull View child, int pointerId);
+
+        /**
+         * 限制当前 View 的横向拖拽范围，也可说是我们可以动态修正 View 的 top 坐标，比如我们想限制 View 只在容器内部拖动
+         *
+         * @param child 当前拖动的 View
+         * @param left View 上次的 x 坐标 + 手指移动的 x 轴位移量
+         * @param dx 手指移动的位移量
+         * @return  修正后的 x 坐标，直接返回 left 表示不限制水平拖拽范围，拖到哪儿就哪儿
+         */
+        public int clampViewPositionHorizontal(@NonNull View child, int left, int dx) {
+            return left;
+        }
+
+        /**
+         * 限制当前 View 的纵向拖拽范围，也可说是我们可以动态修正 View 的 top 坐标，比如我们想限制 View 只在容器内部拖动
+         *
+         * @param child 当前拖动的 View
+         * @param top View 上次的 y 坐标 + 手指移动的 y 轴位移量
+         * @param dx 手指移动的位移量
+         * @return  修正后的 x 坐标，直接返回 top 表示不限制纵向拖拽范围，拖到哪儿就哪儿
+         */
+        public int clampViewPositionVertical(@NonNull View child, int top, int dy) {
+            return top;
+        }
+    }
+</code></pre>
+<h4 id="处理-touch-事件">处理 Touch 事件</h4>
+<p>复杂的触摸逻辑就让 ViewDragHelper 接管即可。</p>
+<pre><code class="language-java">@Override
+    public boolean onInterceptTouchEvent(MotionEvent ev) {
+        return mViewDragHelper.shouldInterceptTouchEvent(ev);
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        mViewDragHelper.processTouchEvent(event);
+        return true;
+    }
+</code></pre>
+<h4 id="处理-view-自动复位效果">处理 View 自动复位效果</h4>
+<p>当拖拽操作不满足触发条件时，手指松开，View 需要自动回到初始位置，在 onViewReleased 里调用以下方法即可：</p>
+<pre><code class="language-java">mViewDragHelper.settleCapturedViewAt(originPoint.x, originPoint.y);
+invalidate();
+</code></pre>
+<p>同时需要覆写：</p>
+<pre><code class="language-java">    @Override
+    public void computeScroll() {
+        if (mViewDragHelper.continueSettling(true)) {
+            ViewCompat.postInvalidateOnAnimation(this);
+        }
+    }
+</code></pre>
+<h3 id="具体实现步骤">具体实现步骤</h3>
+<h4 id="1-自定义-draglayout内部使用-viewdraghelper-来处理拖拽操作">1. 自定义 DragLayout，内部使用 ViewDragHelper 来处理拖拽操作。</h4>
+<h4 id="2-创建-activity-展示图片使用-draglayout-作为根布局">2. 创建 Activity 展示图片，使用 DragLayout 作为根布局:</h4>
+<pre><code class="language-xml">&lt;com.liyu.fakeweather.widgets.DragLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;
+    android:id=&quot;@+id/drag_layout&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;
+    android:background=&quot;@color/black&quot;
+    android:fitsSystemWindows=&quot;true&quot;&gt;
+
+    &lt;ImageView
+        android:id=&quot;@+id/picture&quot;
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;match_parent&quot;
+        android:layout_centerInParent=&quot;true&quot;
+        android:adjustViewBounds=&quot;true&quot;
+        android:scaleType=&quot;fitCenter&quot; /&gt;
+
+&lt;/com.liyu.fakeweather.widgets.DragLayout&gt;
+</code></pre>
+<p>并设置 Activity 背景为透明：</p>
+<pre><code class="language-java">activity.getWindow().getDecorView().setBackgroundColor(Color.TRANSPARENT);// 当然也可以在 theme 里设置
+</code></pre>
+<h4 id="3-实现拖拽时动态改变背景透明度以及图片的缩放效果">3. 实现拖拽时动态改变背景透明度以及图片的缩放效果：</h4>
+<pre><code class="language-java">        @Override
+        public void onViewPositionChanged(@NonNull View changedView, int left, int top, int dx, int dy) {
+            if (top &gt; originPoint.y) {// 仅当向下拖拽时才处理
+                float a = (float) (top - originPoint.y) / (float) (getMeasuredHeight() - originPoint.y);
+                setBackgroundColor(ThemeUtil.changeAlpha(0xff000000, 1 - a));// 根据拖拽位移量动态改变背景透明度
+                targetView.setScaleX(1 - a);// 缩放图片
+                targetView.setScaleY(1 - a);// 缩放图片
+                if ((top - originPoint.y) &gt; getMeasuredHeight() / 5) {
+                    callEvent = true; // 下拽的位移量满足要求，可以触发关闭操作
+                } else {
+                    callEvent = false;// 不能触发关闭操作
+                }
+            }
+        }
+</code></pre>
+<h4 id="4-手指释放时逻辑处理">4. 手指释放时逻辑处理：</h4>
+<pre><code class="language-java">        @Override
+        public void onViewReleased(@NonNull View releasedChild, float xvel, float yvel) {
+            if (releasedChild == targetView) {
+                if (callEvent || yvel &gt; 8000) {// 除了判断下拽的位移量，还要判断快速下拽的速度，这边 yevl 为用户手指快速滑动的 Y 轴加速度，当加速度大于一定值时也可触发关闭操作
+                    if (listener != null) {
+                        listener.onDragFinished();
+                    }
+                    callEvent = false;
+                } else {
+					// 当拖拽不满足触发条件时，需要将 View 归位，这里使用自带的方法实现动画效果，传入初始坐标即可。
+                    mViewDragHelper.settleCapturedViewAt(originPoint.x, originPoint.y);
+                    invalidate();
+                }
+            }
+        }
+</code></pre>
+<h4 id="5-图片的转场动画">5. 图片的转场动画：</h4>
+<p>使用自带转场动画即可实现图片的打开和关闭动画。</p>
+<pre><code class="language-java">
+ActivityOptionsCompat optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                (Activity) context, transitView, PictureActivity.TRANSIT_PIC);
+
+ActivityCompat.startActivity(context, intent, optionsCompat.toBundle());
+
+...
+ViewCompat.setTransitionName(mImageView, TRANSIT_PIC);
+...
+
+</code></pre>
+<p>图片下拽返回的功能加入到了假装看天气的妹子图模块中，完整示例代码可前往 <a href="https://github.com/li-yu/FakeWeather/blob/master/app/src/main/java/com/liyu/fakeweather/widgets/DragLayout.java">https://github.com/li-yu/FakeWeather/blob/master/app/src/main/java/com/liyu/fakeweather/widgets/DragLayout.java</a> 查看。</p>
+<h3 id="总结">总结</h3>
+<p>依靠简单而又强大的 ViewDragHelper，不到 200 行的代码也实现了类似的效果。他山之石可以攻玉，翻看其源码，也学到一些很少用到的小技巧，比如获取当前触摸位置的子 View，逆向遍历全部子 View 集合然后判断触摸坐标是否在范围内，真是简单粗暴：</p>
+<pre><code class="language-java">    @Nullable
+    public View findTopChildUnder(int x, int y) {
+        final int childCount = mParentView.getChildCount();
+        for (int i = childCount - 1; i &gt;= 0; i--) {
+            final View child = mParentView.getChildAt(mCallback.getOrderedChildIndex(i));
+            if (x &gt;= child.getLeft() &amp;&amp; x &lt; child.getRight()
+                    &amp;&amp; y &gt;= child.getTop() &amp;&amp; y &lt; child.getBottom()) {
+                return child;
+            }
+        }
+        return null;
+    }
+</code></pre>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://liyuyu.cn/post/My2017/" class="post-title gt-a-link">
+                    我的 2017
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first"><p><a href="http://beian.miit.gov.cn" target="_blank">粤ICP备14087112号-1</a></p></div>
+    <div class="social-container">
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+    </div>
+    <div>
+        Theme <a href="https://github.com/imhanjie/gridea-theme-pure" target="_blank">Pure</a>, Powered by <a
+                href="https://gridea.dev" target="_blank">Gridea</a> | <a href="https://liyuyu.cn/atom.xml" target="_blank">RSS</a>
+    </div>
+</div>
+
+<script>
+  hljs.highlightAll()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

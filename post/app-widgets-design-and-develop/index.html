@@ -1,0 +1,368 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>App Widgets 设计与开发 | 呵呵小鱼</title>
+
+<link rel="shortcut icon" href="https://liyuyu.cn/favicon.ico?v=1770856511184">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.6.0/style.css" />
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://liyuyu.cn/styles/main.css">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css"> -->
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages//dart.min.js"></script>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script> -->
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+    
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="/">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            呵呵小鱼
+        </div>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="changeNavbar">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+            <div class="nav-item">
+                
+                <a href="/" class="menu gt-a-link">
+                    首页
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/archives" class="menu gt-a-link">
+                    归档
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/post/about" class="menu gt-a-link">
+                    关于
+                </a>
+                
+            </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1770856511184"
+                action="/search/">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+<script>
+    /* 移动端导航栏展开/收起切换 */
+    document.getElementById('changeNavbar').onclick = () => {
+        var element = document.getElementById('navbarSupportedContent');
+        if (element.style.display === 'none' || element.style.display === '') {
+            element.style.display = 'block';
+        } else {
+            element.style.display = 'none';
+        }
+    }
+</script>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    App Widgets 设计与开发
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2025-02-11 ·
+                    </time>
+                    
+                        <a href="https://liyuyu.cn/tag/4O2Nguyi4V/" class="post-tags">
+                            # iOS
+                        </a>
+                    
+                        <a href="https://liyuyu.cn/tag/DprtxKSsE/" class="post-tags">
+                            # Android
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <p>App 小部件（widgets）可以把重要的内容直接在桌面中呈现给用户，以提升用户在桌面获取信息与直达服务的效率。</p>
+<!-- more -->
+<p>不过因平台的差异性，Android 和 iOS 对于小部件的规范和实现也不一样，同时国内基于 Android 系统定制的各厂商也对小部件有着各自的开发规范。</p>
+<h1 id="android">Android</h1>
+<figure data-type="image" tabindex="1"><img src="https://liyuyu.cn/post-images/1739235897245.png" alt="Android" loading="lazy"></figure>
+<h2 id="设计">设计</h2>
+<ul>
+<li>
+<p><strong>布局</strong>（<a href="https://developer.android.com/design/ui/mobile/guides/widgets/layouts">Layouts</a>）：对于文字、图片、按钮、列表、网格布局的指导规范</p>
+</li>
+<li>
+<p><strong>大小</strong>（<a href="https://developer.android.com/design/ui/mobile/guides/widgets/sizing">Sizing</a>）：官方推荐的尺寸作为起点，并在不同尺寸上测试布局，以确保最佳的可读性和用户体验</p>
+</li>
+<li>
+<p><strong>样式</strong>（<a href="https://developer.android.com/design/ui/mobile/guides/widgets/style">Style</a>）：定义颜色和排版的关键概念和技术，主要涉及颜色和黑暗主题等等</p>
+</li>
+<li>
+<p><strong>发现和推广</strong>（<a href="https://developer.android.com/design/ui/mobile/guides/widgets/discovery-promotion">Discovery &amp; promotion</a>）：用户可以通过小部件选择器发现和添加您的小部件</p>
+</li>
+</ul>
+<h2 id="开发">开发</h2>
+<p>除了传统的 XML 体系，Android 官方 Jetpack Glance 也提供了一种使用 Compose 语法构建 widget 的新式方法， 但受 <strong><code>AppWidgets</code></strong> 和 <strong><code>RemoteViews</code></strong> 的限制，Glance 使用的 Compose 与 Jetpack Compose 本质上是不一样的。</p>
+<h4 id="布局类型">布局类型</h4>
+<p>Android 小部件支持的布局形式和控件类型是有限的：</p>
+<figure data-type="image" tabindex="2"><img src="https://liyuyu.cn/post-images/1739235961652.png" alt="" loading="lazy"></figure>
+<p>对应的其实就是传统布局上的 <strong><code>RelativeLayout</code></strong> 和 <strong><code>LinearLayout</code></strong></p>
+<p>此外，可滚动的列表，Glance 会将 <strong><code>LazyColumn</code></strong> 转换为实际的 <strong><code>ListView</code></strong></p>
+<h4 id="控件类型">控件类型</h4>
+<p>仅支持 Text、Image 等基础控件，Android 12 及以后支持<strong><code>CheckBox</code></strong>、<strong><code>Switch</code></strong> 和 <strong><code>RadioButton</code></strong>等复合控件，集合视图支持 <strong><code>ListView</code></strong>、<strong><code>GridView</code>、<code>StackView</code></strong>和<strong><code>AdapterViewFlipper</code></strong></p>
+<blockquote>
+<p>Android 平台的小部件不支持 WebView 以及自定义 View，包括 Canvas 的操作，所以一些复杂炫酷的图表曲线无法直接呈现</p>
+</blockquote>
+<h4 id="注意事项">注意事项</h4>
+<ul>
+<li>
+<p>针对小部件的<strong>进程和内存</strong>占用，有严重要求</p>
+</li>
+<li>
+<p>刷新时间限制<strong>最小间隔</strong>，不同系统和厂家略有不同</p>
+</li>
+<li>
+<p>由于不同设备分辨率各不同，桌面支持不同的网格模式，是否使用虚拟按键等原因，小部件最终展示并没有按绝对尺寸实现，会在不同情况下进行自适应，所以跟设计稿有<strong>一定出入</strong>；业务需要根据情况进行自适应</p>
+</li>
+<li>
+<p>部分国内手机厂商对于小部件会有<strong>独立的审核</strong>机制和附加的开发规范</p>
+</li>
+<li>
+<p>从 Android 12 开始，小部件有了很大的变动和改进，需留意适配</p>
+</li>
+</ul>
+<h2 id="参考资料">参考资料</h2>
+<ul>
+<li>
+<p>Android UI Kit Figma 设计 <a href="https://www.figma.com/community/file/1237551184114564748">https://www.figma.com/community/file/1237551184114564748</a></p>
+</li>
+<li>
+<p>Widget 设计概览 <a href="https://developer.android.com/design/ui/mobile/guides/widgets?hl=zh-cn">https://developer.android.com/design/ui/mobile/guides/widgets?hl=zh-cn</a></p>
+</li>
+<li>
+<p>Jetpack Glance <a href="https://developer.android.com/develop/ui/compose/glance?hl=zh_cn">https://developer.android.com/develop/ui/compose/glance?hl=zh_cn</a></p>
+</li>
+<li>
+<p>应用 Widget 开发 <a href="https://developer.android.com/develop/ui/views/appwidgets/overview?hl=zh-cn">https://developer.android.com/develop/ui/views/appwidgets/overview?hl=zh-cn</a></p>
+</li>
+<li>
+<p>Vivo 原子组件规范 <a href="https://dev.vivo.com.cn/documentCenter/doc/834">https://dev.vivo.com.cn/documentCenter/doc/834</a></p>
+</li>
+<li>
+<p>Xiaomi 小部件规范 <a href="https://dev.mi.com/xiaomihyperos/documentation/detail?pId=1664">https://dev.mi.com/xiaomihyperos/documentation/detail?pId=1664</a></p>
+</li>
+</ul>
+<h1 id="ios">iOS</h1>
+<figure data-type="image" tabindex="3"><img src="https://liyuyu.cn/post-images/1739235982774.png" alt="" loading="lazy"></figure>
+<p>iOS <strong>从 iOS 8 开始</strong>支持小部件（Widget）开发，当时使用的是 <strong>Today Extension</strong>，小部件只能放在<strong>通知中心的“今天”视图</strong>中。</p>
+<p>后来，<strong>iOS 14 引入了 WidgetKit</strong>，允许小部件直接放在主屏幕（桌面）上，并支持多种尺寸。但 WidgetKit 使用的是 <strong>SwiftUI</strong>，与 Today Extension 的 UIViewController 方式不同。</p>
+<table>
+<thead>
+<tr>
+<th><strong>iOS 版本</strong></th>
+<th><strong>开发方式</strong></th>
+<th><strong>位置</strong></th>
+<th><strong>主要技术</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>iOS 8+</strong></td>
+<td><strong>Today Extension</strong></td>
+<td>通知中心 “今天” 视图</td>
+<td>UIViewController</td>
+</tr>
+<tr>
+<td><strong>iOS 10+</strong></td>
+<td><strong>Today Extension</strong></td>
+<td>负一屏（Spotlight 搜索）</td>
+<td>UIViewController</td>
+</tr>
+<tr>
+<td><strong>iOS 14+</strong></td>
+<td><strong>WidgetKit</strong></td>
+<td>主屏幕 &amp; 负一屏</td>
+<td>SwiftUI</td>
+</tr>
+<tr>
+<td><strong>iOS 16+</strong></td>
+<td><strong>WidgetKit（增强）</strong></td>
+<td>新增锁屏小部件</td>
+<td>SwiftUI</td>
+</tr>
+<tr>
+<td><strong>iOS 16.1+</strong></td>
+<td><strong>Live Activities（实时活动）</strong></td>
+<td>新增锁屏 &amp; 动态岛（iPhone 14 Pro 及以后）</td>
+<td>ActivityKit + SwiftUI</td>
+</tr>
+</tbody>
+</table>
+<p><strong>现代</strong> Apple 的小部件分为以下几大类场景：</p>
+<ul>
+<li>
+<p>锁屏界面</p>
+</li>
+<li>
+<p>手机桌面</p>
+</li>
+<li>
+<p>堆栈视图</p>
+</li>
+<li>
+<p>手表场景</p>
+</li>
+<li>
+<p>实时活动</p>
+</li>
+</ul>
+<h2 id="设计-2"><strong>设计</strong></h2>
+<ul>
+<li>
+<p><strong>布局（Layouts）</strong>：iOS 小部件（Widget）遵循 Apple 设计规范，支持文字、图片、按钮等基础 UI 组件，使用 SwiftUI 进行布局</p>
+</li>
+<li>
+<p><strong>大小（Sizing）</strong>：官方提供了三种标准尺寸（小、中、大），不同设备的组件尺寸会有所不同，需要适配</p>
+</li>
+<li>
+<p><strong>样式（Style）</strong>：支持浅色和深色模式，颜色应与应用整体风格保持一致。组件的背景可以设置为透明，以与桌面壁纸融合</p>
+</li>
+<li>
+<p><strong>发现和推广（Discovery &amp; Promotion）</strong>：用户可以在“添加小组件”界面（长按主屏幕 → 编辑小组件）找到并添加应用的小组件</p>
+</li>
+</ul>
+<h2 id="开发-2"><strong>开发</strong></h2>
+<p>iOS Widget 使用 SwiftUI 开发，并通过 WidgetKit 框架进行管理。其数据刷新依赖 TimelineProvider 进行定时更新，或者使用 WidgetCenter 进行手动刷新。</p>
+<h4 id="布局类型-2"><strong>布局类型</strong></h4>
+<p>iOS 小组件的布局基于 SwiftUI，支持 VStack、HStack 和 ZStack 进行层次排列，以及网格布局 Grid (iOS 16+)。由于小组件是静态 UI，不支持 ScrollView 或动态交互</p>
+<h4 id="控件类型-2"><strong>控件类型</strong></h4>
+<p>仅支持 Text、Image、ProgressView、Gauge (iOS 16+) 等基础控件，iOS 17 及以后版本支持 Gauge、ProgressView 等额外组件，不支持 WebView ，但可以使用 SwiftUI 的 Path 和 Shape 进行简单的图形绘制，例如绘制曲线、折线图等。</p>
+<h4 id="注意事项-2"><strong>注意事项</strong></h4>
+<ul>
+<li>
+<p><strong>刷新机制</strong>：小组件的更新受 TimelineProvider 限制，不能随意刷新，最小间隔一般为 15 分钟</p>
+</li>
+<li>
+<p><strong>交互限制</strong>：小组件不支持复杂交互，用户点击后只能打开 App 或触发 AppIntent 进行操作</p>
+</li>
+<li>
+<p><strong>适配性</strong>：iOS 小组件会根据设备和屏幕尺寸自动调整大小，可能与设计稿存在细微差异</p>
+</li>
+<li>
+<p><strong>平台兼容性</strong>：iOS 14 引入 WidgetKit，iOS 16 以后支持 Lock Screen Widget（锁屏小组件），iOS 17 进一步增强了交互能力，需留意不同系统的兼容</p>
+</li>
+<li>
+<p><strong>iOS Widget 适合静态内容</strong>（文本、图片、进度、绘制）。</p>
+</li>
+<li>
+<p><strong>不支持交互控件</strong>（Button、输入框、滚动列表）。</p>
+</li>
+<li>
+<p><strong>支持一定的自定义绘制</strong>（Path、Shape、Canvas）。</p>
+</li>
+<li>
+<p><strong>不能动态加载网络图片</strong>，但可以预加载到本地。</p>
+</li>
+</ul>
+<h2 id="参考资料-2">参考资料</h2>
+<ul>
+<li>
+<p>iOS 小组件设计指南：<a href="https://developer.apple.com/design/human-interface-guidelines/widgets">https://developer.apple.com/design/human-interface-guidelines/widgets</a></p>
+</li>
+<li>
+<p>iOS Widgets 开发概述 <a href="https://developer.apple.com/widgets/">https://developer.apple.com/widgets/</a></p>
+</li>
+<li>
+<p>iOS WidgetKit 开发文档 <a href="https://developer.apple.com/documentation/WidgetKit">https://developer.apple.com/documentation/WidgetKit</a></p>
+</li>
+<li>
+<p>创建一个 Widget <a href="https://developer.apple.com/documentation/widgetkit/creating-a-widget-extension">https://developer.apple.com/documentation/widgetkit/creating-a-widget-extension</a></p>
+</li>
+<li>
+<p>开发 Widget 策略 <a href="https://developer.apple.com/documentation/WidgetKit/Developing-a-WidgetKit-strategy">https://developer.apple.com/documentation/WidgetKit/Developing-a-WidgetKit-strategy</a></p>
+</li>
+</ul>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://liyuyu.cn/post/my-2024/" class="post-title gt-a-link">
+                    我的 2024
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first"><p><a href="http://beian.miit.gov.cn" target="_blank">粤ICP备14087112号-1</a></p></div>
+    <div class="social-container">
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+    </div>
+    <div>
+        Theme <a href="https://github.com/imhanjie/gridea-theme-pure" target="_blank">Pure</a>, Powered by <a
+                href="https://gridea.dev" target="_blank">Gridea</a> | <a href="https://liyuyu.cn/atom.xml" target="_blank">RSS</a>
+    </div>
+</div>
+
+<script>
+  hljs.highlightAll()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

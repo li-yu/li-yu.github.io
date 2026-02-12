@@ -1,0 +1,218 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>一剪没 | 呵呵小鱼</title>
+
+<link rel="shortcut icon" href="https://liyuyu.cn/favicon.ico?v=1770856511184">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.6.0/style.css" />
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://liyuyu.cn/styles/main.css">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css"> -->
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages//dart.min.js"></script>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script> -->
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+    
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="/">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            呵呵小鱼
+        </div>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="changeNavbar">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+            <div class="nav-item">
+                
+                <a href="/" class="menu gt-a-link">
+                    首页
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/archives" class="menu gt-a-link">
+                    归档
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/post/about" class="menu gt-a-link">
+                    关于
+                </a>
+                
+            </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1770856511184"
+                action="/search/">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+<script>
+    /* 移动端导航栏展开/收起切换 */
+    document.getElementById('changeNavbar').onclick = () => {
+        var element = document.getElementById('navbarSupportedContent');
+        if (element.style.display === 'none' || element.style.display === '') {
+            element.style.display = 'block';
+        } else {
+            element.style.display = 'none';
+        }
+    }
+</script>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    一剪没
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2022-05-16 ·
+                    </time>
+                    
+                </div>
+                <div class="post-content">
+                    <p>一个可能让剪贴板只被使用一次的 <a href="https://github.com/li-yu/OneClipWiping">Android App</a>。</p>
+<!-- more -->
+<figure data-type="image" tabindex="1"><img src="https://github.com/li-yu/OneClipWiping/blob/main/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png?raw=true" alt="" loading="lazy"></figure>
+<h4 id="初衷">初衷</h4>
+<p>谷歌从 Android 10 开始禁止<strong>后台应用</strong>读写剪贴板，这一定程度上改善了剪贴板的滥用情况，但是我们仍能看到，在打开某些应用时剪贴板被疯狂读写，除了塞一堆乱七八糟的进去，此外如果剪贴板里存在一些手机号、身份证号以及详细地址等个人隐私信息的话，无疑是会被其读取的，至于它们拿来干嘛只有鬼知道。</p>
+<h4 id="目标">目标</h4>
+<ul>
+<li>
+<p>日常粘贴动作完成后立即清空剪贴板，防止被其他程序读取。</p>
+</li>
+<li>
+<p>复制动作后，如果 15 秒内没有进行任何粘贴动作，同样执行清空操作。</p>
+</li>
+</ul>
+<h4 id="实现原理">实现原理</h4>
+<ul>
+<li>
+<p>借助无障碍服务 <strong>AccessibilityService</strong> 监听全局复制、剪切和粘贴的<strong>点击事件</strong>。</p>
+</li>
+<li>
+<p>无障碍服务下不需要申请权限即可实现悬浮窗。</p>
+</li>
+<li>
+<p><strong>透明</strong>悬浮窗获取到焦点后（App 进入前台）即可进行剪贴板操作，这对于用户是无感知的。</p>
+</li>
+<li>
+<p>另一种监听复制事件的方法：</p>
+<pre><code class="language-kotlin">  // 和以前一样，App 同样需要实现以下方法监听剪贴板的变动事件
+  clipboardManager.addPrimaryClipChangedListener {
+    // 当 App 在后台时，Android 10 以后虽然无法正常回调此方法，
+    // 但是系统会产生报错日志，我们捕获这个报错日志即可
+    // 注意：需要赋予 android.permission.READ_LOGS 权限才能抓到日志（部分手机无效）
+}
+</code></pre>
+</li>
+</ul>
+<h4 id="注意事项">注意事项</h4>
+<ul>
+<li>
+<p>允许拥有通知权限，开启前台服务提高存活几率。</p>
+</li>
+<li>
+<p>允许自启动，每家手机厂商设置方式不一样，但大同小异。</p>
+</li>
+<li>
+<p>多任务列表 App 加锁也是提升存活率的好办法。</p>
+</li>
+<li>
+<p>vivo 系手机一定务必开启：<strong>设置</strong>-&gt;<strong>电池</strong>-&gt;<strong>后台耗电管理</strong>-&gt;<strong>允许后台高耗电</strong>，否则服务无法正常运行。</p>
+</li>
+<li>
+<p>执行 <code>adb -d shell pm grant cn.liyuyu.oneclipwiping android.permission.READ_LOGS</code>，部分手机即使赋权后，也不能捕获到 <code>logcat</code>，比如 vivo 系。</p>
+</li>
+<li>
+<p>当发现无障碍服务已经开启，但还是无法正常工作时，请尝试重启手机，屡试不爽。</p>
+</li>
+</ul>
+<h4 id="已知问题">已知问题</h4>
+<p>微信聊天界面的输入框以及聊天列表均重新实现了 ContextMenu，遗憾的是，无障碍服务竟然拿不到其复制和粘贴的点击事件，所以目前只能依赖于复制后系统 Toast 提示的 “已复制” 或者借助 <code>READ_LOGS</code> 来监听，然后等待指定时间后清空剪贴板。</p>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://liyuyu.cn/post/my-2021/" class="post-title gt-a-link">
+                    我的 2021
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first"><p><a href="http://beian.miit.gov.cn" target="_blank">粤ICP备14087112号-1</a></p></div>
+    <div class="social-container">
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+    </div>
+    <div>
+        Theme <a href="https://github.com/imhanjie/gridea-theme-pure" target="_blank">Pure</a>, Powered by <a
+                href="https://gridea.dev" target="_blank">Gridea</a> | <a href="https://liyuyu.cn/atom.xml" target="_blank">RSS</a>
+    </div>
+</div>
+
+<script>
+  hljs.highlightAll()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

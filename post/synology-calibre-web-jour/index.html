@@ -1,0 +1,210 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>群晖 Calibre-Web 折腾记 | 呵呵小鱼</title>
+
+<link rel="shortcut icon" href="https://liyuyu.cn/favicon.ico?v=1770856511184">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.6.0/style.css" />
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://liyuyu.cn/styles/main.css">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css"> -->
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages//dart.min.js"></script>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script> -->
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+    
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="/">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            呵呵小鱼
+        </div>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="changeNavbar">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+            <div class="nav-item">
+                
+                <a href="/" class="menu gt-a-link">
+                    首页
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/archives" class="menu gt-a-link">
+                    归档
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/post/about" class="menu gt-a-link">
+                    关于
+                </a>
+                
+            </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1770856511184"
+                action="/search/">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+<script>
+    /* 移动端导航栏展开/收起切换 */
+    document.getElementById('changeNavbar').onclick = () => {
+        var element = document.getElementById('navbarSupportedContent');
+        if (element.style.display === 'none' || element.style.display === '') {
+            element.style.display = 'block';
+        } else {
+            element.style.display = 'none';
+        }
+    }
+</script>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    群晖 Calibre-Web 折腾记
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2021-12-25 ·
+                    </time>
+                    
+                </div>
+                <div class="post-content">
+                    <p>这些年书没看几本，到处搜刮整理的电子书资源却达到了惊人的 1T 多，检索和查找书籍成了一个头疼的问题。书可以不看，但不能没有，于是开启了庞大的电子书整理之旅。</p>
+<!-- more -->
+<figure data-type="image" tabindex="1"><img src="https://liyuyu.cn/post-images/1640680387088.png" alt="" loading="lazy"></figure>
+<h4 id="1-下载">1. 下载</h4>
+<p>所有书籍资源都存放在百度网盘里，想靠百度那点小水管不知道要下载到何年马月，于是充值了 SVIP，期间却因为各种文件名过长、违规资源等等导致了很多文件下载失败，修复路径以及在线解压再下载等手段，陆陆续续花了 2 天时间才下载好，但也舍弃了不少“违规”资源，多少还是有一点遗憾。</p>
+<h4 id="2-解压和清理">2. 解压和清理</h4>
+<p>下载完后用 C# 写了个控制台应用递归遍历解压了各类 zip 以及清理了空文件夹和脏文件（比如百度网盘生成的 .downloading 文件），然后利用 <a href="https://github.com/arsenetar/dupeguru">dupeGuru</a> 扫描清理了重复文件。</p>
+<h4 id="3-导入-calibre">3. 导入 Calibre</h4>
+<p><a href="https://github.com/janeczku/calibre-web">Calibre-Web</a> 的运行依赖于 <a href="https://calibre-ebook.com/">Calibre</a> 生成 metatde.db 的数据库配置文件，所以先在电脑上安装 Calibre，然后在群晖里新建一个文件夹用于 Calibre 应用目录，最后作为远程文件夹挂载到本机供 Calibre 使用，切记赋予这个文件夹 Everyone 读写权限。</p>
+<p>所有书籍导入 Calibre 是一个极度漫长的过程，耗时数十个小时，因为每本书都需要读取元数据生成封面等信息，暂时没有找到快速导入的方法。此外在以 <strong>从文件夹和子文件夹添加书籍</strong> 方式批量导入书籍时，提示 <code>多文件图书？</code> 对话框，不同的选项，结果也不同：<br>
+<img src="https://liyuyu.cn/post-images/1640680443989.png" alt="" loading="lazy"></p>
+<p>原始文件夹如下，共 6 本书籍，其中 3 本是包含多种格式（mobi + epub + azw3）：<br>
+<img src="https://liyuyu.cn/post-images/1640680450829.png" alt="" loading="lazy"></p>
+<ul>
+<li>选择 <strong>是</strong>，导入了 4 本<br>
+<img src="https://liyuyu.cn/post-images/1640680457006.png" alt="" loading="lazy"></li>
+<li>选择 <strong>否</strong>，成功导入了 6 本<br>
+<img src="https://liyuyu.cn/post-images/1640680463416.png" alt="" loading="lazy"></li>
+</ul>
+<p>从结果看，选择“否”之后导入了全部书籍，是我们想要的结果，官方是这样描述这个功能的：</p>
+<blockquote>
+<p>Calibre 假设每个文件夹包含一本书。一个文件夹中的所有电子书文件都假定是同一本书，只是格式不同。</p>
+</blockquote>
+<h4 id="4-安装-calibre-web">4. 安装 Calibre-Web</h4>
+<p>网上流行的一些教程都是推荐 <a href="https://registry.hub.docker.com/r/technosoft2000/calibre-web/">technosoft2000/calibre-web</a> 这版 Docker 镜像，功能全面。但经过我安装测试后发现了一些问题，比如单独进行格式转换或者邮件推送 Kindle 是没问题的，但是两者一旦结合，<strong>转换并推送 Kindle</strong> 时就会失败，翻看了源码，发现在处理邮件发送时，获取待发送的书籍路径多了一层，导致找不到文件。此外还有豆瓣获取元数据的 API 失效，经常卡死，镜像作者也指出没有时间维护了，遂放弃。<s>最终选择了 <a href="https://registry.hub.docker.com/r/linuxserver/calibre-web/">linuxserver/calibre-web</a>，并完美解决了各种问题。</s></p>
+<p>群晖 Docker 创建容器很简单，基本一路 Next 就可以跑起来了，也可以参考这篇<a href="https://www.jianshu.com/p/d0d04f6f246b">教程</a>。</p>
+<p>linuxserver/calibre-web 前期使用正常，除了每次启动容器有点慢，整体还是可以的，后期随着 calibre 升级到 v6，群晖内核不支持了，导致格式转换报错，于是选择了 <a href="https://registry.hub.docker.com/r/johngong/calibre-web/">johngong/calibre-web</a>，一个国人维护的版本，很多功能都集成了，开箱即用。</p>
+<h4 id="5-添加格式转换功能">5. 添加格式转换功能</h4>
+<p><s>linuxserver/calibre-web 版本镜像没有书籍转换功能，需要在创建容器时新增环境变量 <code>DOCKER_MODS=linuxserver/calibre-web:calibre</code>，切记一定是创建容器时添加，如果创建后再添加，大概率会失败。<br>
+启动后登录 Calibre-Web，在<code>权限管理</code> -&gt; <code>扩展程序配置</code> -&gt; <code>Calibre 电子书转换器路径</code> 填写 <code>/usr/bin/ebook-convert</code>，保存即可。</s><br>
+johngong/calibre-web 版本自带，无需额外设置。</p>
+<h4 id="6-设置正确的时区">6. 设置正确的时区</h4>
+<p><s>新增环境变量 <code>TZ=Asia/Shanghai</code> 重启容器即可。</s><br>
+johngong/calibre-web 版本自带，无需额外设置。</p>
+<h4 id="7-添加新的豆瓣-api">7. 添加新的豆瓣 API</h4>
+<p>新版 Calibre-Web（0.6.14）移除了 douban-api，国内不科学上网的话无法搜索书籍的元数据，网上找到一个解决方案：<a href="https://github.com/fugary/calibre-web-douban-api">calibre-web-douban-api</a>，复制 <code>src/NewDouban.py</code> 到 <code>calibre-web/cps/metadata_provider/</code> 目录下，重启项目即可。<br>
+也可以直接下载后通过 Docker 的卷映射挂载到 <code>/app/calibre-web/cps/metadata_provider/NewDouban.py</code> 目录即可，效果是一样的。<br>
+如果遇到搜索元数据时容器卡死，可以删除 <code>/app/calibre-web/cps/metadata_provider/</code> 下其他源，只保留我们新增的这个豆瓣源，然后重启容器即可。<br>
+<img src="https://liyuyu.cn/post-images/1640680475305.png" alt="" loading="lazy"><br>
+<s>Ps. johngong/calibre-web 版本设置 <strong>ENABLE_DOUBAN_SEARCH</strong>=true 环境变量即可。</s><br>
+最新版 johngong/calibre-web 需要把  <code>usr/local/calibre-web/app/cps/metadata_provider</code> 下所有搜刮器删除然后使用新的豆瓣搜刮器，执行下 <code>wget -P /usr/local/calibre-web/app/cps/metadata_provider https://raw.githubusercontent.com/fugary/calibre-web-douban-api/main/src/NewDouban.py</code> 或者也可使用上面提到的卷映射，效果是一样的，最后重启容器即可。<a href="https://github.com/gshang2017/docker/issues/88">参考</a></p>
+<h4 id="8-开启在线阅读功能">8. 开启在线阅读功能</h4>
+<p><s>linuxserver/calibre-web 版本默认没有开启该功能，前往 <code>权限管理</code> 编辑对应用户权限，勾选 <code>查看书籍</code> 选项即可。</s><br>
+johngong/calibre-web 版本自带，无需额外设置。</p>
+<h4 id="9-配置-kindle-推送">9. 配置 Kindle 推送</h4>
+<p>首先进行 SMTP 邮件服务器设置，具体可以参考邮箱服务商的帮助文档，比如我用的 <a href="https://service.mail.qq.com/cgi-bin/help?subtype=1&amp;&amp;id=28&amp;&amp;no=371">QQ</a>。然后前往<a href="https://www.amazon.cn/hz/mycd/myx#/home/settings/payment">亚马逊</a>，<code>管理我的内容和设备</code> -&gt; <code>首选项</code>，获取对应设备的 Kindle 邮箱地址，并设置发件人白名单。最后在 Calibre-Web 里 <code>接收书籍的Kindle邮箱地址</code> 填写即可。<br>
+Ps. 国内的推送服务还能使用 2 年，到时候估计得切到美区了。</p>
+<h4 id="10-更新的注意事项">10. 更新的注意事项</h4>
+<p>所有版本的 calibre-web 都不推荐在网页内自动更新程序，可能会出现莫名其妙的问题。其实更新容器也很简单，我们只要导出容器设置文件（端口设置、环境变量等都会保留），然后删除容器，更新镜像后通过导入配置文件重新创建容器，所有资料和配置都还在，分分钟就搞定了，当然也可以使用 Watchtower 来自动更新 Docker 镜像与容器。</p>
+<h4 id="11database-disk-image-is-malformed">11.database disk image is malformed</h4>
+<p>更新元数据时不当的操作可能会导致数据库损坏，后续所有的保存都会提示 <code>database disk image is malformed ......</code>，此时可以尝试使用 <strong>SQLite Expert Professional 5</strong> 对 <code>metadata.db</code> 进行修复，然后使用修复后的 db 文件覆盖替换就行。</p>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://liyuyu.cn/post/android-and-java/" class="post-title gt-a-link">
+                    Android 和 Java 的那些事
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first"><p><a href="http://beian.miit.gov.cn" target="_blank">粤ICP备14087112号-1</a></p></div>
+    <div class="social-container">
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+    </div>
+    <div>
+        Theme <a href="https://github.com/imhanjie/gridea-theme-pure" target="_blank">Pure</a>, Powered by <a
+                href="https://gridea.dev" target="_blank">Gridea</a> | <a href="https://liyuyu.cn/atom.xml" target="_blank">RSS</a>
+    </div>
+</div>
+
+<script>
+  hljs.highlightAll()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

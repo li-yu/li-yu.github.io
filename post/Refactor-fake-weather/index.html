@@ -1,0 +1,236 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>重构天气 | 呵呵小鱼</title>
+
+<link rel="shortcut icon" href="https://liyuyu.cn/favicon.ico?v=1770856511184">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.6.0/style.css" />
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://liyuyu.cn/styles/main.css">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css"> -->
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages//dart.min.js"></script>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script> -->
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+    
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="/">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            呵呵小鱼
+        </div>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="changeNavbar">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+            <div class="nav-item">
+                
+                <a href="/" class="menu gt-a-link">
+                    首页
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/archives" class="menu gt-a-link">
+                    归档
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/post/about" class="menu gt-a-link">
+                    关于
+                </a>
+                
+            </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1770856511184"
+                action="/search/">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+<script>
+    /* 移动端导航栏展开/收起切换 */
+    document.getElementById('changeNavbar').onclick = () => {
+        var element = document.getElementById('navbarSupportedContent');
+        if (element.style.display === 'none' || element.style.display === '') {
+            element.style.display = 'block';
+        } else {
+            element.style.display = 'none';
+        }
+    }
+</script>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    重构天气
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2017-12-15 ·
+                    </time>
+                    
+                </div>
+                <div class="post-content">
+                    <p><img src="https://liyuyu.cn/post-images/Refactor-fake-weather.jpg" alt="" loading="lazy"><br>
+时间过得很快，<a href="https://github.com/li-yu/FakeWeather">《假装看天气》</a>这个小项目诞生已经有一年了，因为是练手项目，写完之后也没过多的维护，直到有一次在站酷上看到一个<a href="http://www.zcool.com.cn/work/ZMjE1MDgwMjQ=.html">天气设计原型</a>，我被她简洁又漂亮的 UI 惊艳到，进而有了重构天气模块的念头。</p>
+<p>理想是丰满的，现实总是残酷的。</p>
+<!--more-->
+<p>站酷上的<a href="http://www.zcool.com.cn/work/ZMjE1MDgwMjQ=.html">原型</a>只有图片展示，并没有提供原始设计档下载，所以我只能“抄”图片了。由于没有 Mac 设备，自然用不了神器 <a href="http://www.sketchcn.com/">Sketch</a>，又畏惧于功能强大但复杂的 PS 和 AI，最后我选择了 <a href="https://www.figma.com/">Figma</a>，一个基于浏览器的 UI 设计工具，上手简单，功能强大。</p>
+<p>陆陆续续的花了几个晚上完成了天气场景中背景图片的绘制：<br>
+<img src="https://liyuyu.cn/post-images/fake-weather-20171214153419.png" alt="" loading="lazy"></p>
+<p>虽然完成的不够精细，但对于一个不懂设计的程序猿，我还挺满意。</p>
+<p>万事俱备，只差 coding，正好这段时间在看扔物线的<a href="http://hencoder.com/">《给高级 Android 工程师的进阶手册》</a>，收获颇多，拿天气模块开刀简直再合适不过了。</p>
+<p>重构天气模块主要涉及以下：</p>
+<ol>
+<li>页面布局重新设计</li>
+<li>动态天气的绘制</li>
+<li>多城市切换以及管理</li>
+<li>新的每日天气趋势图</li>
+<li>新的空气质量指示图</li>
+</ol>
+<h3 id="一-遇到的问题及踩过的坑">一、遇到的问题及踩过的坑</h3>
+<h4 id="1-动态天气用自定义-view-surfaceview-还是-textureview">1. 动态天气用自定义 View 、SurfaceView 还是 TextureView ？</h4>
+<p>在纠结这个问题之前，我们先简单的对比下它们：</p>
+<ul>
+<li><strong>View</strong> ：Android 基础类，内置画布，提供图形绘制、触屏事件、按键事件等，特点是：必须在 UI 主线程内更新画面。</li>
+<li><strong>SurfaceView</strong> ：本质上也是一个 View，但它与普通 View 不同的是，它的渲染绘制可以放到其他线程中进行，同时使用双缓冲机制，播放视频时画面更流畅。相对的缺点就是，因为不在 View Hierachy 中，它的显示不受 View 的属性控制，所以不能进行平移、缩放等变换。</li>
+<li><strong>TextureView</strong> ：官方定义是可以直接将视频流或 OpenGL 场景投影其中；与 SurfaceView 不同的是，TextureView 不会创建一个单独的窗口，而是像普通的 View 那样工作，所以它可以进行平移、缩放等变换。相对的缺点就是，必须在硬件加速的窗口中使用，占用内存比 SurfaceView 高，在 Android 5.0 以前在主线程渲染，5.0 以后有单独的渲染线程。</li>
+</ul>
+<p>简单对比后，回到问题本身，我们该如何选择？哪个性能更好？</p>
+<p>这里又不得不提到一个名词：<strong>硬件加速</strong>：Android 3.0(API 11) 开始，在绘制 View 的时候支持硬件加速，充分利用 GPU 的特性，使得绘制更加平滑，但是会多消耗一些内存。</p>
+<p>由于平时并没有深入了解过这一块的知识，网络上搜寻后找到了一些答案：</p>
+<ul>
+<li>普通 View 中的 Canvas 是默认开启硬件加速的。</li>
+<li>SurfaceView 和 TextureView 里面 <code>lockCanvas()</code> 方法得到的 Canvas 是没有硬件加速的。</li>
+<li>Android 6.0(API 23) 之后，<code>android.view.Surface</code> 里新增了 <code>lockHardwareCanvas()</code> 方法来提供硬件加速的 Canvas。</li>
+</ul>
+<p>所以说了这么多，一个简单的结论就是：如果需要绘制复杂逻辑场景以及视频流等内容，优选 SurfaceView，如果同时需要有动画效果，选 TextureView；一般的自定义控件以及被动刷新的控件，选择普通 View 可以获得更好的性能表现。<br>
+这里我们的动态天气选的是 SurfaceView，当然选择普通 View 或 TextureView也是可以的。更多相关资料可以参考以下链接：</p>
+<ul>
+<li><a href="https://developer.android.com/reference/android/view/SurfaceView.html">SurfaceView</a></li>
+<li><a href="https://developer.android.com/reference/android/view/TextureView.html">TextureView</a></li>
+<li><a href="http://www.jianshu.com/p/5a0c61c286e6">为什么你的 canvas 那么慢？浅析 Android 的 canvas 性能</a></li>
+<li><a href="http://blog.csdn.net/hejjunlin/article/details/58582919">视频画面帧的展示控件 SurfaceView 及 TextureView 对比</a></li>
+<li><a href="https://github.com/Bilibili/DanmakuFlameMaster">Android 开源弹幕引擎·烈焰弹幕使 使用多种方式(View/SurfaceView/TextureView)实现高效绘制</a></li>
+</ul>
+<h4 id="2-surfaceview-在某些设备上会出现-anr-错误">2. SurfaceView 在某些设备上会出现 ANR 错误</h4>
+<p>这个问题最初在一台刷了锤子 OS 的 Nexus 5 上出现，百思不得其解，在 Stack Overflow 上找到了一个相同的提问：<a href="https://stackoverflow.com/questions/34305937/anr-in-surfaceview-on-specific-devices-only-the-only-fix-is-a-short-sleep-tim">ANR in SurfaceView on specific devices only — The only fix is a short sleep time<br>
+</a>，虽然没找出问题根源，但是找到了一个奇葩的解决方案：</p>
+<pre><code class="language-java">mSurface.unlockCanvasAndPost(canvas);
+System.out.print(&quot;fuck&quot;); // 是的，没看错，加上这一句就不会报 ANR 错误
+</code></pre>
+<h4 id="3-天气源引发的思考">3. 天气源引发的思考</h4>
+<p>App 定位是练手项目，所以数据请求量不是很大，一直使用<a href="https://www.heweather.com/">和风天气</a>，期间有次 key 连续几天超额请求，猜想应该是哪位小伙伴 Fork 项目后直接拿去用了，问题不大，重置下即可。后面把 key 搬到了服务器上，再遇到这种问题就不需要尴尬的重新发布 Apk 了。</p>
+<p>重构期间也有考虑过<a href="https://github.com/TonnyL/Awesome_APIs/blob/master/Chinese.md#%E5%A4%A9%E6%B0%94">其他天气源</a>，不是收费就是难用。不过为了后期能快速扩展其他天气源，这次还是预留了接口。</p>
+<p>和风天气的免费接口，总体来说还算稳定，唯一的缺点就是夜间的时候，逐小时天气没有数据，导致 App 界面下面一截是空白的，貌似这个问题只有更换天气源或者等官方良心发现了，亦或等下次重构了。</p>
+<h3 id="二-可能对你有帮助的知识点">二、可能对你有帮助的知识点</h3>
+<blockquote>
+<p>如果你有幸看到这篇文章，并给你带来了一点点帮助，那么我会非常开心的。</p>
+</blockquote>
+<ol>
+<li>11 种动态天气效果，平滑渐变切换，还算优雅的动画效果<br>
+<img src="https://liyuyu.cn/post-images/switch_weather.gif" alt="" loading="lazy"></li>
+<li>一个滑动淡入淡出的 ViewPager 指示器<br>
+<img src="https://liyuyu.cn/post-images/SimplePagerIndicator.gif" alt="" loading="lazy"></li>
+<li>随波逐流的小船儿<br>
+<img src="https://liyuyu.cn/post-images/boat.gif" alt="" loading="lazy"></li>
+<li>一个简单粗暴的闪电生成算法<br>
+<img src="https://liyuyu.cn/post-images/flash.gif" alt="" loading="lazy"></li>
+<li>一个固定子控件高度比例的 LinearLayout<br>
+<img src="https://liyuyu.cn/post-images/LinearLayout.png" alt="" loading="lazy"></li>
+<li>一个新的气温折线图，更加直观<br>
+<img src="https://liyuyu.cn/post-images/day_weather.png" alt="" loading="lazy"></li>
+<li>一个新的空气质量 AQI 展示控件,附带动画效果<br>
+<img src="https://liyuyu.cn/post-images/AQI.png" alt="" loading="lazy"></li>
+<li>NestedScrollView 滚动时触发相关子控件动画执行</li>
+<li>Fragment 中 <code>public void setUserVisibleHint(boolean isVisibleToUser)</code> 可见&amp;不可见事件只有在 ViewPager 中使用时才会触发</li>
+</ol>
+<p>虽然这次重构难度不是很大，但是里面涉及的知识点还是挺有意思的，比如 <strong>SurfaceView 的使用</strong>、<strong>Canvas 的绘制</strong>、<strong>Path 贝塞尔曲线</strong>、<strong>属性动画</strong>等等，更多细节可以下载 APK 然后直接参考工程代码。</p>
+<h3 id="三-写在最后">三、写在最后</h3>
+<p>App 中还有很多细节待完善，一定也存在着诸多 Bug，任何问题和建议可以在项目 <a href="https://github.com/li-yu/FakeWeather/issues">Issues</a> 提出，当然也可以发邮件给<a href="http://liyuyu.cn/about/me@liyuyu.cn">我</a>。</p>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://liyuyu.cn/post/The-meaning-of-life/" class="post-title gt-a-link">
+                    生命的意义
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first"><p><a href="http://beian.miit.gov.cn" target="_blank">粤ICP备14087112号-1</a></p></div>
+    <div class="social-container">
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+    </div>
+    <div>
+        Theme <a href="https://github.com/imhanjie/gridea-theme-pure" target="_blank">Pure</a>, Powered by <a
+                href="https://gridea.dev" target="_blank">Gridea</a> | <a href="https://liyuyu.cn/atom.xml" target="_blank">RSS</a>
+    </div>
+</div>
+
+<script>
+  hljs.highlightAll()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

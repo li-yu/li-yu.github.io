@@ -1,0 +1,182 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>Android Studio Live Templates | 呵呵小鱼</title>
+
+<link rel="shortcut icon" href="https://liyuyu.cn/favicon.ico?v=1770856511184">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.6.0/style.css" />
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://liyuyu.cn/styles/main.css">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css"> -->
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages//dart.min.js"></script>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script> -->
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+    
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="/">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            呵呵小鱼
+        </div>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="changeNavbar">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+            <div class="nav-item">
+                
+                <a href="/" class="menu gt-a-link">
+                    首页
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/archives" class="menu gt-a-link">
+                    归档
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/post/about" class="menu gt-a-link">
+                    关于
+                </a>
+                
+            </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1770856511184"
+                action="/search/">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+<script>
+    /* 移动端导航栏展开/收起切换 */
+    document.getElementById('changeNavbar').onclick = () => {
+        var element = document.getElementById('navbarSupportedContent');
+        if (element.style.display === 'none' || element.style.display === '') {
+            element.style.display = 'block';
+        } else {
+            element.style.display = 'none';
+        }
+    }
+</script>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    Android Studio Live Templates
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2016-04-16 ·
+                    </time>
+                    
+                </div>
+                <div class="post-content">
+                    <p>本文翻译自 <a href="https://medium.com/google-developers/writing-more-code-by-writing-less-code-with-android-studio-live-templates-244f648d17c7#.20rt2zuw3">Writing More Code by Writing Less Code with Android Studio Live Templates</a></p>
+<!--more-->
+<p>我们都写过大量的 Android 代码，至少也犯过一个如下的错误：</p>
+<pre><code class="language-java">Toast.makeText(MainActivity.this, &quot;This will not be displayed&quot;);
+</code></pre>
+<p>其实有一种方法可以避免这个错误，并且不用敲击那么多按键？</p>
+<p><strong>动态模板</strong></p>
+<blockquote>
+<p>如果是有经验的 IntelliJ 用户，可能已经了解过动态模板，而 Android Studio 中也包含了针对 Android 特性的相关模板。</p>
+</blockquote>
+<p>除非你的报酬是特么按敲击次数来计算的，否则估计没有人愿意天天写这些重复的代码。下面这幅图很直观的展示了动态模板是如何工作的：<br>
+<img src="http://cdn.liyuyu.cn/AndroidStudioLiveTemplates.gif" alt="" loading="lazy"><br>
+正如所看到的,动态模板出现在补全选项中,选中动态模板的标签后,插入一个代码片段。<br>
+如上所示,输入“Toast”,然后按Tab键后自动生成了一个标准的 Toast，我们还可以通过预设的占位符输来入一些参数。<br>
+<strong>Android Studio 动态模板</strong><br>
+IntelliJ 已经包含了大量的动态模板,而 Android Studio 则为 Android 开发提供了 48 个特有的模板。以下是我最喜欢一些：<br>
+<img src="http://cdn.liyuyu.cn/AndroidStudioLiveTemplates1.png" alt="" loading="lazy"><br>
+动态模板还可以插入一些体量较大的代码片段，比如创建一个 Activity 的静态启动方法：</p>
+<pre><code class="language-java">public static void start(android.content.Context context) {    
+  android.content.Intent starter = new Intent(context, $ACT$.class);
+  starter.putExtra($CURSOR$);
+  context.startActivity(starter);
+}
+</code></pre>
+<p>同样，也可以创建一个 Fragment 实例，一个 ViewConstructors，以及一个自定义View的构造方法。<br>
+前往File &gt; Settings &gt; Editor &gt; Live Templates 菜单选项查看完整列表。<br>
+当然如果你喜欢的模板不存在，你可以创建一个<strong>属于你自己的动态模板</strong>：<br>
+前往 File &gt; Settings &gt; Editor &gt; Live Templates，点击 Android 分组，然后点击 + 号，新增一个动态模板。</p>
+<p>其实已经有前辈为我们创建了大量非常有用的动态模板，前往<a href="https://github.com/keyboardsurfer/idea-live-templates">https://github.com/keyboardsurfer/idea-live-templates</a></p>
+<p>尽情享受动态模板带来的便捷吧！</p>
+
+                </div>
+            </article>
+        </div>
+
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first"><p><a href="http://beian.miit.gov.cn" target="_blank">粤ICP备14087112号-1</a></p></div>
+    <div class="social-container">
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+    </div>
+    <div>
+        Theme <a href="https://github.com/imhanjie/gridea-theme-pure" target="_blank">Pure</a>, Powered by <a
+                href="https://gridea.dev" target="_blank">Gridea</a> | <a href="https://liyuyu.cn/atom.xml" target="_blank">RSS</a>
+    </div>
+</div>
+
+<script>
+  hljs.highlightAll()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

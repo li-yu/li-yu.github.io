@@ -1,0 +1,242 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>Android 和 Java 的那些事 | 呵呵小鱼</title>
+
+<link rel="shortcut icon" href="https://liyuyu.cn/favicon.ico?v=1770856511184">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.6.0/style.css" />
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://liyuyu.cn/styles/main.css">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css"> -->
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages//dart.min.js"></script>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script> -->
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+    
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="/">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            呵呵小鱼
+        </div>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="changeNavbar">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+            <div class="nav-item">
+                
+                <a href="/" class="menu gt-a-link">
+                    首页
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/archives" class="menu gt-a-link">
+                    归档
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/post/about" class="menu gt-a-link">
+                    关于
+                </a>
+                
+            </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1770856511184"
+                action="/search/">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+<script>
+    /* 移动端导航栏展开/收起切换 */
+    document.getElementById('changeNavbar').onclick = () => {
+        var element = document.getElementById('navbarSupportedContent');
+        if (element.style.display === 'none' || element.style.display === '') {
+            element.style.display = 'block';
+        } else {
+            element.style.display = 'none';
+        }
+    }
+</script>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    Android 和 Java 的那些事
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2021-12-20 ·
+                    </time>
+                    
+                        <a href="https://liyuyu.cn/tag/DprtxKSsE/" class="post-tags">
+                            # Android
+                        </a>
+                    
+                        <a href="https://liyuyu.cn/tag/XHgHJNkgHL/" class="post-tags">
+                            # Java
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <p>Java 语言应用非常广泛，最近几年更是快速迭代更新，那么 Android 的发展是否与之息息相关呢？身边很多人，包括我自己对于它们之间乱七八糟的关系也产生过很多疑问，希望这次能一一解惑!</p>
+<!-- more -->
+<blockquote>
+<p>阅读受众：<strong>新人</strong>或者<strong>困惑者</strong><br>
+文章涉及环境：<strong>Android Studio Arctic Fox | 2020.3.1 Patch 4</strong><br>
+文字里提到的 Java 版本均为：JavaSE（Java Platform Standard Edition）Java 标准版<br>
+文章更新时间：<strong>2021-12-15 21:00</strong></p>
+</blockquote>
+<h4 id="jdk-jre-jvm-以及-openjdk-到底是啥">JDK、JRE、JVM 以及 OpenJDK 到底是啥？</h4>
+<ul>
+<li>JDK(Java SE Development Kit)，Java 标准开发包，它提供了编译、运行 Java 程序所需的各种工具和资源，包括 Java 编译器、Java 运行时环境，以及常用的 Java 类库等。</li>
+<li>JRE( Java Runtime Environment) 、Java 运行环境，用于解释执行 Java 的字节码文件。</li>
+<li>JVM(Java Virtual Mechinal)，Java 虚拟机，是整个 Java 实现跨平台的最核心的部分，负责解释执行字节码文件，是可运行 Java 字节码文件的虚拟计算机。</li>
+<li>OpenJDK，可以简单理解为一个开源并更加自由的 JDK，区别可以归纳为以下几点：
+<ul>
+<li>授权协议的不同</li>
+<li>OpenJDK 不包含Deployment（部署）功能</li>
+<li>OpenJDK 源代码不完整</li>
+<li>部分源代码用开源代码替换</li>
+<li>OpenJDK 只包含最精简的 JDK</li>
+<li>不能使用 Java 商标</li>
+</ul>
+</li>
+</ul>
+<h4 id="java8-jdk8-以及-jdk18-傻傻分不清楚到底是什么鬼">Java8、JDK8 以及 JDK1.8 傻傻分不清楚，到底是什么鬼？</h4>
+<p>这个问题一直困惑着不少新手，其实可以简单地把它们理解为同一个东西（体系），由于历史原因，这种混乱的命名方式目前仍持续影响着：</p>
+<p>比如 Gradle 7.0.2 源码中是这样描述 Java 版本的：<br>
+<img src="https://liyuyu.cn/post-images/1639988053984.png" alt="" loading="lazy"><br>
+而 Kotlin 中是这样描述 JVM 的：</p>
+<blockquote>
+<p>-jvm-target version</p>
+<p>Specify the target version of the generated JVM bytecode. Possible values are 1.6 (DEPRECATED), 1.8, 9, 10, 11, 12, 13, 14, 15, 16, and 17. The default value is 1.8.</p>
+</blockquote>
+<p>上图中的 <strong>Java 9</strong>，Gradle 称之为 <code>VERSION_1_9</code>，也就是我们常说的 <code>1.9</code>，而 Kotlin 直接成为 <code>9</code>，其实都是同一个东西，不同的编译（构建）工具或者框架体系中别称不一样而已。</p>
+<p>伴随着 Java 的迭代发展，这个问题也在逐步改善，目前从 Oracle Java 官网来看，命名已趋于统一，就连以前老的版本的名字都改过来了，变成了JDK7，JDK8 这种形式，不再是之前的 JDK1.7 以及 JDK1.8，至于新的，比如 Java 17，肯定再也不会出现 <code>1.17</code> 这种奇怪的名字了。</p>
+<h4 id="为啥出现了-openjdk">为啥出现了 OpenJDK？</h4>
+<p>Android Studio 2.2 首次捆绑 OpenJDK8，也就是从那时候开始我们的电脑不需要额外安装 JDK 就能运行 Android Studio 了。</p>
+<p>Oracle 起诉谷歌在 Android 上使用 Java 代码侵犯版权和专利权是谷歌参与 OpenJDK 项目以及捆绑 OpenJDK 到 Android Studio 的导火索，其实再看看 OpenJDK 和 Oracle JDK 的区别，就自然明白谷歌的心思了。</p>
+<h4 id="gradle-是什么">Gradle 是什么？</h4>
+<p>Gradle 是一个基于 JVM 的构建工具，不是编程语言！它见证和陪伴了 Android Studio 的成长，但由于 Gradle 不单单服务于 Android 的开发构建，因此谷歌开发了一个 AGP(Android Gradle Plugin) 插件，添加了几项专用于构建 Android 应用的功能。虽然 AGP 插件通常会与 Android Studio 的更新步调保持一致，但 AGP 插件（以及 Gradle 系统的其余部分）可独立于 Android Studio 运行并单独更新。</p>
+<p>为了和 Gradle 的版本匹配，目前最新的 AGP 跳过版本 5 和 6 直接进入了 AGP 7.x 版本。</p>
+<h4 id="agpandroid-gradle-plugin-也需要-jdk">AGP(Android Gradle Plugin) 也需要 JDK！</h4>
+<p>毋庸置疑， AGP 的运行肯定是需要 JDK 的，随着 AGP 的迭代，所需的 JDK 版本也随之变化。最新 Android Studio 使用 AGP 7.x 构建应用时，需要 JDK 11 或更高版本才能运行 Gradle。由于最新 Android Studio 捆绑了 JDK 11（OpenJDK 11），并将 Gradle 配置为默认使用 JDK 11，这意味着大多数 Android Studio 用户不需要对项目进行任何配置更改。<br>
+如果使用的是独立于 Android Studio 的 AGP，需要将 <code>JAVA_HOME</code> 环境变量或 <code>-Dorg.gradle.java.home</code> 命令行选项设置为 JDK 11 安装目录。</p>
+<p>需要注意的是，上面所说的 JDK 版本是运行 AGP 所需的，不是我们开发编译业务代码所需的 JDK，两者是独立配置的。最新 Android Studio 也为了区别开，专门新增了一个 <strong>Gradle JDK</strong> 的配置项：<br>
+<img src="https://liyuyu.cn/post-images/1639987996445.png" alt="" loading="lazy"></p>
+<h4 id="为什么说-java-8-是一个里程碑">为什么说 Java 8 是一个里程碑？</h4>
+<p>要知道，Java 17 都正式发布了，但根据调查显示，80% 的受访者仍然在使用 Java 8。目前受 Oracle LTS 的版本只有 Java 8，Java 11 和 Java 17，而 Java 8 的截至支持时间更是达到了惊人的 2030 年 12 月。</p>
+<p>首先从 Oracle JDK 8u211 开始往后的版本，都需要商业收费，但我觉得这不是最重要的原因。Java 8 中终于引入了 Lambda 表达式，写过 C# 或者 Kotlin 的应该都知道，这东西写过就回不去了，除此之外，还有支持重复注解以及新增 Stream 和 Optional 类数据处理等等，这些 Java 8 开创性的语言特性还在持续渗透影响着，在 Java 8 之后的一些版本，新特性不痛不痒，也没有足够的说服力让我们去更新，要知道，生产环境越稳定越好。</p>
+<p>目前在最新 Android Studio 新建工程时，无论选 Java 还是 Kotlin 语言，都是默认 Java 8 编译环境：</p>
+<pre><code>compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+}
+
+kotlinOptions {
+    jvmTarget = '1.8'
+}
+</code></pre>
+<h4 id="kotlin-的本质是什么">Kotlin 的本质是什么？</h4>
+<p>Kotlin 是一种在 Java 虚拟机（JVM）上运行的静态类型编程语言，本质上和 Java 一样，都会编译成 Java 字节码运行。Koltin 和 Java 100% 互操作，且 Kotlin 开发之初就以兼容 JDK 6 为目标，因此很多老旧系统的设备都能运行，无须担心其兼容性。此外，Kotlin 在空安全、懒加载、高阶函数、协程、inline 操作符等等新特性以及语法糖的加持下，用过就真的就回不去了。</p>
+<h4 id="desugaring脱糖的目的">Desugaring（脱糖）的目的</h4>
+<p>由于不同的 Android 版本所支持的 JVM 版本也不同，所以在使用不支持的高版本 Java 语法时，需要在编译期转换为其支持的低版本 Java 语法，这一过程称为 Desugaring（脱糖）。<br>
+Android 的脱糖发展史经历了早期的 javac&amp;ProGuard 以及 Retrolambda 到后来的 Jack&amp;Jill 编译器，再到最新的 D8&amp;R8，其实脱糖的核心目的只有一个：让所有的 Java 语言新特性都能运行在所有设备上。</p>
+<p>Android Studio 目前已支持大部分 Java 8+ APIs 且不需要指定 App 的 minSdk 最低版本，这就是通过 D8 脱糖实现的。<br>
+但是 D8 也不是万能的， 它只为我们提供了<a href="https://developer.android.com/studio/write/java8-support-table">部分</a>核心的语言特性支持。</p>
+<h4 id="android-开发能用最新的-jdk17-吗">Android 开发能用最新的 JDK17 吗？</h4>
+<p>很遗憾，截至目前，在我尝试前往 Project Structure -&gt; SDK Location -&gt; Gradle Settings -&gt; Download JDK ，下载并设置最新的 JDK 发行版本（推荐 Oracle OpenJDK 17），然后设置 <code>compileOptions</code>  为 <code>JavaVersion.VERSION_17</code> 并且设置 <code>compileSdkVersion</code> 为 <strong>30</strong> 及以上，Kotlin 的工程还需要指定 <code>jvmTarget = '17'</code> ，一顿操作之后，编译报错，提示 <code>Unsupported class file major version 61</code>。</p>
+<p>目前 AGP 最新版为 7.0.4，其依赖的 Gradle 为 7.0+，而要支持 Java 17 则需要 7.3+，所以暂时没戏了，后期升级应该是可以的。</p>
+<p>最后经测试 AGP 7.0.4 + Gradle 7.0.2 + Java 11 是没毛病的。</p>
+<h4 id="参考文献">参考文献</h4>
+<p><a href="https://www.cnblogs.com/bingyimeiling/p/10266949.html">JDK、JRE、JVM三者间的联系与区别</a></p>
+<p><a href="https://stackoverflow.com/questions/11547458/what-is-the-difference-between-jvm-jdk-jre-openjdk">What is the difference between JVM, JDK, JRE &amp; OpenJDK?</a></p>
+<p><a href="https://juejin.cn/post/6844903585017233422">Google vs Oracle 专利侵权案始末</a></p>
+<p><a href="https://developer.android.google.cn/studio/releases/gradle-plugin?hl=zh-cn#jdk-11">Android Gradle 插件版本说明</a></p>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://liyuyu.cn/post/my-2020/" class="post-title gt-a-link">
+                    我的 2020
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first"><p><a href="http://beian.miit.gov.cn" target="_blank">粤ICP备14087112号-1</a></p></div>
+    <div class="social-container">
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+    </div>
+    <div>
+        Theme <a href="https://github.com/imhanjie/gridea-theme-pure" target="_blank">Pure</a>, Powered by <a
+                href="https://gridea.dev" target="_blank">Gridea</a> | <a href="https://liyuyu.cn/atom.xml" target="_blank">RSS</a>
+    </div>
+</div>
+
+<script>
+  hljs.highlightAll()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

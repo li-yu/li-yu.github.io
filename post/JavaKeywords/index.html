@@ -1,0 +1,259 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>回顾几个 Java 关键字 | 呵呵小鱼</title>
+
+<link rel="shortcut icon" href="https://liyuyu.cn/favicon.ico?v=1770856511184">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.6.0/style.css" />
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://liyuyu.cn/styles/main.css">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css"> -->
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages//dart.min.js"></script>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script> -->
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+    
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="/">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            呵呵小鱼
+        </div>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="changeNavbar">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+            <div class="nav-item">
+                
+                <a href="/" class="menu gt-a-link">
+                    首页
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/archives" class="menu gt-a-link">
+                    归档
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/post/about" class="menu gt-a-link">
+                    关于
+                </a>
+                
+            </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1770856511184"
+                action="/search/">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+<script>
+    /* 移动端导航栏展开/收起切换 */
+    document.getElementById('changeNavbar').onclick = () => {
+        var element = document.getElementById('navbarSupportedContent');
+        if (element.style.display === 'none' || element.style.display === '') {
+            element.style.display = 'block';
+        } else {
+            element.style.display = 'none';
+        }
+    }
+</script>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    回顾几个 Java 关键字
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2018-09-07 ·
+                    </time>
+                    
+                </div>
+                <div class="post-content">
+                    <p>温故而知新，却还是那一套。</p>
+<!--more-->
+<h3 id="static-关键字">static 关键字</h3>
+<ol>
+<li>
+<p><strong>static 方法</strong>：一般称作静态方法，由于静态方法不依赖于任何对象就可以进行访问。但是要注意的是，虽然在静态方法中不能访问非静态成员方法和非静态成员变量，但是在非静态成员方法中是可以访问静态成员方法/变量的。</p>
+</li>
+<li>
+<p><strong>static 变量</strong>：也称作静态变量，静态变量和非静态变量的区别是：静态变量被所有的对象所共享，在内存中只有一个副本，它当且仅当在类初次加载时会被初始化。而非静态变量是对象所拥有的，在创建对象的时候被初始化，存在多个副本，各个对象拥有的副本互不影响。</p>
+</li>
+<li>
+<p><strong>static 代码块</strong>：用来形成静态代码块以优化程序性能。在类初次被加载的时候，会按照 static 块的顺序来执行每个 static 块，并且只会执行一次。</p>
+</li>
+<li>
+<p><strong>static 内部类</strong>：如果一个类要被声明为 static 的，只有一种情况，就是静态内部类。静态内部类使用场景一般是当外部类需要使用内部类，而内部类无需外部类资源，并且内部类可以单独创建的时候会考虑采用静态内部类的设计。</p>
+<blockquote>
+<p>典型应用场景：如果类的构造器或静态工厂中有多个参数，设计这样类时，最好使用 Builder 模式，特别是当大多数参数都是可选的时候，例如 Android 里的 AlertDialog：</p>
+</blockquote>
+<pre><code class="language-java">AlertDialog.Builder builder = new AlertDialog.Builder(this).setTitle(&quot;标题&quot;).setMessage(&quot;你好呀&quot;).create();
+</code></pre>
+</li>
+</ol>
+<h3 id="final-关键字">final 关键字</h3>
+<ol>
+<li><strong>final 类</strong>：当用 final 修饰一个类时，表明这个类不能被继承，final 类中的所有成员方法都会被隐式地指定为 final 方法。</li>
+<li><strong>final 方法</strong>：如果想禁止该方法在子类中被覆盖，可以将方法设置为 final，此外类的 private 方法会隐式地被指定为 final 方法。</li>
+<li><strong>final 变量</strong>：对于一个 final 变量，如果是基本数据类型的变量，则其数值一旦在初始化之后便不能更改；如果是引用类型的变量，则在对其初始化之后便不能再让其指向另一个对象。</li>
+</ol>
+<h3 id="synchronized-关键字">synchronized 关键字</h3>
+<ol>
+<li>
+<p><strong>修饰代码块</strong>：被修饰的代码块称为同步语句块，其作用的范围是大括号 <code>{}</code>括起来的代码，作用的对象是调用这个代码块的对象。</p>
+<ul>
+<li>一个线程访问一个对象中的 <code>synchronized(this)</code> 同步代码块时，其他试图访问该代码块的线程将被阻塞。</li>
+<li>当一个线程访问对象的一个 <code>synchronized(this)</code> 同步代码块时，另一个线程仍然可以访问该对象中的非 <code>synchronized(this)</code> 同步代码块。</li>
+<li>当没有明确的对象作为锁，只是想让一段代码同步时，可以创建一个特殊的对象来充当锁：</li>
+</ul>
+<pre><code class="language-java">private byte[] lock = new byte[0];
+
+synchronized(lock) {
+     // todo 同步代码块
+  }
+</code></pre>
+</li>
+<li>
+<p><strong>修饰普通方法</strong>：synchronized 修饰方法和修饰一个代码块类似，只是作用范围不一样，修饰代码块是大括号括起来的范围，而修饰方法范围是整个函数。</p>
+<blockquote>
+<ul>
+<li>synchronized 关键字不能继承。</li>
+<li>在定义接口方法时不能使用 synchronized 关键字。</li>
+<li>构造方法不能使用 synchronized 关键字，但可以使用 synchronized 代码块来进行同步。</li>
+</ul>
+</blockquote>
+</li>
+<li>
+<p><strong>修饰静态方法</strong>：由于静态方法是属于类的而不属于对象的所以 synchronized 修饰的静态方法锁定的是这个类的所有对象。</p>
+</li>
+<li>
+<p><strong>修饰一个类</strong>：synchronized 作用于一个类 T 时，是给这个类 T 加锁，T 的所有对象用的是同一把锁。</p>
+<pre><code class="language-java">synchronized(ClassName.class) {
+    // todo 同步代码块
+}
+</code></pre>
+</li>
+</ol>
+<h3 id="volatile-关键字">volatile 关键字</h3>
+<p>volatile，字面意思是<code>易变的，不稳定的</code>， 一般用于修饰变量。</p>
+<ol>
+<li>保证了不同线程对这个变量进行操作时的可见性，即一个线程修改了某个变量的值，这新值对其他线程来说是立即可见的。</li>
+<li>禁止进行指令重排序。
+<blockquote>
+<ul>
+<li>当程序执行到 volatile 变量的读操作或者写操作时，在其前面的操作的更改肯定全部已经进行，且结果已经对后面的操作可见；在其后面的操作肯定还没有进行；</li>
+<li>在进行指令优化时，不能将在对 volatile 变量访问的语句放在其后面执行，也不能把 volatile 变量后面的语句放到其前面执行。</li>
+</ul>
+</blockquote>
+</li>
+<li>volatile 关键字在某些情况下性能要优于 synchronized，但是要注意 volatile 关键字是无法替代 synchronized 关键字的，因为 volatile 关键字无法保证操作的原子性。</li>
+</ol>
+<h3 id="assert-关键字">assert 关键字</h3>
+<p>assert，字面意思是<code>声称，断言</code>，有两种用法：</p>
+<ol>
+<li>
+<p><code>assert &lt;boolean 表达式&gt;</code><br>
+如果表达式为 true，则程序继续执行。<br>
+如果为 false，则程序抛出 AssertionError，并终止执行。</p>
+</li>
+<li>
+<p><code>assert &lt;boolean 表达式&gt; : &lt;错误信息表达式&gt;</code><br>
+如果表达式为 true，则程序继续执行。<br>
+如果为 false，则程序抛出 <code>java.lang.AssertionError</code>，并输出&lt;错误信息表达式&gt;。</p>
+</li>
+</ol>
+<p>在 Android 开发中除非在 debug 模式下，否则 assert 根本无法工作，所以不太建议在生产环境下使用 assert，此外主流的 Java IDE 工具默认都没有开启断言检查功能。</p>
+<blockquote>
+<ul>
+<li>Android Studio 或者 IDEA 开启 assert 的方式：Tools -&gt; Edit Configurations -&gt; VM options, 输入 -enableassertions 或者 -ea 保存即可。</li>
+<li>Android 设备开启 assert 检查可以使用以下命令：<code>adb shell setprop debug.assert 1</code></li>
+</ul>
+</blockquote>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://liyuyu.cn/post/Dragback/" class="post-title gt-a-link">
+                    使用 ViewDragHelper 实现图片下拽返回
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first"><p><a href="http://beian.miit.gov.cn" target="_blank">粤ICP备14087112号-1</a></p></div>
+    <div class="social-container">
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+    </div>
+    <div>
+        Theme <a href="https://github.com/imhanjie/gridea-theme-pure" target="_blank">Pure</a>, Powered by <a
+                href="https://gridea.dev" target="_blank">Gridea</a> | <a href="https://liyuyu.cn/atom.xml" target="_blank">RSS</a>
+    </div>
+</div>
+
+<script>
+  hljs.highlightAll()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

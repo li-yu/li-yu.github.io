@@ -1,0 +1,249 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>另一种 App 网页加载方式 | 呵呵小鱼</title>
+
+<link rel="shortcut icon" href="https://liyuyu.cn/favicon.ico?v=1770856511184">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.6.0/style.css" />
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://liyuyu.cn/styles/main.css">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css"> -->
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages//dart.min.js"></script>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script> -->
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+    
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="/">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            呵呵小鱼
+        </div>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="changeNavbar">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+            <div class="nav-item">
+                
+                <a href="/" class="menu gt-a-link">
+                    首页
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/archives" class="menu gt-a-link">
+                    归档
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/post/about" class="menu gt-a-link">
+                    关于
+                </a>
+                
+            </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1770856511184"
+                action="/search/">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+<script>
+    /* 移动端导航栏展开/收起切换 */
+    document.getElementById('changeNavbar').onclick = () => {
+        var element = document.getElementById('navbarSupportedContent');
+        if (element.style.display === 'none' || element.style.display === '') {
+            element.style.display = 'block';
+        } else {
+            element.style.display = 'none';
+        }
+    }
+</script>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    另一种 App 网页加载方式
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2024-11-01 ·
+                    </time>
+                    
+                </div>
+                <div class="post-content">
+                    <p>很多 App 都会有加载网页的场景</p>
+<!-- more -->
+<p>一般有如下几种方式：</p>
+<ul>
+<li>跳转<code>外部浏览器</code>打开（简单粗暴，一行代码，但是业务形态割裂，我们自己的 App 会进入后台）</li>
+<li>内嵌 <code>WebView/WKWebView</code> 实现（页面交互逻辑可控，细节可定制，为主流方式，但缺点是性能以及兼容问题，同时也无法与外部浏览器共享 cookies 等数据）</li>
+<li>Android <code>Custom Tabs</code>/iOS <code>SFSafariViewController</code> 🎉</li>
+</ul>
+<p>Android <code>Custom Tabs</code> 基于 Intent 调用，依赖手机里 Chrome 浏览器（或基于 Chromium 内核的浏览器）实现，不同版本可能会有差异。<br>
+早在 2015 年 Google 就发布了对应的 <code>support</code> 依赖库，后在 2018 年迁移到了 AndroidX，更名为 <code>browser</code>。目前国外的主流 App 都实现了该功能，例如 X、Telegram 等，而国内却寥寥无几。</p>
+<p>iOS 平台也提供了类似的解决方案：<code>SFSafariViewController</code><br>
+WKWebView 是 WebKit 框架的一部分，<code>SFSafariViewController</code> 是 SafariServices 框架的一部分，可让用户直接在应用内浏览网页，享受与在 Safari 中相同的网页浏览体验 - 包括密码自动填充、阅读器和安全浏览等功能，而无需离开我们的应用。</p>
+<h4 id="开始使用">开始使用</h4>
+<ol>
+<li>添加依赖</li>
+</ol>
+<pre><code>dependencies {
+   implementation 'androidx.browser:browser:1.8.0'
+}
+</code></pre>
+<ol start="2">
+<li>判断手机系统是否支持<br>
+手机需要安装 Chrome 45 或以上版本，并且设为默认浏览器，实测 Edge 浏览器也支持<br>
+如果条件都不满足，则跳转其他外部浏览器打开</li>
+</ol>
+<pre><code class="language-java">String packageName = CustomTabsClient.getPackageName(context, Collections.emptyList());
+if (packageName == null) {
+    // not supported
+}
+Intent activityIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(&quot;http://www.example.com&quot;));
+PackageManager packageManager = context.getPackageManager();
+List&lt;ResolveInfo&gt; viewIntentHandlers = packageManager.queryIntentActivities(activityIntent, 0);
+String packageName = CustomTabsClient.getPackageName(context, viewIntentHandlers, true);
+if (packageName == null) {    
+    // not supported
+}
+</code></pre>
+<ol start="3">
+<li>AndroidManifest.xml 处理包可见性（Android 11 及以上）</li>
+</ol>
+<pre><code class="language-xml">&lt;queries&gt;
+    &lt;intent&gt;
+        &lt;action android:name=
+            &quot;android.support.customtabs.action.CustomTabsService&quot; /&gt;
+    &lt;/intent&gt;
+&lt;/queries&gt;
+</code></pre>
+<ol start="4">
+<li>发起调用</li>
+</ol>
+<pre><code class="language-java">String url = &quot;https://developers.android.com&quot;;
+CustomTabsIntent intent = new CustomTabsIntent.Builder().build();
+intent.launchUrl(MainActivity.this, Uri.parse(url));
+</code></pre>
+<p>详细特性</p>
+<ul>
+<li>支持定制部分 UI</li>
+<li>支持预热和预加载</li>
+<li>支持最小化（画中画）</li>
+<li>支持 ToolBar 自定义按钮</li>
+<li>支持指定高度打开</li>
+<li>支持设置进入和退出动画</li>
+<li>支持传递 HTTP headers 等</li>
+</ul>
+<h4 id="优点">优点</h4>
+<ul>
+<li>Custom Tabs 提供了一致的浏览体验，与 Chrome 浏览器的外观和功能保持一致，用户在使用时感到熟悉和舒适。</li>
+<li>由于使用 Chrome 浏览器，Custom Tabs 在性能上通常优于 WebView，能够更快地加载网页。</li>
+<li>Custom Tabs 在安全性上更强，利用 Chrome 的安全功能，例如对恶意软件的防护和强大的隐私设置。</li>
+<li>可以利用浏览器的所有功能，包括自动填充、书签和跨设备的同步，使得用户能够享受到更全面的浏览体验。</li>
+<li>与 WebView 相比，Custom Tabs 不需要开发者维护网页内容的呈现，减少了开发和维护的工作量。</li>
+<li>开发者可以对 Custom Tabs 进行一些定制，比如修改颜色和添加自定义菜单，增强品牌识别度。</li>
+</ul>
+<h4 id="缺点">缺点</h4>
+<ul>
+<li>开发者对 Custom Tabs 的控制相对有限，无法像使用 WebView 那样对网页的行为和外观进行全面控制。</li>
+<li>Custom Tabs 依赖于用户的 Chrome 浏览器或其他支持 Custom Tabs 的浏览器。如果用户没有安装支持的浏览器，可能会导致体验不佳。</li>
+<li>某些特定的 WebView 功能可能无法在 Custom Tabs 中使用，例如与 JavaScript 的深度交互。</li>
+</ul>
+<h4 id="最佳实践场景">最佳实践场景</h4>
+<ul>
+<li>展示类：隐私协议、用户协议等</li>
+<li>互动类：论坛、帮助手册、视频教程等</li>
+</ul>
+<p>参考资料</p>
+<ul>
+<li>https://developer.chrome.com/docs/android/custom-tabs</li>
+<li>https://www.chromium.org/Home/</li>
+<li>https://developer.apple.com/news/?id=trjs0tcd</li>
+</ul>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://liyuyu.cn/post/my-2023/" class="post-title gt-a-link">
+                    我的 2023
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first"><p><a href="http://beian.miit.gov.cn" target="_blank">粤ICP备14087112号-1</a></p></div>
+    <div class="social-container">
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+    </div>
+    <div>
+        Theme <a href="https://github.com/imhanjie/gridea-theme-pure" target="_blank">Pure</a>, Powered by <a
+                href="https://gridea.dev" target="_blank">Gridea</a> | <a href="https://liyuyu.cn/atom.xml" target="_blank">RSS</a>
+    </div>
+</div>
+
+<script>
+  hljs.highlightAll()
+</script>
+
+    </div>
+</div>
+</body>
+</html>
