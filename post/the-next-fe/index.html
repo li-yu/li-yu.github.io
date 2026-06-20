@@ -1,0 +1,186 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>前端，何去何从 | 呵呵小鱼</title>
+
+<link rel="shortcut icon" href="https://liyuyu.cn/favicon.ico?v=1781959483947">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.6.0/style.css" />
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://liyuyu.cn/styles/main.css">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css"> -->
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.12.0/languages//dart.min.js"></script>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script> -->
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+    
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="/">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            呵呵小鱼
+        </div>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="changeNavbar">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+            <div class="nav-item">
+                
+                <a href="/" class="menu gt-a-link">
+                    首页
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/archives" class="menu gt-a-link">
+                    归档
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/post/about" class="menu gt-a-link">
+                    关于
+                </a>
+                
+            </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1781959483947"
+                action="/search/">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+<script>
+    /* 移动端导航栏展开/收起切换 */
+    document.getElementById('changeNavbar').onclick = () => {
+        var element = document.getElementById('navbarSupportedContent');
+        if (element.style.display === 'none' || element.style.display === '') {
+            element.style.display = 'block';
+        } else {
+            element.style.display = 'none';
+        }
+    }
+</script>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    前端，何去何从
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2026-05-02 ·
+                    </time>
+                    
+                        <a href="https://liyuyu.cn/tag/wtnPBzVikE/" class="post-tags">
+                            # 思考
+                        </a>
+                    
+                        <a href="https://liyuyu.cn/tag/Ad7uq2QRNC/" class="post-tags">
+                            # 团队管理
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <p>前阵子有个外部团队来公司做分享，讲 AI 落地。</p>
+<p>聊到一半，那个分享者突然说了一句：&quot;前端其实没有价值了，AI 已经能替代，很多公司在裁了。&quot;</p>
+<!-- more -->
+<p>会议室安静了两秒。所有人看向我。</p>
+<p>做前端负责人的，这话不是头一回听了。我表面挺淡定，但心里——说实话——多少有点虚。</p>
+<p>从 Copilot 到 ChatGPT 到 Claude Code，AI 确实能干很多原来前端做的活。页面生成、表单搭建、基础交互、排查问题。这些恰恰是大多数前端团队日常花时间最多的事。</p>
+<p>原来两三个人干的活，现在一个人加 AI 就够了。如果一个团队的价值主要就在这一层，那被压缩不是如果，是时间问题。</p>
+<p>所以什么样的人能留下？</p>
+<p>一类是只会做页面、依赖设计稿、不怎么懂业务的。AI 最擅长的就是这个区间，你刚好落在里面，那没什么可说的。</p>
+<p>另一类是能扛架构、能抽象能力、能理解业务、甚至能反过来影响产品决策的。AI 对他们来说是杠杆，不是对手。</p>
+<p>对团队来说，最危险的是大多数人在做重复页面，少数人能独立做模块，极少数人扛架构，几乎没人懂业务。这种结构在 AI 进来之后很难扛住——它缺少不可替代的那一层。</p>
+<p>那怎么走？</p>
+<p>第一步，主动用 AI 干掉低价值的事。重复页面、模板代码、基础测试——这些干得越快，人就越早能腾出手。</p>
+<p>第二步，从做页面变成做能力。组件体系、状态模型、通信抽象、跨端方案。前端从&quot;实现层&quot;往&quot;能力层&quot;走。</p>
+<p>第三步，参与业务本身。如果只是在接需求，价值天花板就在那儿。如果能参与设计、优化体验、影响决策，那角色就完全不同了。</p>
+<p>对个人来说，问题很简单：</p>
+<p>有了 AI，你的价值是被替代，还是被放大？</p>
+<p>回头看那个分享者的说法，确实偏激了点。但他真正想说的不是&quot;裁前端&quot;，是说&quot;低价值的工作方式迟早被淘汰&quot;。</p>
+<p>前端不会消失。但会变得更小、更精、更吃能力。团队在收缩，要求也在升高。</p>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://liyuyu.cn/post/why-the-team-lacks-sharing-spirit/" class="post-title gt-a-link">
+                    关于团队为什么没有分享欲的一些思考
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first"><p><a href="http://beian.miit.gov.cn" target="_blank">粤ICP备14087112号-1</a></p></div>
+    <div class="social-container">
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+    </div>
+    <div>
+        Theme <a href="https://github.com/imhanjie/gridea-theme-pure" target="_blank">Pure</a>, Powered by <a
+                href="https://gridea.dev" target="_blank">Gridea</a> | <a href="https://liyuyu.cn/atom.xml" target="_blank">RSS</a>
+    </div>
+</div>
+
+<script>
+  hljs.highlightAll()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

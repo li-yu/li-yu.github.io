@@ -1,0 +1,633 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://liyuyu.cn</id>
+    <title>呵呵小鱼</title>
+    <updated>2026-06-20T12:44:47.354Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://liyuyu.cn"/>
+    <link rel="self" href="https://liyuyu.cn/atom.xml"/>
+    <subtitle>&lt;p&gt;&lt;a href=&quot;http://beian.miit.gov.cn&quot; target=&quot;_blank&quot;&gt;粤ICP备14087112号-1&lt;/a&gt;&lt;/p&gt;</subtitle>
+    <logo>https://liyuyu.cn/images/avatar.png</logo>
+    <icon>https://liyuyu.cn/favicon.ico</icon>
+    <rights>All rights reserved 2026, 呵呵小鱼</rights>
+    <entry>
+        <title type="html"><![CDATA[职场没有绝对公平]]></title>
+        <id>https://liyuyu.cn/post/no-fairness-in-the-workplace/</id>
+        <link href="https://liyuyu.cn/post/no-fairness-in-the-workplace/">
+        </link>
+        <updated>2026-05-15T11:47:19.000Z</updated>
+        <summary type="html"><![CDATA[<p>最近又到了半年度绩效辅导面谈环节，每次和团队小伙伴聊完，总是感触颇多。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>最近又到了半年度绩效辅导面谈环节，每次和团队小伙伴聊完，总是感触颇多。</p>
+<!-- more -->
+<p>其实很多人第一次真正意识到职场不存在绝对公平，可能往往就是从绩效开始的。尤其是接触强制分布之后，很多员工会产生一种非常强烈的落差感：“明明大家都很努力，为什么一定有人拿不到好绩效？”。</p>
+<p>不只于此，团队里很多矛盾，最后也都会绕回“公平”这两个字。</p>
+<h3 id="管理本身就不是一道平均分配题"><strong>管理，本身就不是一道“平均分配题”</strong></h3>
+<p>前几年，我自己也非常执着于“公平”这件事。那时候刚带团队，作为开发出身，我总觉得管理者应该尽可能一碗水端平。我会刻意平衡工作量，尽量不让老实人吃亏；会尽量把机会平均分配，希望每个人都能感受到被尊重；甚至会为了照顾团队情绪，机会和荣誉都是按小组轮着来。</p>
+<p>但后来我慢慢发现，绝对公平这件事，在真实的组织里几乎不存在。因为管理本身就不是一道简单的平均分配题。</p>
+<p>同样一件事情，交给不同的人，结果可能完全不同。有人执行稳定，几乎不用返工；有人擅长攻坚，能在混乱里快速推进；有人适合对外沟通，能解决协同问题；也有人虽然很努力，但需要管理者不断跟进和兜底。从员工视角看，可能只是任务不一样；但从管理视角看，背后对应的是时间成本、沟通成本、风险成本，以及结果确定性。而管理者天然会优先选择“确定性”，因为团队最终是要对结果负责的。</p>
+<h3 id="资源倾斜组织效率的选择"><strong>资源倾斜，组织效率的选择</strong></h3>
+<p>还是回到绩效考评这件事，站在管理视角看，绩效从来都不只是对个人努力程度的评价，它更像是一种组织资源分配机制。</p>
+<p>晋升名额、调薪预算、核心激励，本身就是有限的。组织不可能所有人都给高绩效，也不可能长期维持“人人优秀”，你好我好大家好。很多时候，即便团队整体表现不错，也依然需要做区分。这背后未必是谁真的“差”，而是组织一定需要排序、需要拉开梯度。</p>
+<p>这也是我这几年感到最难的地方。</p>
+<p>因为你明知道有些人虽然不突出，但也没有明显问题，在有限的名额下，依然必须做选择。而这种选择，很难做到让所有人都完全满意。</p>
+<p>绩效不只是苦劳和功劳的统计，它本质上更接近综合价值排序；而管理者，需要在组织规则和个人感受之间尽量平衡，尽可能把评价逻辑讲清楚，把真正创造价值的人区分出来，同时也保护好团队基本的公平感。</p>
+<p>很多时候，资源向少数人倾斜，表面是“偏心”，但却是组织在关键阶段的效率选择。优质项目、核心机会、关键岗位，本来就是稀缺资源，不可能做到真正平均。</p>
+<p>这也是我后来慢慢才接受的。</p>
+<h3 id="人性里的主观偏差"><strong>人性里的主观偏差</strong></h3>
+<p>当然，不可回避的一点，人性也是管理里绕不过去的一部分。我越来越能理解，为什么很多员工会觉得“不公平”。因为很多时候，大家在意的，并不只是资源差距本身，而是“自己的努力有没有被看见”。</p>
+<p>沉默做事的人，天然容易被忽略；擅长表达的人，更容易被记住。沟通顺畅、反馈及时、做事同频的人，也更容易获得管理者信任。这未必是刻意偏袒，而是人与人之间天然存在协作惯性。管理者也是普通人，不可能完全没有主观倾向，这一点制度解决不了，只能尽量克制。</p>
+<h3 id="执着于比较往往才是内耗的开始"><strong>执着于“比较”，往往才是内耗的开始</strong></h3>
+<p>写这篇文章的初衷，也是这些年我对“公平”的理解变化。我要做的是“底线公正”或者“相对公平”：不恶意偏袒、不无故压榨、不让真正做事的人长期吃亏，也尽量让默默做事的人被看见，给更多人试错、成长和证明自己的机会。</p>
+<p>但与此同时，我也必须接受另一件现实：团队里一定会有资源侧重，机会一定有先后顺序，评价也一定会带有主观因素。这不是一句制度完善就能彻底解决的问题。</p>
+<p>我见过一部分小伙伴，因为长期执着于“为什么别人比我绩效好”，慢慢陷入内耗，甚至摆烂。有人不断对比工作量；有人把一次不合理分配，放大成整个公司的问题；也有人开始消极对抗，用降低产出的方式表达不满。但站在更长周期看，这些情绪最后很少真正改变什么，反而会不断消耗自己的成长节奏。</p>
+<h3 id="接受不完美但依然持续成长"><strong>接受不完美，但依然持续成长</strong></h3>
+<p>在我看来，一个成熟员工最重要的能力，不只是努力，而是既能持续提升自己的不可替代性，也能学会合理表达自己。而一个成熟管理者最重要的能力，则是在无法做到绝对公平的前提下，尽量保持相对公正，减少无意识偏差，让真正创造价值的人，长期能够被看见。</p>
+<p>真正的强者，是不再执着于世界是否完美，而是在不完美的规则里，依然保持成长。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[前端，何去何从]]></title>
+        <id>https://liyuyu.cn/post/the-next-fe/</id>
+        <link href="https://liyuyu.cn/post/the-next-fe/">
+        </link>
+        <updated>2026-05-02T02:43:06.000Z</updated>
+        <summary type="html"><![CDATA[<p>前阵子有个外部团队来公司做分享，讲 AI 落地。</p>
+<p>聊到一半，那个分享者突然说了一句：&quot;前端其实没有价值了，AI 已经能替代，很多公司在裁了。&quot;</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>前阵子有个外部团队来公司做分享，讲 AI 落地。</p>
+<p>聊到一半，那个分享者突然说了一句：&quot;前端其实没有价值了，AI 已经能替代，很多公司在裁了。&quot;</p>
+<!-- more -->
+<p>会议室安静了两秒。所有人看向我。</p>
+<p>做前端负责人的，这话不是头一回听了。我表面挺淡定，但心里——说实话——多少有点虚。</p>
+<p>从 Copilot 到 ChatGPT 到 Claude Code，AI 确实能干很多原来前端做的活。页面生成、表单搭建、基础交互、排查问题。这些恰恰是大多数前端团队日常花时间最多的事。</p>
+<p>原来两三个人干的活，现在一个人加 AI 就够了。如果一个团队的价值主要就在这一层，那被压缩不是如果，是时间问题。</p>
+<p>所以什么样的人能留下？</p>
+<p>一类是只会做页面、依赖设计稿、不怎么懂业务的。AI 最擅长的就是这个区间，你刚好落在里面，那没什么可说的。</p>
+<p>另一类是能扛架构、能抽象能力、能理解业务、甚至能反过来影响产品决策的。AI 对他们来说是杠杆，不是对手。</p>
+<p>对团队来说，最危险的是大多数人在做重复页面，少数人能独立做模块，极少数人扛架构，几乎没人懂业务。这种结构在 AI 进来之后很难扛住——它缺少不可替代的那一层。</p>
+<p>那怎么走？</p>
+<p>第一步，主动用 AI 干掉低价值的事。重复页面、模板代码、基础测试——这些干得越快，人就越早能腾出手。</p>
+<p>第二步，从做页面变成做能力。组件体系、状态模型、通信抽象、跨端方案。前端从&quot;实现层&quot;往&quot;能力层&quot;走。</p>
+<p>第三步，参与业务本身。如果只是在接需求，价值天花板就在那儿。如果能参与设计、优化体验、影响决策，那角色就完全不同了。</p>
+<p>对个人来说，问题很简单：</p>
+<p>有了 AI，你的价值是被替代，还是被放大？</p>
+<p>回头看那个分享者的说法，确实偏激了点。但他真正想说的不是&quot;裁前端&quot;，是说&quot;低价值的工作方式迟早被淘汰&quot;。</p>
+<p>前端不会消失。但会变得更小、更精、更吃能力。团队在收缩，要求也在升高。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[关于团队为什么没有分享欲的一些思考]]></title>
+        <id>https://liyuyu.cn/post/why-the-team-lacks-sharing-spirit/</id>
+        <link href="https://liyuyu.cn/post/why-the-team-lacks-sharing-spirit/">
+        </link>
+        <updated>2026-04-01T02:43:35.000Z</updated>
+        <summary type="html"><![CDATA[<p>这几年，我一直在反复想一个问题：为什么团队里的人，好像都不太愿意分享。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>这几年，我一直在反复想一个问题：为什么团队里的人，好像都不太愿意分享。</p>
+<!-- more -->
+<p>最开始我觉得是不是缺点推动力，甚至用一些礼品和颁奖活动去激励大家，但慢慢发现，收效甚微。整得我都自我怀疑了：我到底为什么要期待大家的分享？</p>
+<p><strong>分享的“正当性”不明确</strong></p>
+<p>对大多数人来说，什么是工作，什么是正事，其实是非常清晰的。<strong>做需求、写代码、解决问题</strong>，这些事情是有明确产出、有反馈、能被看见的。但分享这件事不一样，它需要额外投入时间，还带着不确定性：讲了有没有人听、有没有人用、值不值得。这种不确定，会让它自然往后排。</p>
+<p>现实情况下，我自己也会矛盾：如果本来就很忙，还能抽时间去分享、去折腾，会不会反而被理解为工作不饱和？这个问题如果没有被明确回答，那大家的选择一定是偏保守的把时间用在那些确定不会出错的事情上。</p>
+<p><strong>表达，其实有风险</strong></p>
+<p>再往深一点看，分享这件事其实是有风险的。它不是简单的表达，而是一种暴露。你要把自己的理解和想法拿出来，被别人听、被别人判断。如果团队里对表达的容错不高，或者习惯性地去反驳抬杠，那很多人就会下意识收住。与其讲得不够好，不如不讲。</p>
+<p>还有一点，知识本身在团队里多少带着一点稀缺性的。尤其是在节奏紧、竞争感隐约存在的环境里，有些人会下意识地把知识当成自己的筹码。你让他分享，本质上是在让他降低这种稀缺性。如果组织没有明确传递出分享会让你更有价值，那他选择保留，其实是符合人性的。</p>
+<p><strong>讲了也没用？</strong></p>
+<p>很多分享其实是<strong>没有下文</strong>的。讲完就结束了，没有人继续讨论，也没有进入后面的工作或者沉淀。时间一长，人很容易得出一个结论：讲了也没用。一旦形成这种判断，再去推动就很难了，因为问题已经不是愿不愿意，而是值不值得。</p>
+<p><strong>环境差异放大这种感受</strong></p>
+<p>挺羡慕集团里其他事业部的团队的，尤其最近在做 AI 相关探索方面，他们的分享氛围就很活跃。可能在他们那种环境下，本来就没有标准答案，表达本身就是探索的一部分，说错也没关系。而我们这边更多是成熟业务，一旦默认这些事情应该是有答案的，表达就变成了一件需要说对的事情，而不是拿出来讨论的事情。</p>
+<p><strong>外在激励，很难解决根本问题</strong></p>
+<p>所以现在再回头看，我之前用奖品去激励，其实有点用力错方向了。它只能让有人站出来讲，但改变不了大家对这件事的判断。甚至有点把分享变成了一个可以用奖励换的任务，而不是一件本身有价值的事情。</p>
+<p><strong>问题的核心，其实很简单</strong></p>
+<p>在现在的语境里，分享还没有被当成<strong>工作的一部分</strong>，它更像是工作之外的附加项。只要这个前提在，那它一定会被优先级压下去。</p>
+<p>如果有一天，大家开始默认一件事：表达是在帮团队少踩坑、是在推动事情更高效，那可能很多事情就不用再刻意去推动了，它会自然发生。</p>
+<p><strong>最后</strong></p>
+<p>团队内分享的本质，是让经验从个人资产变成组织资产，从而避免重复犯错、打破信息孤岛并加速组织学习。</p>
+<p>而团队没有分享欲，可能是在当前环境下，大家做出的一个理性的选择，无奈却又现实。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[论加班文化]]></title>
+        <id>https://liyuyu.cn/post/hustle-culture/</id>
+        <link href="https://liyuyu.cn/post/hustle-culture/">
+        </link>
+        <updated>2026-03-18T02:22:22.000Z</updated>
+        <summary type="html"><![CDATA[<p>在这个行业待久了，慢慢习惯了一种很矛盾的氛围：大家一边抱怨加班，一边又默认它是正常的。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>在这个行业待久了，慢慢习惯了一种很矛盾的氛围：大家一边抱怨加班，一边又默认它是正常的。</p>
+<!-- more -->
+<p><strong>加班到底意味着什么？</strong></p>
+<p>在我看来，它既不是能力的证明，也不应该成为团队运转的常态。更多时候，其实是问题的结果。</p>
+<p>这些问题通常不是发生在最后一公里的开发环节，而是更早之前就已经埋下了伏笔。需求不清、反复变更，节奏缺乏边界，优先级随时被打破，技术债长期得不到治理，这些因素叠加在一起，最后自然会以加班的形式体现出来。表面上看，是开发在多付出时间，实际上，是整个系统在向下游转移成本。</p>
+<p>但真正让问题变得更复杂的，有时还有另一种更隐性的压力：<strong>当“别的部门都在加班”的时候，你很难独善其身。</strong></p>
+<p>经常会听到类似的话：</p>
+<blockquote>
+<p>“测试都在等结果呢，你们要支撑好！”<br>
+“隔壁团队天天干到 11 点，不跟上是不是不太好看？”</p>
+</blockquote>
+<p>慢慢地，加班就不再只是业务问题，而变成了一种“组织氛围”。哪怕你的节奏本来是健康的，也会被这种氛围一点点带偏。我都开始怀疑：是不是不加班才是不正常的？是不是早点下班反而显得不够投入？</p>
+<p>有一个名词可以解释这一现象：<strong>群体一致性陷阱</strong>。大家并不是因为真的需要加班，而是在彼此影响中，把加班变成了一种默认选择。一旦这种共识形成，想要改变，成本就会变得非常高。</p>
+<p>我不太认同一个简单粗暴的逻辑：只要结果出来了，加班就是值得的（诚然，去年部门的一些成果确实是加班换回来的，甚至还提前完成了）。因为这种逻辑忽略了一件更重要的事情：这个结果是如何被生产出来的。如果一个团队必须依赖持续的高强度加班，才能维持基本交付，那本质上并不是在高效运转，而是在用人力对抗系统问题。</p>
+<p>加班之所以在很多团队里挥之不去，很大程度上是因为它太“容易”了。相比于优化流程、重构系统、建立规范、提升团队能力，这些需要投入时间和精力的长期工程，加班几乎是一个立刻见效的解法。不需要改变任何结构，只需要多投入一些时间，看起来问题就被解决了。</p>
+<p>但这种“解决”，是有代价的，而且会被延后兑付。如果一个团队长期依赖加班来完成工作，那它透支的从来不只是员工的时间，还有未来的稳定性和可持续性。真正有韧性的团队，往往不是最拼的那一群人，而是那些在复杂环境下，依然能够保持节奏、控制边界、稳定交付的团队。</p>
+<p>当然，我不认为一个成熟的团队应该单纯的以“减少加班”为目标，而是应该建立一种更健康的节奏感。<strong>需求有边界，版本有节奏，优先级稳定，时间可被预期</strong>。即便在某些关键时刻确实需要加班，那也应该是短期的、可解释的，并且在事后能够被复盘和优化，而不是一遍又一遍地重复。</p>
+<p>部门里我去年的加班数据也是靠前的，但我从来不排斥加班，加班本身也不是什么大问题。但为什么加班会变成了常态化，或许值得我们进一步深思。</p>
+<p>当我们开始不再用加班数据去评价一个团队，而是去看它是否能够在正常节奏下持续产出结果，很多事情反而会变得更清晰。</p>
+<p>这可能才是走出加班文化的起点。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[我的 2025]]></title>
+        <id>https://liyuyu.cn/post/my-2025/</id>
+        <link href="https://liyuyu.cn/post/my-2025/">
+        </link>
+        <updated>2026-01-18T07:19:57.000Z</updated>
+        <summary type="html"><![CDATA[<p>光阴如骏马加鞭，日月如落花流水，2025 年转瞬已过。翻看这些年写下的年终总结，竟发现已经坚持了整整 10 年。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>光阴如骏马加鞭，日月如落花流水，2025 年转瞬已过。翻看这些年写下的年终总结，竟发现已经坚持了整整 10 年。</p>
+<!-- more -->
+<p>过去的这一年，无论是工作中的管理思路，还是家庭中的子女教育理念，都可以说是冲突最为激烈的一年。有迷茫，有焦虑，当然，也有收获。</p>
+<h4 id="工作挑战与机遇">工作：挑战与机遇</h4>
+<p>今年团队规模在峰值时达到了 32 人，这是前所未有的体量，也给我带来了巨大的管理挑战。如此多人分散在不同项目之中，并不是每个人都具备强烈的自驱力和责任心，因此，建立合适的分层管理体系、培养 Project Leader，成了我的重中之重。</p>
+<p>我始终认为：抗压能力、对目标的执着感这类特质更多还是源于一个人的内在底色，与生俱来。一年下来，PL 群体的整体表现超出预期，既定目标也得到了很好的达成，给他们点个赞。</p>
+<p>今年团队顺应公司战略目标，完成了从 Android、iOS 原生技术栈向 React Native 跨端体系的迁移。借助既有 RN 小组的技术支持，以及各类 AI 工具的引入，整体迁移速度和完成率同样超出预期。</p>
+<p>至此，整个大前端部门逐步形成了以 React 为核心的 Web 与 App 开发体系，实现了逻辑共享与组件复用。同时，人员的调配与支援也变得更加灵活，内部协作的壁垒显著降低。</p>
+<p>“养成一个习惯只需要 21 天”， 2025 年，我第一次尝试以工作周记的形式记录日常流水账，并成功坚持了下来。借助飞书文档，把待办事项、紧急任务、偶发灵感以及阶段性的感悟思考都沉淀其中。回看文档统计，这一年已累计写下了 2 万余字。</p>
+<p>同时，借助飞书文档的 AI 总结能力，这一年究竟做了什么、哪些是有价值的、哪些仍需改进，都变得一目了然。</p>
+<h4 id="家庭陪伴与焦虑">家庭：陪伴与焦虑</h4>
+<p>在现阶段，工作与家庭之间的平衡，或许已经变成一件近乎“不可能”的事。我们这一代父母，与其说是在带孩子，不如说是在弥补自己童年的缺失。</p>
+<p>今年 6 月初，一家四口去了期待已久的珠海长隆。两个孩子第一次坐飞机，兴奋又新奇。因为是错峰出行，暑假尚未开始，整体游玩体验相当不错。以至于大半年过去了，小儿子还时不时念叨着，什么时候能再去海洋王国。</p>
+<p>或许也正因为平时工作忙碌，对孩子产生了一种“报复性补偿”的心理。玩具买了不少，外出游玩的次数也比往年明显增加。今年还自驾去了岱山岛，除了沿途的大桥风景和岛上的希尔顿酒店，其他体验并不理想，大概率不会再去第二次了。</p>
+<p>今年 9 月，大儿子正式步入义务教育阶段。一年级刚开始那种手足无措、满脸懵逼的状态，到现在我都挥之不去。</p>
+<p>也说不清是因为狮子座、月份小的缘故，还是他本身的节奏就是这样慢。一年级的英语学习一开始几乎处处碰壁：单词不会读，歌曲不会唱。那段时间，我陷入了深深的焦虑：为什么别人家的孩子打卡那么快，而我们却走得如此艰难。</p>
+<p>不过令人欣慰的是，这种困难并没有持续太久。他慢慢找到了节奏，打卡变得轻松起来，期末考试也取得了满分。虽然都说小学阶段的成绩含金量有限，但至少说明他在跟着大部队往前走。这期间焦虑难免存在，不过我的心态已经逐渐变得相当佛系了。</p>
+<p>相比之下，孩子妈妈这半年的情绪明显更容易波动，我反而成了家里相对冷静的那一个。我和她在孩子教育的大方向上是一致的，但在执行细节上差异不小。辅导孩子时，她更容易着急、情绪上头，孩子一被批评就进入发懵状态，场面常常让人心疼。我有时也在想，我们小时候似乎并不是这样的。只是到了自己当父母，才真正体会到：家家都有本难念的经。</p>
+<h4 id="自己折腾与尝试">自己：折腾与尝试</h4>
+<p>如果说工作和家庭更多是责任驱动，那么这一部分，更像是留给自己的空间。不是 KPI，不是必须完成的任务，而是出于兴趣、好奇心和一点点不安分，主动去折腾、去尝试的东西。</p>
+<p>这些事情未必立刻产生价值，也不一定都能坚持很久，但它们让我在日复一日的角色切换之外，仍然保留着对新事物的敏感度和对“成长”这件事的真实体感。某种程度上，这些零散的折腾，反而构成了我这一年最有生命力的一部分。</p>
+<p>2023 那一年心血来潮，“染”上了骑行。从开始的年骑 3000 公里，到 2025 年仅骑了 300 公里，自行车大部分时间都在角落里吃灰。</p>
+<p>一方面，想从日常节奏里挤出一段完整的骑行时间变得越来越难；另一方面，今年换了一个让我幸福指数明显提升的通勤工具：九号电动车 Mz MIX。它带来的便捷与舒适体验，让我很自然地对“费劲出汗”的通勤方式失去了动力，续航和智能体验也大大超过家里的其他电动车。人一下子就变得懒了起来，带来的副作用也肉眼可见，身体素质大不如从前。</p>
+<p>都说人到中年，偏爱养鸟，今年斥“巨资”，养了几只虎皮鹦鹉，除了一只刚到家没几天就死了，剩下的两只都活得挺好的。</p>
+<p>每天清晨，阳台都会传来它们叽叽喳喳的声音，那种细碎又充满生命力的动静，让人有种说不出的奇妙感受。忙碌生活的缝隙里，多了一点很轻、却很真实的陪伴。</p>
+<h5 id="今年折腾的其他好物">今年折腾的其他好物</h5>
+<ul>
+<li>丁腈手套：排在第一位的好物，相见恨晚。之前做饭和家务时，手经常干裂起皮，偶然发现这款手套，堪称神器，真后悔没早点知道。</li>
+<li>Apple Watch S11：今年生日老婆送的礼物。两天一充，续航比预期好很多。配合 iPhone 和 MacBook Pro 无缝解锁，体验感加分。</li>
+<li>添可洗地机：家里的扫地机器人清洁力度不足，这款洗地机弥补了短板。操作简单高效，推着走就行，关键是不用中途洗拖把。</li>
+<li>米家破壁机 S2：这几年家里新增的小米白色家电表现都不错，没有翻车过。这款破壁机支持 App 预约定时，交互简单易用，很方便。</li>
+<li>国文 OBOOK 5 阅读器：迷你小巧，可网络传书。灰阶显示不如 Kindle 细腻，但轻巧便携，还能用来给孩子读古诗、学汉字。</li>
+<li>米家净烟机 P2：种草已久，618 入手，替换了开发商送的油烟机。厨房终于清爽了，吸力强劲，唯一不足是噪音略大。</li>
+<li>三星 Galaxy S24：作为双持党，今年尝试把 S24 当主力机，但失败了。主要缺点是消息推送不及时，最终还是老老实实换回了 iPhone。</li>
+<li>米家智能桌面鱼缸：家里一代鱼缸因大鱼小鱼混养，小鱼存活率不高。看到新款鱼缸，体积更小、颜值也行。不过使用下来有个通病：水泵异响，以后买鱼缸还是考虑 DIY 吧。</li>
+</ul>
+<p>一年匆匆而过，忙碌、焦虑、折腾与惊喜都交织其中。愿 2026 年，依旧能在工作、家庭与自己喜欢的事情里，找到属于我的节奏和乐趣吧。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Project Leader: 以终为始，自驱成长]]></title>
+        <id>https://liyuyu.cn/post/project-leader-yi-zhong-wei-shi-zi-qu-cheng-chang/</id>
+        <link href="https://liyuyu.cn/post/project-leader-yi-zhong-wei-shi-zi-qu-cheng-chang/">
+        </link>
+        <updated>2025-07-01T07:50:34.000Z</updated>
+        <summary type="html"><![CDATA[<blockquote>
+<p>项目的主心骨，不只是项目的执行者，更是团队节奏的掌舵人。</p>
+</blockquote>
+]]></summary>
+        <content type="html"><![CDATA[<blockquote>
+<p>项目的主心骨，不只是项目的执行者，更是团队节奏的掌舵人。</p>
+</blockquote>
+<!-- more -->
+<p>有次和团队小伙伴聊绩效时，问及团队里最认可谁，他说 XX（角色是 Project Leader，以下简称 PL），我问他原因，他列举了很多事例，我又问他，为啥 XX 做得好呢？他说可能是因为把 XX 架在了 PL 的位置，所以他干的活和大家不一样了，得到了更多的曝光机会，于是更加卖命，自然干得很好。</p>
+<p>不可否认，确实可能有这方面原因，但背后的低层逻辑真的是这样吗？看似又回到了最初的问题：“到底先有鸡还是先有蛋？”。</p>
+<h3 id="pl-的核心特质很难培养更像是识别">PL 的核心特质很难“培养”，更像是“识别”</h3>
+<p><strong>某些特质是天生的，比如责任心、上进心、自驱力，还有抗压能力和对目标感的执着。</strong></p>
+<p>这些特质，不是安排个培训、布置个任务他就能突然具备的，更多是骨子里的东西。<br>
+所以，我更倾向于把“培养 PL”理解成：<strong>识别 + 赋能</strong>：</p>
+<ul>
+<li>通过观察工作状态，比如谁在项目中主动补位、愿意操心整体节奏、愿意为结果负责，而不是只做份内的任务。</li>
+<li>不是告诉他具体怎么做，而是提供一些项目或者活动让他尝试，看他有没有全局意识和成长能力。</li>
+<li>真正具备 PL 潜质的人，其实内驱很强，反而是需要帮他构建框架感、决策感，而不是从零培养他“怎么当一个 project leader”。</li>
+</ul>
+<p>简单来说：识别潜质、给予舞台、拉齐认知</p>
+<h3 id="实践经验">实践经验</h3>
+<p>去年一个新加入的小伙伴，本身技术能力和沟通能力都不错，进来做了一个中等体量的功能移植开发，整体交付也算顺利，没过多操心，但是到了后期我发现，面对一些枯燥的 bug 时，他的解决效率是相当慢，了解完背后的真实原因，发现他在面对这些琐碎、重复且缺乏成就感的问题时，容易陷入一种“<strong>过度分析</strong>”或“<strong>等待完美解法</strong>”的状态。一开始我以为是当时状态不佳，但深入聊过之后才意识到，他其实是比较在意工作带来的价值感和挑战性，一旦任务本身无法激发兴趣，就容易陷入“拖延性思考”，甚至烦躁状态，而不是快速行动。</p>
+<p>后面我尝试做了两件事：</p>
+<ol>
+<li><strong>查看了他入职时的大五人格测评</strong>，分析了强弱项，之后调整了其工作安排，让他带领一个三人小队进行 App 架构优化和新功能预研</li>
+<li><strong>明确阶段性目标和优先级</strong>，让他明白“先解决最小闭环”，而不是追求一次性完美。</li>
+</ol>
+<p>目前看，效果还是不错的。</p>
+<blockquote>
+<p><strong>🎯 大五人格测评理论基础扎实</strong></p>
+<ul>
+<li>全球最被广泛验证的人格模型之一</li>
+<li>多语言、多文化中重复验证</li>
+<li>被用于人才评估、职业匹配、领导力发展等领域</li>
+<li>对于 PL <strong>角色识别</strong>的时候，可以作为参考，再结合实际情况做决策。</li>
+</ul>
+</blockquote>
+<h3 id="一些困惑">一些困惑</h3>
+<h4 id="1-亲力亲为是责任感还是不信任">1. “亲力亲为”是责任感，还是不信任？</h4>
+<p>包括自己在内，一些 PL 在项目过程中经常会陷入<strong>亲力亲为</strong>的状态：</p>
+<ul>
+<li>自己盯需求、自己拆任务、自己写核心代码、自己扛上线、甚至自己亲自拉通……</li>
+<li>好像只有自己动手，才“保险”、才“不掉链子”。</li>
+</ul>
+<h4 id="2-pl-的绩效到底该怎么打才公平">2. PL 的绩效，到底该怎么打才公平？</h4>
+<p>PL 的工作不像开发那样好量化，他们更多是协调、把控和责任。那打分的时候，到底是：</p>
+<ul>
+<li>和别的 PL 横向比？</li>
+<li>还是和他自己负责的项目结果比？</li>
+<li>还是我的主观感受？</li>
+</ul>
+<p>这到底谁更“好”？分数上怎么体现？其实挺难量化的。</p>
+<h3 id="总之">总之</h3>
+<p>PL 不只是一个角色，更是一种成长方式。<br>
+在目标与混乱之间找平衡，在责任与信任之间做选择，既要扛得住压力，也要带得动团队。<br>
+与其说是培养别人，不如说是我们每个人在不断成为更好的自己。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[App Widgets 设计与开发]]></title>
+        <id>https://liyuyu.cn/post/app-widgets-design-and-develop/</id>
+        <link href="https://liyuyu.cn/post/app-widgets-design-and-develop/">
+        </link>
+        <updated>2025-02-11T01:01:24.000Z</updated>
+        <summary type="html"><![CDATA[<p>App 小部件（widgets）可以把重要的内容直接在桌面中呈现给用户，以提升用户在桌面获取信息与直达服务的效率。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>App 小部件（widgets）可以把重要的内容直接在桌面中呈现给用户，以提升用户在桌面获取信息与直达服务的效率。</p>
+<!-- more -->
+<p>不过因平台的差异性，Android 和 iOS 对于小部件的规范和实现也不一样，同时国内基于 Android 系统定制的各厂商也对小部件有着各自的开发规范。</p>
+<h1 id="android">Android</h1>
+<figure data-type="image" tabindex="1"><img src="https://liyuyu.cn/post-images/1739235897245.png" alt="Android" loading="lazy"></figure>
+<h2 id="设计">设计</h2>
+<ul>
+<li>
+<p><strong>布局</strong>（<a href="https://developer.android.com/design/ui/mobile/guides/widgets/layouts">Layouts</a>）：对于文字、图片、按钮、列表、网格布局的指导规范</p>
+</li>
+<li>
+<p><strong>大小</strong>（<a href="https://developer.android.com/design/ui/mobile/guides/widgets/sizing">Sizing</a>）：官方推荐的尺寸作为起点，并在不同尺寸上测试布局，以确保最佳的可读性和用户体验</p>
+</li>
+<li>
+<p><strong>样式</strong>（<a href="https://developer.android.com/design/ui/mobile/guides/widgets/style">Style</a>）：定义颜色和排版的关键概念和技术，主要涉及颜色和黑暗主题等等</p>
+</li>
+<li>
+<p><strong>发现和推广</strong>（<a href="https://developer.android.com/design/ui/mobile/guides/widgets/discovery-promotion">Discovery &amp; promotion</a>）：用户可以通过小部件选择器发现和添加您的小部件</p>
+</li>
+</ul>
+<h2 id="开发">开发</h2>
+<p>除了传统的 XML 体系，Android 官方 Jetpack Glance 也提供了一种使用 Compose 语法构建 widget 的新式方法， 但受 <strong><code>AppWidgets</code></strong> 和 <strong><code>RemoteViews</code></strong> 的限制，Glance 使用的 Compose 与 Jetpack Compose 本质上是不一样的。</p>
+<h4 id="布局类型">布局类型</h4>
+<p>Android 小部件支持的布局形式和控件类型是有限的：</p>
+<figure data-type="image" tabindex="2"><img src="https://liyuyu.cn/post-images/1739235961652.png" alt="" loading="lazy"></figure>
+<p>对应的其实就是传统布局上的 <strong><code>RelativeLayout</code></strong> 和 <strong><code>LinearLayout</code></strong></p>
+<p>此外，可滚动的列表，Glance 会将 <strong><code>LazyColumn</code></strong> 转换为实际的 <strong><code>ListView</code></strong></p>
+<h4 id="控件类型">控件类型</h4>
+<p>仅支持 Text、Image 等基础控件，Android 12 及以后支持<strong><code>CheckBox</code></strong>、<strong><code>Switch</code></strong> 和 <strong><code>RadioButton</code></strong>等复合控件，集合视图支持 <strong><code>ListView</code></strong>、<strong><code>GridView</code>、<code>StackView</code></strong>和<strong><code>AdapterViewFlipper</code></strong></p>
+<blockquote>
+<p>Android 平台的小部件不支持 WebView 以及自定义 View，包括 Canvas 的操作，所以一些复杂炫酷的图表曲线无法直接呈现</p>
+</blockquote>
+<h4 id="注意事项">注意事项</h4>
+<ul>
+<li>
+<p>针对小部件的<strong>进程和内存</strong>占用，有严重要求</p>
+</li>
+<li>
+<p>刷新时间限制<strong>最小间隔</strong>，不同系统和厂家略有不同</p>
+</li>
+<li>
+<p>由于不同设备分辨率各不同，桌面支持不同的网格模式，是否使用虚拟按键等原因，小部件最终展示并没有按绝对尺寸实现，会在不同情况下进行自适应，所以跟设计稿有<strong>一定出入</strong>；业务需要根据情况进行自适应</p>
+</li>
+<li>
+<p>部分国内手机厂商对于小部件会有<strong>独立的审核</strong>机制和附加的开发规范</p>
+</li>
+<li>
+<p>从 Android 12 开始，小部件有了很大的变动和改进，需留意适配</p>
+</li>
+</ul>
+<h2 id="参考资料">参考资料</h2>
+<ul>
+<li>
+<p>Android UI Kit Figma 设计 <a href="https://www.figma.com/community/file/1237551184114564748">https://www.figma.com/community/file/1237551184114564748</a></p>
+</li>
+<li>
+<p>Widget 设计概览 <a href="https://developer.android.com/design/ui/mobile/guides/widgets?hl=zh-cn">https://developer.android.com/design/ui/mobile/guides/widgets?hl=zh-cn</a></p>
+</li>
+<li>
+<p>Jetpack Glance <a href="https://developer.android.com/develop/ui/compose/glance?hl=zh_cn">https://developer.android.com/develop/ui/compose/glance?hl=zh_cn</a></p>
+</li>
+<li>
+<p>应用 Widget 开发 <a href="https://developer.android.com/develop/ui/views/appwidgets/overview?hl=zh-cn">https://developer.android.com/develop/ui/views/appwidgets/overview?hl=zh-cn</a></p>
+</li>
+<li>
+<p>Vivo 原子组件规范 <a href="https://dev.vivo.com.cn/documentCenter/doc/834">https://dev.vivo.com.cn/documentCenter/doc/834</a></p>
+</li>
+<li>
+<p>Xiaomi 小部件规范 <a href="https://dev.mi.com/xiaomihyperos/documentation/detail?pId=1664">https://dev.mi.com/xiaomihyperos/documentation/detail?pId=1664</a></p>
+</li>
+</ul>
+<h1 id="ios">iOS</h1>
+<figure data-type="image" tabindex="3"><img src="https://liyuyu.cn/post-images/1739235982774.png" alt="" loading="lazy"></figure>
+<p>iOS <strong>从 iOS 8 开始</strong>支持小部件（Widget）开发，当时使用的是 <strong>Today Extension</strong>，小部件只能放在<strong>通知中心的“今天”视图</strong>中。</p>
+<p>后来，<strong>iOS 14 引入了 WidgetKit</strong>，允许小部件直接放在主屏幕（桌面）上，并支持多种尺寸。但 WidgetKit 使用的是 <strong>SwiftUI</strong>，与 Today Extension 的 UIViewController 方式不同。</p>
+<table>
+<thead>
+<tr>
+<th><strong>iOS 版本</strong></th>
+<th><strong>开发方式</strong></th>
+<th><strong>位置</strong></th>
+<th><strong>主要技术</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>iOS 8+</strong></td>
+<td><strong>Today Extension</strong></td>
+<td>通知中心 “今天” 视图</td>
+<td>UIViewController</td>
+</tr>
+<tr>
+<td><strong>iOS 10+</strong></td>
+<td><strong>Today Extension</strong></td>
+<td>负一屏（Spotlight 搜索）</td>
+<td>UIViewController</td>
+</tr>
+<tr>
+<td><strong>iOS 14+</strong></td>
+<td><strong>WidgetKit</strong></td>
+<td>主屏幕 &amp; 负一屏</td>
+<td>SwiftUI</td>
+</tr>
+<tr>
+<td><strong>iOS 16+</strong></td>
+<td><strong>WidgetKit（增强）</strong></td>
+<td>新增锁屏小部件</td>
+<td>SwiftUI</td>
+</tr>
+<tr>
+<td><strong>iOS 16.1+</strong></td>
+<td><strong>Live Activities（实时活动）</strong></td>
+<td>新增锁屏 &amp; 动态岛（iPhone 14 Pro 及以后）</td>
+<td>ActivityKit + SwiftUI</td>
+</tr>
+</tbody>
+</table>
+<p><strong>现代</strong> Apple 的小部件分为以下几大类场景：</p>
+<ul>
+<li>
+<p>锁屏界面</p>
+</li>
+<li>
+<p>手机桌面</p>
+</li>
+<li>
+<p>堆栈视图</p>
+</li>
+<li>
+<p>手表场景</p>
+</li>
+<li>
+<p>实时活动</p>
+</li>
+</ul>
+<h2 id="设计-2"><strong>设计</strong></h2>
+<ul>
+<li>
+<p><strong>布局（Layouts）</strong>：iOS 小部件（Widget）遵循 Apple 设计规范，支持文字、图片、按钮等基础 UI 组件，使用 SwiftUI 进行布局</p>
+</li>
+<li>
+<p><strong>大小（Sizing）</strong>：官方提供了三种标准尺寸（小、中、大），不同设备的组件尺寸会有所不同，需要适配</p>
+</li>
+<li>
+<p><strong>样式（Style）</strong>：支持浅色和深色模式，颜色应与应用整体风格保持一致。组件的背景可以设置为透明，以与桌面壁纸融合</p>
+</li>
+<li>
+<p><strong>发现和推广（Discovery &amp; Promotion）</strong>：用户可以在“添加小组件”界面（长按主屏幕 → 编辑小组件）找到并添加应用的小组件</p>
+</li>
+</ul>
+<h2 id="开发-2"><strong>开发</strong></h2>
+<p>iOS Widget 使用 SwiftUI 开发，并通过 WidgetKit 框架进行管理。其数据刷新依赖 TimelineProvider 进行定时更新，或者使用 WidgetCenter 进行手动刷新。</p>
+<h4 id="布局类型-2"><strong>布局类型</strong></h4>
+<p>iOS 小组件的布局基于 SwiftUI，支持 VStack、HStack 和 ZStack 进行层次排列，以及网格布局 Grid (iOS 16+)。由于小组件是静态 UI，不支持 ScrollView 或动态交互</p>
+<h4 id="控件类型-2"><strong>控件类型</strong></h4>
+<p>仅支持 Text、Image、ProgressView、Gauge (iOS 16+) 等基础控件，iOS 17 及以后版本支持 Gauge、ProgressView 等额外组件，不支持 WebView ，但可以使用 SwiftUI 的 Path 和 Shape 进行简单的图形绘制，例如绘制曲线、折线图等。</p>
+<h4 id="注意事项-2"><strong>注意事项</strong></h4>
+<ul>
+<li>
+<p><strong>刷新机制</strong>：小组件的更新受 TimelineProvider 限制，不能随意刷新，最小间隔一般为 15 分钟</p>
+</li>
+<li>
+<p><strong>交互限制</strong>：小组件不支持复杂交互，用户点击后只能打开 App 或触发 AppIntent 进行操作</p>
+</li>
+<li>
+<p><strong>适配性</strong>：iOS 小组件会根据设备和屏幕尺寸自动调整大小，可能与设计稿存在细微差异</p>
+</li>
+<li>
+<p><strong>平台兼容性</strong>：iOS 14 引入 WidgetKit，iOS 16 以后支持 Lock Screen Widget（锁屏小组件），iOS 17 进一步增强了交互能力，需留意不同系统的兼容</p>
+</li>
+<li>
+<p><strong>iOS Widget 适合静态内容</strong>（文本、图片、进度、绘制）。</p>
+</li>
+<li>
+<p><strong>不支持交互控件</strong>（Button、输入框、滚动列表）。</p>
+</li>
+<li>
+<p><strong>支持一定的自定义绘制</strong>（Path、Shape、Canvas）。</p>
+</li>
+<li>
+<p><strong>不能动态加载网络图片</strong>，但可以预加载到本地。</p>
+</li>
+</ul>
+<h2 id="参考资料-2">参考资料</h2>
+<ul>
+<li>
+<p>iOS 小组件设计指南：<a href="https://developer.apple.com/design/human-interface-guidelines/widgets">https://developer.apple.com/design/human-interface-guidelines/widgets</a></p>
+</li>
+<li>
+<p>iOS Widgets 开发概述 <a href="https://developer.apple.com/widgets/">https://developer.apple.com/widgets/</a></p>
+</li>
+<li>
+<p>iOS WidgetKit 开发文档 <a href="https://developer.apple.com/documentation/WidgetKit">https://developer.apple.com/documentation/WidgetKit</a></p>
+</li>
+<li>
+<p>创建一个 Widget <a href="https://developer.apple.com/documentation/widgetkit/creating-a-widget-extension">https://developer.apple.com/documentation/widgetkit/creating-a-widget-extension</a></p>
+</li>
+<li>
+<p>开发 Widget 策略 <a href="https://developer.apple.com/documentation/WidgetKit/Developing-a-WidgetKit-strategy">https://developer.apple.com/documentation/WidgetKit/Developing-a-WidgetKit-strategy</a></p>
+</li>
+</ul>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[我的 2024]]></title>
+        <id>https://liyuyu.cn/post/my-2024/</id>
+        <link href="https://liyuyu.cn/post/my-2024/">
+        </link>
+        <updated>2025-02-07T10:16:55.000Z</updated>
+        <summary type="html"><![CDATA[<p>现在年终总结写的是越来越晚，其实很早就想开始写的，但是总被很多事情打断。就像过去的这一年，很多事情规划了，但是却没有完成。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>现在年终总结写的是越来越晚，其实很早就想开始写的，但是总被很多事情打断。就像过去的这一年，很多事情规划了，但是却没有完成。</p>
+<!-- more -->
+<p>回望整个 2024 年，无论是工作还是家庭，可谓是近 10 年来最忙的一年了。</p>
+<h4 id="工作摸索与成长">工作：摸索与成长</h4>
+<p>如果说去年 2023 年是我职业生涯中的重要转折点，那今年就是我真正意义上尝试角色转变的一年。这一过程充满挑战和艰辛，但也蕴含成长机遇。</p>
+<p>四个字总结下过去一年的工作表现：差强人意。</p>
+<p>年初，顺利通过晋升答辩，从部门“代管负责人”正式晋升为部门经理，工作范畴不变，仅仅算是给了官方正式 Title 而已吧。</p>
+<p>为什么说刚开始自己有些地方做的并不好，毕竟做了那么多年的开发，总是习惯于亲自解决问题，习惯于用个人能力推动项目前进；慢慢到了后期，随着我涉猎的越多，很多业务盲区也被覆盖到，自然而然的多了一丝从容和信心，我逐渐意识到，团队管理的核心不是自己完成更多，而是让团队整体能力提升，让每个人都能高效地贡献价值，后面其实需要将更多精力放在目标拆解、资源协调、团队赋能上。</p>
+<p>过去的这一年，遇到了很多人和事，让我深刻感悟到，做很多事情都是有方法论的。</p>
+<h4 id="游戏难得的闲暇时刻">游戏：难得的闲暇时刻</h4>
+<p>严格意义上，我不是一个爱玩游戏的人，手机里更是一款游戏 App 都没有，家里的 PS5 也沦为吃灰的摆设。</p>
+<p>然而今年《黑神话-悟空》的爆火，让我也忍不住购买了它。从新手村的大头，磕磕绊绊打到现在的火焰山，一直都是用零散时间抽空玩，半年多竟然一周目还没通关。不过令我开心的是，它竟然让我找回了 10 多年前第一次玩《使命召唤-现代战争》的惊喜和震撼。单机游戏有个好处，就是玩起来没有压力，不像以前玩的《DNF》，半年不上线你就落后其他玩家了。这么多年还有一款游戏也是自己的执念：《PUBG》，一款无论从游戏机制还是射击手感，在我心中都是堪称一绝的游戏，可惜玩它的时间也是越来越少。</p>
+<p>中国传统父母，包括我的父母辈，普遍对玩游戏持谨慎甚至否定的态度。但是随着我们这一代 80、90 开始做父母，这一观点正在改变，我们开始认识到游戏的正面价值，而不是一味的排斥。</p>
+<h4 id="家庭乔迁新居">家庭：乔迁新居</h4>
+<p>7 月份，挑了个黄道吉日，搬进新家。</p>
+<p>其实 2023 年底买这个房子，算得上是冲动消费了，明知道房价不稳定，还是下手了。到现在，满打满算亏了有七八十个 W 了，想哭却怎么也哭不出来，自己选的路，跪着也要走完。</p>
+<p>不过，除了房价下跌带来的伤痛，剩下的可全是开心了：我终于有自己的独立书房了，配了三米多长的书桌，满墙的洞洞板，满心欢喜。</p>
+<h4 id="骑行坚持与热爱">骑行：坚持与热爱</h4>
+<p>看了下行者 App 里的年度统计，2024 年累计骑行 1384 km，运动时长 68 小时，188 次。整体运动量不如 2023 年，根本原因还是没时间，希望今年能继续坚持下去。</p>
+<h4 id="剁手折腾的新东西">剁手：折腾的新东西</h4>
+<ul>
+<li>心心念的 M4 Pro + 48G + 1T 的 MacBook Pro 终于拿下，工作 10 多年来，第一次用上苹果本，却没有想象中的惊喜</li>
+<li>618 老婆送我种草已久的运动相机 Insta360 GO 3S，虽然一直在吃灰，可以不用但不能没有啊</li>
+<li>我也送了老婆一台 iPhone 15 Pro，原来她用的 12 已经肉眼可以见的卡顿，以旧换新，抵了 2000，还算不错</li>
+<li>今年生日，老婆送我 Shokz OpenFit Air 开放式耳机，终于淘汰了 5 年多的 AirPods（续航严重缩水）</li>
+<li>用了 7 年多的 IKBC C87 终究还是扛不住了，出现了按键失灵，遂入手京造 K3 Max 矮轴三模键盘，手感刚开始不适应，后面转为大爱</li>
+<li>今年还入手了正点原子的 T80P 智能电烙铁，使用感受非常棒，秒杀以前用过任何一款，简直是降维打击</li>
+<li>年初入手的红米 Watch4，小米作为最强苹果生态拥护者，消息来电通知与食堂刷卡神器，一年下来，真是便宜又好用</li>
+<li>今年堪称剁手的一年，搬新家购置了若干电器和家具，包括但不限于：东芝系烘套装、壁挂洗衣机、石头 G20S 扫地机器人、米家智能电热水瓶、米家保险箱以及各种米家智能家居等</li>
+</ul>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[另一种 App 网页加载方式]]></title>
+        <id>https://liyuyu.cn/post/another-app-load-web/</id>
+        <link href="https://liyuyu.cn/post/another-app-load-web/">
+        </link>
+        <updated>2024-11-01T02:14:17.000Z</updated>
+        <summary type="html"><![CDATA[<p>很多 App 都会有加载网页的场景</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>很多 App 都会有加载网页的场景</p>
+<!-- more -->
+<p>一般有如下几种方式：</p>
+<ul>
+<li>跳转<code>外部浏览器</code>打开（简单粗暴，一行代码，但是业务形态割裂，我们自己的 App 会进入后台）</li>
+<li>内嵌 <code>WebView/WKWebView</code> 实现（页面交互逻辑可控，细节可定制，为主流方式，但缺点是性能以及兼容问题，同时也无法与外部浏览器共享 cookies 等数据）</li>
+<li>Android <code>Custom Tabs</code>/iOS <code>SFSafariViewController</code> 🎉</li>
+</ul>
+<p>Android <code>Custom Tabs</code> 基于 Intent 调用，依赖手机里 Chrome 浏览器（或基于 Chromium 内核的浏览器）实现，不同版本可能会有差异。<br>
+早在 2015 年 Google 就发布了对应的 <code>support</code> 依赖库，后在 2018 年迁移到了 AndroidX，更名为 <code>browser</code>。目前国外的主流 App 都实现了该功能，例如 X、Telegram 等，而国内却寥寥无几。</p>
+<p>iOS 平台也提供了类似的解决方案：<code>SFSafariViewController</code><br>
+WKWebView 是 WebKit 框架的一部分，<code>SFSafariViewController</code> 是 SafariServices 框架的一部分，可让用户直接在应用内浏览网页，享受与在 Safari 中相同的网页浏览体验 - 包括密码自动填充、阅读器和安全浏览等功能，而无需离开我们的应用。</p>
+<h4 id="开始使用">开始使用</h4>
+<ol>
+<li>添加依赖</li>
+</ol>
+<pre><code>dependencies {
+   implementation 'androidx.browser:browser:1.8.0'
+}
+</code></pre>
+<ol start="2">
+<li>判断手机系统是否支持<br>
+手机需要安装 Chrome 45 或以上版本，并且设为默认浏览器，实测 Edge 浏览器也支持<br>
+如果条件都不满足，则跳转其他外部浏览器打开</li>
+</ol>
+<pre><code class="language-java">String packageName = CustomTabsClient.getPackageName(context, Collections.emptyList());
+if (packageName == null) {
+    // not supported
+}
+Intent activityIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(&quot;http://www.example.com&quot;));
+PackageManager packageManager = context.getPackageManager();
+List&lt;ResolveInfo&gt; viewIntentHandlers = packageManager.queryIntentActivities(activityIntent, 0);
+String packageName = CustomTabsClient.getPackageName(context, viewIntentHandlers, true);
+if (packageName == null) {    
+    // not supported
+}
+</code></pre>
+<ol start="3">
+<li>AndroidManifest.xml 处理包可见性（Android 11 及以上）</li>
+</ol>
+<pre><code class="language-xml">&lt;queries&gt;
+    &lt;intent&gt;
+        &lt;action android:name=
+            &quot;android.support.customtabs.action.CustomTabsService&quot; /&gt;
+    &lt;/intent&gt;
+&lt;/queries&gt;
+</code></pre>
+<ol start="4">
+<li>发起调用</li>
+</ol>
+<pre><code class="language-java">String url = &quot;https://developers.android.com&quot;;
+CustomTabsIntent intent = new CustomTabsIntent.Builder().build();
+intent.launchUrl(MainActivity.this, Uri.parse(url));
+</code></pre>
+<p>详细特性</p>
+<ul>
+<li>支持定制部分 UI</li>
+<li>支持预热和预加载</li>
+<li>支持最小化（画中画）</li>
+<li>支持 ToolBar 自定义按钮</li>
+<li>支持指定高度打开</li>
+<li>支持设置进入和退出动画</li>
+<li>支持传递 HTTP headers 等</li>
+</ul>
+<h4 id="优点">优点</h4>
+<ul>
+<li>Custom Tabs 提供了一致的浏览体验，与 Chrome 浏览器的外观和功能保持一致，用户在使用时感到熟悉和舒适。</li>
+<li>由于使用 Chrome 浏览器，Custom Tabs 在性能上通常优于 WebView，能够更快地加载网页。</li>
+<li>Custom Tabs 在安全性上更强，利用 Chrome 的安全功能，例如对恶意软件的防护和强大的隐私设置。</li>
+<li>可以利用浏览器的所有功能，包括自动填充、书签和跨设备的同步，使得用户能够享受到更全面的浏览体验。</li>
+<li>与 WebView 相比，Custom Tabs 不需要开发者维护网页内容的呈现，减少了开发和维护的工作量。</li>
+<li>开发者可以对 Custom Tabs 进行一些定制，比如修改颜色和添加自定义菜单，增强品牌识别度。</li>
+</ul>
+<h4 id="缺点">缺点</h4>
+<ul>
+<li>开发者对 Custom Tabs 的控制相对有限，无法像使用 WebView 那样对网页的行为和外观进行全面控制。</li>
+<li>Custom Tabs 依赖于用户的 Chrome 浏览器或其他支持 Custom Tabs 的浏览器。如果用户没有安装支持的浏览器，可能会导致体验不佳。</li>
+<li>某些特定的 WebView 功能可能无法在 Custom Tabs 中使用，例如与 JavaScript 的深度交互。</li>
+</ul>
+<h4 id="最佳实践场景">最佳实践场景</h4>
+<ul>
+<li>展示类：隐私协议、用户协议等</li>
+<li>互动类：论坛、帮助手册、视频教程等</li>
+</ul>
+<p>参考资料</p>
+<ul>
+<li>https://developer.chrome.com/docs/android/custom-tabs</li>
+<li>https://www.chromium.org/Home/</li>
+<li>https://developer.apple.com/news/?id=trjs0tcd</li>
+</ul>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[我的 2023]]></title>
+        <id>https://liyuyu.cn/post/my-2023/</id>
+        <link href="https://liyuyu.cn/post/my-2023/">
+        </link>
+        <updated>2024-02-06T11:53:57.000Z</updated>
+        <summary type="html"><![CDATA[<p>这次年终总结比以往来得晚了些。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>这次年终总结比以往来得晚了些。</p>
+<!-- more -->
+<p>此刻已经到了 2024 年的 2 月初，快过年了，部分同事已经陆续请假回家了，趁着年底不忙，慢慢总结下 2023 这一年。</p>
+<h5 id="离职">离职</h5>
+<p>待了七年的公司，期间动过无数次离开的念头，而这次我终于勇敢地跨出了这一步。这七年里，我买了车、结了婚、还生了两娃，我把我最美好的青春都留在了这里。从刚进来时的 Android 开发，到后面的 .NET、Angular 以及 Vue， 实现了前后端一把梭，这几年不但经历了自身的成长，也见证了公司的兴衰。</p>
+<p>记得 2016 年公司在 A 股上市，全体上下无不憧憬着美好的未来，新来的我也卯足了干劲。但好景不长，到了 2018 年，公司进行了一次相对大规模的裁员，历史上绝无仅有，一些“能力不足”的同事走了，而我侥幸逃过一劫。在接下来的几年里，可能是由于自己的努力和机遇，虽然经历了几次架构调整和产品线变更，但好在一切都在往好的方向发展，团队相处融洽，领导也青睐，我感觉似乎可以在这里一直干到退休了。</p>
+<p>然而 2022 年底的一通电话突然拉起了“躺平”的我，电话那头是七年前的老东家领导，他问我最近有没有换工作的想法，他那边新成立了大前端部门，负责人岗位空缺，想让我过去带团队。这一刻，命运的齿轮开始转动。</p>
+<h5 id="转型">转型</h5>
+<p>时隔七年，再次回到原来的公司，早已物是人非，刚开始的一个月，我是极度不适应的，甚至萌生了退缩的念头。一是从开发转为基层管理的思维转变，团队二十多号人，很多东西都需要主动去识别和了解，否则无法支撑自己做好管理和决策；二是部门事项繁杂，累是真的累，不夸张得讲，在这里三个月的加班量比过去的七年都多；所以我不争气地怀恋起上家公司的躺平氛围。</p>
+<p>熬过了这一年，现在回头看看，这期间的转变其实是巨大的，心态也和刚开始完全不一样了，对于这次的机会我是非常庆幸的，也不后悔。</p>
+<h5 id="骑行">骑行</h5>
+<p>由于换了工作，单程通勤距离由原来的 25 km 缩短为 6 km，虽然还是开车上下班，但是没了堵车，没了路怒症，带来的幸福感提升是巨大的。八月份过生日，老婆问我想要什么礼物，我说要么整辆自行车吧，我上下班骑。没想到买自行车却成了 2023 年做的最正确的一件事。为了兼顾山地车的舒适性和公路车的速度，最终选中了入门平把公路车-喜德盛极速 380。</p>
+<p>从九月份开始，除非下雨天，几乎每天都坚持骑行通勤，6 km 骑行时间也从刚开始的 25 分钟，到后面能达到18分钟左右，体能的提升肉眼可见；每天迎着朝阳，骑到公司的大汗淋漓，运动带来的荷尔蒙提升，一扫清晨的疲惫，同时骑行带来的变化也会影响着身边的人，好几个同事也陆续加入了骑行队伍，于是我们组建了一个骑行车队，每个周末的集体骑行活动成了最大的期待。在过去的这几个月，月均骑行里程超过 300 km，2024 年，希望能有更大的挑战和突破。</p>
+<h5 id="折腾的新东西">折腾的新东西</h5>
+<ul>
+<li>今年重新回到了 iOS 平台，14 Pro Max 续航真的很顶</li>
+<li>莫名又对养鱼产生了浓厚兴趣，399 的米家智能鱼缸体验下来没有翻车</li>
+<li>用了多年的 DeskMini 今年终于装上了黑苹果，搭配 BCM94360CS2 网卡，与秒控板的使用，稳定得不像黑的</li>
+<li>2018 年买的蝰蛇 2000 有线鼠标突然右键失灵，这款鼠标我是非常满意的，手感真的无可挑剔，于是决定自己动手维修，遗憾的是更换微动时不小心把焊盘搞坏，彻底报废。于是转头眼瞎看中了炼狱蝰蛇 V2 X 极速版双模无线鼠标，这名字确实很顶，但是实际体验下来，一言难尽。</li>
+<li>今年还新增了一整套露营装备，包括：露营车、卡式炉、折叠桌椅、帐篷以及各种锅碗瓢盆等等，露营体验感爆棚</li>
+</ul>
+]]></content>
+    </entry>
+</feed>
