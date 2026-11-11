@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>呵呵小鱼</title>
+  <subtitle>RSS 地址已迁移</subtitle>
+  <link rel="alternate" type="text/html" href="https://liyuyu.cn/" />
+  <link rel="self" type="application/atom+xml" href="https://liyuyu.cn/atom.xml" />
+  <updated>2026-11-11T00:00:00+08:00</updated>
+  <id>https://liyuyu.cn/</id>
+  <author><name>呵呵小鱼</name></author>
+  <entry>
+    <title>RSS 地址已迁移到 feed.xml</title>
+    <link rel="alternate" type="text/html" href="https://liyuyu.cn/feed.xml" />
+    <id>https://liyuyu.cn/feed-moved</id>
+    <updated>2026-11-11T00:00:00+08:00</updated>
+    <content type="html">订阅地址已迁移到 &lt;a href="https://liyuyu.cn/feed.xml"&gt;https://liyuyu.cn/feed.xml&lt;/a&gt;，请更新订阅。</content>
+  </entry>
+</feed>

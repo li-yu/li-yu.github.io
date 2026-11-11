@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Gridea" />
+<meta name="generator" content="Gridea Pro 1.3.0-beta.2">
+<title>App Widgets 设计与开发 | 拖孩不见了</title>
+<meta name="description" content="App Widgets 设计与开发 — 拖孩不见了" />
+<meta name="author" content="Yu" />
+<meta property="og:site_name" content="拖孩不见了" />
+<meta property="og:title" content="App Widgets 设计与开发 | 拖孩不见了" />
+<meta property="og:description" content="App Widgets 设计与开发 — 拖孩不见了" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="gravatar" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="App Widgets 设计与开发 | 拖孩不见了" />
+<meta name="twitter:description" content="App Widgets 设计与开发 — 拖孩不见了" />
+<link rel="shortcut icon" href="/favicon.ico?v=1794397270" />
+<link rel="alternate" type="application/rss+xml" title="拖孩不见了" href="/feed.xml" />
+<link rel="stylesheet" href="/styles/main.css?v=1794397270" />
+
+
+  
+<meta name="description" content="App 小部件（widgets）可以把重要的内容直接在桌面中呈现给用户，以提升用户在桌面获取信息与直达服务的效率。">
+<link rel="canonical" href="https://liyuyu.cn/post/app-widgets-design-and-develop/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"App Widgets 设计与开发","url":"https://liyuyu.cn/post/app-widgets-design-and-develop/","description":"App 小部件（widgets）可以把重要的内容直接在桌面中呈现给用户，以提升用户在桌面获取信息与直达服务的效率。","datePublished":"2025-02-11T09:01:24+08:00","dateModified":"2026-11-11T18:16:24+08:00","author":{"@type":"Person","name":"拖孩不见了"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"gravatar"},"name":"拖孩不见了"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://liyuyu.cn","name":"拖孩不见了","position":1},{"@type":"ListItem","item":"https://liyuyu.cn/post/app-widgets-design-and-develop/","name":"App Widgets 设计与开发","position":2}]}</script>
+<meta property="og:title" content="App Widgets 设计与开发">
+<meta property="og:description" content="App 小部件（widgets）可以把重要的内容直接在桌面中呈现给用户，以提升用户在桌面获取信息与直达服务的效率。">
+<meta property="og:url" content="https://liyuyu.cn/post/app-widgets-design-and-develop/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="拖孩不见了">
+<meta property="og:image" content="gravatar">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://liyuyu.cn/post/app-widgets-design-and-develop/">
+<meta name="twitter:title" content="App Widgets 设计与开发">
+<meta name="twitter:description" content="App 小部件（widgets）可以把重要的内容直接在桌面中呈现给用户，以提升用户在桌面获取信息与直达服务的效率。">
+<meta name="twitter:image" content="gravatar">
+</head>
+<body class="page-post">
+<a class="skip-link" href="#main">跳到正文</a>
+
+<div class="reading-progress" id="reading-progress" aria-hidden="true"></div>
+
+<header class="masthead" id="masthead">
+  <div class="shell">
+    <div class="masthead__meta">
+      <span>2026年11月11日 · 星期三</span>
+      
+      <a class="masthead__rss" href="/feed.xml" target="_blank" rel="noopener">订阅 RSS</a>
+      
+    </div>
+
+    <a class="masthead__brand" href="/">
+      <span class="brand__name">拖孩不见了</span>
+      <span class="brand__tagline">所有问题都有解决方案</span>
+    </a>
+
+    <div class="masthead__nav-wrap">
+      <nav class="masthead__nav" aria-label="主导航">
+        
+          <a class="nav-link " href="/">首页</a>
+        
+          <a class="nav-link " href="/archives">归档</a>
+        
+          <a class="nav-link " href="/tags/">标签</a>
+        
+          <a class="nav-link " href="/post/about">关于</a>
+        
+        
+        <button class="masthead__search" type="button" data-search-open aria-label="搜索文章">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m16.5 16.5 4.5 4.5"></path></svg>
+        </button>
+        
+      </nav>
+    </div>
+  </div>
+</header>
+
+<div class="topbar" id="topbar" aria-hidden="true">
+  <div class="shell topbar__inner">
+    <a class="topbar__brand" href="/">拖孩不见了</a>
+    <nav class="topbar__nav" aria-label="快捷导航">
+      
+        <a class="" href="/">首页</a>
+      
+        <a class="" href="/archives">归档</a>
+      
+        <a class="" href="/tags/">标签</a>
+      
+        <a class="" href="/post/about">关于</a>
+      
+      
+      <button type="button" data-search-open>搜索</button>
+      
+    </nav>
+  </div>
+</div>
+
+
+<div class="search-overlay" id="search-overlay" role="dialog" aria-modal="true" aria-labelledby="search-overlay-title" aria-hidden="true" data-search-api="/api/search.json">
+  <div class="search-overlay__backdrop" data-search-close></div>
+  <div class="search-overlay__panel">
+    <div class="search-overlay__head">
+      <svg class="search-overlay__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m16.5 16.5 4.5 4.5"></path></svg>
+      <h2 class="sr-only" id="search-overlay-title">搜索文章</h2>
+      <input class="search-overlay__input" type="search" placeholder="搜索文章…" autocomplete="off" spellcheck="false" data-search-input />
+      <button class="search-overlay__close" type="button" data-search-close aria-label="关闭搜索">×</button>
+    </div>
+    <div class="search-overlay__results" data-search-results></div>
+    <div class="search-overlay__hint">回车打开第一条 · Esc 关闭</div>
+  </div>
+</div>
+
+
+
+<main class="shell post" id="main">
+  <header class="post__head">
+    <div class="post__utility">
+      <a class="post__back" href="/">返回首页</a>
+      
+      <button class="copy-wechat" type="button" data-wechat-copy aria-label="复制公众号版">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="1"></rect><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"></path></svg>
+        <span class="copy-wechat__text">复制公众号版</span>
+      </button>
+      
+    </div>
+
+    
+      <a class="kicker" href="/tag/DprtxKSsE/">Android</a>
+    
+
+    <h1 class="post__title">App Widgets 设计与开发</h1>
+
+    <div class="post__byline">
+      <span class="author">文 / Yu</span>
+      <span class="dot" aria-hidden="true"></span>
+      <time datetime="2025-02-11">2025-02-11</time>
+      
+        <span class="dot" aria-hidden="true"></span>
+        <span>5474 字 · 9 分钟阅读</span>
+      
+    </div>
+  </header>
+
+  
+
+  <article class="post__body post-body has-dropcap">
+    <p>App 小部件（widgets）可以把重要的内容直接在桌面中呈现给用户，以提升用户在桌面获取信息与直达服务的效率。</p>
+<!-- more -->
+<p>不过因平台的差异性，Android 和 iOS 对于小部件的规范和实现也不一样，同时国内基于 Android 系统定制的各厂商也对小部件有着各自的开发规范。</p>
+<h1 id="android">Android</h1>
+<p><img src="https://liyuyu.cn/post-images/1739235897245.png" alt="Android" /></p>
+<h2 id="heading">设计</h2>
+<ul>
+<li>
+<p><strong>布局</strong>（<a href="https://developer.android.com/design/ui/mobile/guides/widgets/layouts">Layouts</a>）：对于文字、图片、按钮、列表、网格布局的指导规范</p>
+</li>
+<li>
+<p><strong>大小</strong>（<a href="https://developer.android.com/design/ui/mobile/guides/widgets/sizing">Sizing</a>）：官方推荐的尺寸作为起点，并在不同尺寸上测试布局，以确保最佳的可读性和用户体验</p>
+</li>
+<li>
+<p><strong>样式</strong>（<a href="https://developer.android.com/design/ui/mobile/guides/widgets/style">Style</a>）：定义颜色和排版的关键概念和技术，主要涉及颜色和黑暗主题等等</p>
+</li>
+<li>
+<p><strong>发现和推广</strong>（<a href="https://developer.android.com/design/ui/mobile/guides/widgets/discovery-promotion">Discovery &amp; promotion</a>）：用户可以通过小部件选择器发现和添加您的小部件</p>
+</li>
+</ul>
+<h2 id="heading-1">开发</h2>
+<p>除了传统的 XML 体系，Android 官方 Jetpack Glance 也提供了一种使用 Compose 语法构建 widget 的新式方法， 但受 <strong><code>AppWidgets</code></strong> 和 <strong><code>RemoteViews</code></strong> 的限制，Glance 使用的 Compose 与 Jetpack Compose 本质上是不一样的。</p>
+<h4 id="heading-2">布局类型</h4>
+<p>Android 小部件支持的布局形式和控件类型是有限的：</p>
+<p><img src="https://liyuyu.cn/post-images/1739235961652.png" alt="" /></p>
+<p>对应的其实就是传统布局上的 <strong><code>RelativeLayout</code></strong> 和 <strong><code>LinearLayout</code></strong></p>
+<p>此外，可滚动的列表，Glance 会将 <strong><code>LazyColumn</code></strong> 转换为实际的 <strong><code>ListView</code></strong></p>
+<h4 id="heading-3">控件类型</h4>
+<p>仅支持 Text、Image 等基础控件，Android 12 及以后支持<strong><code>CheckBox</code></strong>、<strong><code>Switch</code></strong> 和 <strong><code>RadioButton</code></strong>等复合控件，集合视图支持 <strong><code>ListView</code></strong>、<strong><code>GridView</code>、<code>StackView</code></strong>和<strong><code>AdapterViewFlipper</code></strong></p>
+<blockquote>
+<p>Android 平台的小部件不支持 WebView 以及自定义 View，包括 Canvas 的操作，所以一些复杂炫酷的图表曲线无法直接呈现</p>
+</blockquote>
+<h4 id="heading-4">注意事项</h4>
+<ul>
+<li>
+<p>针对小部件的<strong>进程和内存</strong>占用，有严重要求</p>
+</li>
+<li>
+<p>刷新时间限制<strong>最小间隔</strong>，不同系统和厂家略有不同</p>
+</li>
+<li>
+<p>由于不同设备分辨率各不同，桌面支持不同的网格模式，是否使用虚拟按键等原因，小部件最终展示并没有按绝对尺寸实现，会在不同情况下进行自适应，所以跟设计稿有<strong>一定出入</strong>；业务需要根据情况进行自适应</p>
+</li>
+<li>
+<p>部分国内手机厂商对于小部件会有<strong>独立的审核</strong>机制和附加的开发规范</p>
+</li>
+<li>
+<p>从 Android 12 开始，小部件有了很大的变动和改进，需留意适配</p>
+</li>
+</ul>
+<h2 id="heading-5">参考资料</h2>
+<ul>
+<li>
+<p>Android UI Kit Figma 设计 <a href="https://www.figma.com/community/file/1237551184114564748">https://www.figma.com/community/file/1237551184114564748</a></p>
+</li>
+<li>
+<p>Widget 设计概览 <a href="https://developer.android.com/design/ui/mobile/guides/widgets?hl=zh-cn">https://developer.android.com/design/ui/mobile/guides/widgets?hl=zh-cn</a></p>
+</li>
+<li>
+<p>Jetpack Glance <a href="https://developer.android.com/develop/ui/compose/glance?hl=zh_cn">https://developer.android.com/develop/ui/compose/glance?hl=zh_cn</a></p>
+</li>
+<li>
+<p>应用 Widget 开发 <a href="https://developer.android.com/develop/ui/views/appwidgets/overview?hl=zh-cn">https://developer.android.com/develop/ui/views/appwidgets/overview?hl=zh-cn</a></p>
+</li>
+<li>
+<p>Vivo 原子组件规范 <a href="https://dev.vivo.com.cn/documentCenter/doc/834">https://dev.vivo.com.cn/documentCenter/doc/834</a></p>
+</li>
+<li>
+<p>Xiaomi 小部件规范 <a href="https://dev.mi.com/xiaomihyperos/documentation/detail?pId=1664">https://dev.mi.com/xiaomihyperos/documentation/detail?pId=1664</a></p>
+</li>
+</ul>
+<h1 id="ios">iOS</h1>
+<p><img src="https://liyuyu.cn/post-images/1739235982774.png" alt="" /></p>
+<p>iOS <strong>从 iOS 8 开始</strong>支持小部件（Widget）开发，当时使用的是 <strong>Today Extension</strong>，小部件只能放在<strong>通知中心的“今天”视图</strong>中。</p>
+<p>后来，<strong>iOS 14 引入了 WidgetKit</strong>，允许小部件直接放在主屏幕（桌面）上，并支持多种尺寸。但 WidgetKit 使用的是 <strong>SwiftUI</strong>，与 Today Extension 的 UIViewController 方式不同。</p>
+<table>
+<thead>
+<tr>
+<th><strong>iOS 版本</strong></th>
+<th><strong>开发方式</strong></th>
+<th><strong>位置</strong></th>
+<th><strong>主要技术</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>iOS 8+</strong></td>
+<td><strong>Today Extension</strong></td>
+<td>通知中心 “今天” 视图</td>
+<td>UIViewController</td>
+</tr>
+<tr>
+<td><strong>iOS 10+</strong></td>
+<td><strong>Today Extension</strong></td>
+<td>负一屏（Spotlight 搜索）</td>
+<td>UIViewController</td>
+</tr>
+<tr>
+<td><strong>iOS 14+</strong></td>
+<td><strong>WidgetKit</strong></td>
+<td>主屏幕 &amp; 负一屏</td>
+<td>SwiftUI</td>
+</tr>
+<tr>
+<td><strong>iOS 16+</strong></td>
+<td><strong>WidgetKit（增强）</strong></td>
+<td>新增锁屏小部件</td>
+<td>SwiftUI</td>
+</tr>
+<tr>
+<td><strong>iOS 16.1+</strong></td>
+<td><strong>Live Activities（实时活动）</strong></td>
+<td>新增锁屏 &amp; 动态岛（iPhone 14 Pro 及以后）</td>
+<td>ActivityKit + SwiftUI</td>
+</tr>
+</tbody>
+</table>
+<p><strong>现代</strong> Apple 的小部件分为以下几大类场景：</p>
+<ul>
+<li>
+<p>锁屏界面</p>
+</li>
+<li>
+<p>手机桌面</p>
+</li>
+<li>
+<p>堆栈视图</p>
+</li>
+<li>
+<p>手表场景</p>
+</li>
+<li>
+<p>实时活动</p>
+</li>
+</ul>
+<h2 id="heading-6"><strong>设计</strong></h2>
+<ul>
+<li>
+<p><strong>布局（Layouts）</strong>：iOS 小部件（Widget）遵循 Apple 设计规范，支持文字、图片、按钮等基础 UI 组件，使用 SwiftUI 进行布局</p>
+</li>
+<li>
+<p><strong>大小（Sizing）</strong>：官方提供了三种标准尺寸（小、中、大），不同设备的组件尺寸会有所不同，需要适配</p>
+</li>
+<li>
+<p><strong>样式（Style）</strong>：支持浅色和深色模式，颜色应与应用整体风格保持一致。组件的背景可以设置为透明，以与桌面壁纸融合</p>
+</li>
+<li>
+<p><strong>发现和推广（Discovery &amp; Promotion）</strong>：用户可以在“添加小组件”界面（长按主屏幕 → 编辑小组件）找到并添加应用的小组件</p>
+</li>
+</ul>
+<h2 id="heading-7"><strong>开发</strong></h2>
+<p>iOS Widget 使用 SwiftUI 开发，并通过 WidgetKit 框架进行管理。其数据刷新依赖 TimelineProvider 进行定时更新，或者使用 WidgetCenter 进行手动刷新。</p>
+<h4 id="heading-8"><strong>布局类型</strong></h4>
+<p>iOS 小组件的布局基于 SwiftUI，支持 VStack、HStack 和 ZStack 进行层次排列，以及网格布局 Grid (iOS 16+)。由于小组件是静态 UI，不支持 ScrollView 或动态交互</p>
+<h4 id="heading-9"><strong>控件类型</strong></h4>
+<p>仅支持 Text、Image、ProgressView、Gauge (iOS 16+) 等基础控件，iOS 17 及以后版本支持 Gauge、ProgressView 等额外组件，不支持 WebView ，但可以使用 SwiftUI 的 Path 和 Shape 进行简单的图形绘制，例如绘制曲线、折线图等。</p>
+<h4 id="heading-10"><strong>注意事项</strong></h4>
+<ul>
+<li>
+<p><strong>刷新机制</strong>：小组件的更新受 TimelineProvider 限制，不能随意刷新，最小间隔一般为 15 分钟</p>
+</li>
+<li>
+<p><strong>交互限制</strong>：小组件不支持复杂交互，用户点击后只能打开 App 或触发 AppIntent 进行操作</p>
+</li>
+<li>
+<p><strong>适配性</strong>：iOS 小组件会根据设备和屏幕尺寸自动调整大小，可能与设计稿存在细微差异</p>
+</li>
+<li>
+<p><strong>平台兼容性</strong>：iOS 14 引入 WidgetKit，iOS 16 以后支持 Lock Screen Widget（锁屏小组件），iOS 17 进一步增强了交互能力，需留意不同系统的兼容</p>
+</li>
+<li>
+<p><strong>iOS Widget 适合静态内容</strong>（文本、图片、进度、绘制）。</p>
+</li>
+<li>
+<p><strong>不支持交互控件</strong>（Button、输入框、滚动列表）。</p>
+</li>
+<li>
+<p><strong>支持一定的自定义绘制</strong>（Path、Shape、Canvas）。</p>
+</li>
+<li>
+<p><strong>不能动态加载网络图片</strong>，但可以预加载到本地。</p>
+</li>
+</ul>
+<h2 id="heading-11">参考资料</h2>
+<ul>
+<li>
+<p>iOS 小组件设计指南：<a href="https://developer.apple.com/design/human-interface-guidelines/widgets">https://developer.apple.com/design/human-interface-guidelines/widgets</a></p>
+</li>
+<li>
+<p>iOS Widgets 开发概述 <a href="https://developer.apple.com/widgets/">https://developer.apple.com/widgets/</a></p>
+</li>
+<li>
+<p>iOS WidgetKit 开发文档 <a href="https://developer.apple.com/documentation/WidgetKit">https://developer.apple.com/documentation/WidgetKit</a></p>
+</li>
+<li>
+<p>创建一个 Widget <a href="https://developer.apple.com/documentation/widgetkit/creating-a-widget-extension">https://developer.apple.com/documentation/widgetkit/creating-a-widget-extension</a></p>
+</li>
+<li>
+<p>开发 Widget 策略 <a href="https://developer.apple.com/documentation/WidgetKit/Developing-a-WidgetKit-strategy">https://developer.apple.com/documentation/WidgetKit/Developing-a-WidgetKit-strategy</a></p>
+</li>
+</ul>
+
+  </article>
+
+  <footer class="post__footer">
+    <div class="post__tags">
+      
+        <span class="label">标签</span>
+        
+          <a class="post__tag" href="/tag/DprtxKSsE/">Android</a>
+        
+          <a class="post__tag" href="/tag/4O2Nguyi4V/">iOS</a>
+        
+      
+    </div>
+  </footer>
+
+  <div class="author-card">
+    <img class="author-card__avatar" src="gravatar" alt="Yu" onerror="this.style.display='none'">
+    <div class="author-card__body">
+      <div class="author-card__name">Yu</div>
+      <p class="author-card__note">我的拖孩哪去了？</p>
+    </div>
+    <a class="author-card__link" href="/post/about">关于作者 →</a>
+  </div>
+
+  
+  <nav class="post-nav" aria-label="相邻文章">
+    <div class="post-nav__item">
+      <span class="post-nav__label">← 上一篇</span>
+      
+        <a class="post-nav__title" href="/post/project-leader-yi-zhong-wei-shi-zi-qu-cheng-chang/">Project Leader: 以终为始，自驱成长</a>
+      
+    </div>
+    <div class="post-nav__item">
+      <span class="post-nav__label">下一篇 →</span>
+      
+        <a class="post-nav__title" href="/post/my-2024/">我的 2024</a>
+      
+    </div>
+  </nav>
+  
+
+  
+
+  
+</main>
+
+<footer class="site-footer">
+  <div class="shell footer__inner">
+    <div class="footer__ornament" aria-hidden="true">❦</div>
+    <div class="footer__brand">拖孩不见了</div>
+    <div class="footer__tagline">所有问题都有解决方案</div>
+
+    
+    <div class="footer__social">
+      
+        <a href="https://github.com/li-yu" target="_blank" rel="noopener">GitHub</a>
+      
+        <a href="http://weibo.com/u/1241167880" target="_blank" rel="noopener">微博</a>
+      
+    </div>
+    
+
+    
+    <div class="footer__record">记录技术、管理与生活的个人博客。</div>
+    
+
+    
+    <div class="footer__meta"><p><a href="http://beian.miit.gov.cn" target="_blank" rel="noopener">粤ICP备14087112号-1</a></p><p>Powered by <a href="https://gridea.pro" target="_blank" rel="noopener">Gridea Pro</a></p></div>
+    
+
+    <div class="footer__credit">
+      © 2026 拖孩不见了
+      <span class="sep">·</span>
+      Theme New Yorker
+      
+      <span class="sep">·</span>
+      <a href="/feed.xml">RSS</a>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/media/vendor/highlight.min.js"></script>
+<script src="/media/scripts/site.js" defer></script>
+<script src="/media/scripts/search.js" defer></script>
+
+<script src="/media/scripts/wechat-export.js" defer></script>
+<script>console.log("\n%c ✦ Gridea Pro v1.3.0-beta.2 %c · Theme: new-yorker v1.0.0 · https://gridea.pro %c\n","color:#fadfa3;background:#111111;padding:9px 14px;border-radius:4px 0 0 4px;font-weight:500;font-size:12px","color:#e05c00;background:#fff3ec;padding:9px 14px;border-radius:0 4px 4px 0;font-size:11px","")</script>
+</body>
+</html>

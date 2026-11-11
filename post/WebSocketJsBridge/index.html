@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Gridea" />
+<meta name="generator" content="Gridea Pro 1.3.0-beta.2">
+<title>使用 WebSocket 实现 JsBridge | 拖孩不见了</title>
+<meta name="description" content="使用 WebSocket 实现 JsBridge — 拖孩不见了" />
+<meta name="author" content="Yu" />
+<meta property="og:site_name" content="拖孩不见了" />
+<meta property="og:title" content="使用 WebSocket 实现 JsBridge | 拖孩不见了" />
+<meta property="og:description" content="使用 WebSocket 实现 JsBridge — 拖孩不见了" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="/post-images/WebSocketJsBridge.jfif" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="使用 WebSocket 实现 JsBridge | 拖孩不见了" />
+<meta name="twitter:description" content="使用 WebSocket 实现 JsBridge — 拖孩不见了" />
+<link rel="shortcut icon" href="/favicon.ico?v=1794397270" />
+<link rel="alternate" type="application/rss+xml" title="拖孩不见了" href="/feed.xml" />
+<link rel="stylesheet" href="/styles/main.css?v=1794397270" />
+
+
+  
+<meta name="description" content="去年写了个简单的 Android 壳子程序在部门内部使用，借助壳子程序 JavaScript （以下简称 JS）可以高效地使用拍照、签名、二维码扫描等原生功能，为 Web 项目提供接近原生的体验。">
+<link rel="canonical" href="https://liyuyu.cn/post/WebSocketJsBridge/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"使用 WebSocket 实现 JsBridge","url":"https://liyuyu.cn/post/WebSocketJsBridge/","description":"去年写了个简单的 Android 壳子程序在部门内部使用，借助壳子程序 JavaScript （以下简称 JS）可以高效地使用拍照、签名、二维码扫描等原生功能，为 Web 项目提供接近原生的体验。","image":"/post-images/WebSocketJsBridge.jfif","datePublished":"2018-09-30T10:40:43+08:00","dateModified":"2026-11-11T18:16:24+08:00","author":{"@type":"Person","name":"拖孩不见了"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"gravatar"},"name":"拖孩不见了"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://liyuyu.cn","name":"拖孩不见了","position":1},{"@type":"ListItem","item":"https://liyuyu.cn/post/WebSocketJsBridge/","name":"使用 WebSocket 实现 JsBridge","position":2}]}</script>
+<meta property="og:title" content="使用 WebSocket 实现 JsBridge">
+<meta property="og:description" content="去年写了个简单的 Android 壳子程序在部门内部使用，借助壳子程序 JavaScript （以下简称 JS）可以高效地使用拍照、签名、二维码扫描等原生功能，为 Web 项目提供接近原生的体验。">
+<meta property="og:url" content="https://liyuyu.cn/post/WebSocketJsBridge/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="拖孩不见了">
+<meta property="og:image" content="/post-images/WebSocketJsBridge.jfif">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://liyuyu.cn/post/WebSocketJsBridge/">
+<meta name="twitter:title" content="使用 WebSocket 实现 JsBridge">
+<meta name="twitter:description" content="去年写了个简单的 Android 壳子程序在部门内部使用，借助壳子程序 JavaScript （以下简称 JS）可以高效地使用拍照、签名、二维码扫描等原生功能，为 Web 项目提供接近原生的体验。">
+<meta name="twitter:image" content="/post-images/WebSocketJsBridge.jfif">
+</head>
+<body class="page-post">
+<a class="skip-link" href="#main">跳到正文</a>
+
+<div class="reading-progress" id="reading-progress" aria-hidden="true"></div>
+
+<header class="masthead" id="masthead">
+  <div class="shell">
+    <div class="masthead__meta">
+      <span>2026年11月11日 · 星期三</span>
+      
+      <a class="masthead__rss" href="/feed.xml" target="_blank" rel="noopener">订阅 RSS</a>
+      
+    </div>
+
+    <a class="masthead__brand" href="/">
+      <span class="brand__name">拖孩不见了</span>
+      <span class="brand__tagline">所有问题都有解决方案</span>
+    </a>
+
+    <div class="masthead__nav-wrap">
+      <nav class="masthead__nav" aria-label="主导航">
+        
+          <a class="nav-link " href="/">首页</a>
+        
+          <a class="nav-link " href="/archives">归档</a>
+        
+          <a class="nav-link " href="/tags/">标签</a>
+        
+          <a class="nav-link " href="/post/about">关于</a>
+        
+        
+        <button class="masthead__search" type="button" data-search-open aria-label="搜索文章">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m16.5 16.5 4.5 4.5"></path></svg>
+        </button>
+        
+      </nav>
+    </div>
+  </div>
+</header>
+
+<div class="topbar" id="topbar" aria-hidden="true">
+  <div class="shell topbar__inner">
+    <a class="topbar__brand" href="/">拖孩不见了</a>
+    <nav class="topbar__nav" aria-label="快捷导航">
+      
+        <a class="" href="/">首页</a>
+      
+        <a class="" href="/archives">归档</a>
+      
+        <a class="" href="/tags/">标签</a>
+      
+        <a class="" href="/post/about">关于</a>
+      
+      
+      <button type="button" data-search-open>搜索</button>
+      
+    </nav>
+  </div>
+</div>
+
+
+<div class="search-overlay" id="search-overlay" role="dialog" aria-modal="true" aria-labelledby="search-overlay-title" aria-hidden="true" data-search-api="/api/search.json">
+  <div class="search-overlay__backdrop" data-search-close></div>
+  <div class="search-overlay__panel">
+    <div class="search-overlay__head">
+      <svg class="search-overlay__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m16.5 16.5 4.5 4.5"></path></svg>
+      <h2 class="sr-only" id="search-overlay-title">搜索文章</h2>
+      <input class="search-overlay__input" type="search" placeholder="搜索文章…" autocomplete="off" spellcheck="false" data-search-input />
+      <button class="search-overlay__close" type="button" data-search-close aria-label="关闭搜索">×</button>
+    </div>
+    <div class="search-overlay__results" data-search-results></div>
+    <div class="search-overlay__hint">回车打开第一条 · Esc 关闭</div>
+  </div>
+</div>
+
+
+
+<main class="shell post" id="main">
+  <header class="post__head">
+    <div class="post__utility">
+      <a class="post__back" href="/">返回首页</a>
+      
+      <button class="copy-wechat" type="button" data-wechat-copy aria-label="复制公众号版">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="1"></rect><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"></path></svg>
+        <span class="copy-wechat__text">复制公众号版</span>
+      </button>
+      
+    </div>
+
+    
+      <span class="kicker">文章</span>
+    
+
+    <h1 class="post__title">使用 WebSocket 实现 JsBridge</h1>
+
+    <div class="post__byline">
+      <span class="author">文 / Yu</span>
+      <span class="dot" aria-hidden="true"></span>
+      <time datetime="2018-09-30">2018-09-30</time>
+      
+        <span class="dot" aria-hidden="true"></span>
+        <span>5165 字 · 8 分钟阅读</span>
+      
+    </div>
+  </header>
+
+  
+  <figure class="post__feature">
+    <img src="/post-images/WebSocketJsBridge.jfif" alt="使用 WebSocket 实现 JsBridge">
+  </figure>
+  
+
+  <article class="post__body post-body has-dropcap">
+    <p>去年写了个简单的 Android 壳子程序在部门内部使用，借助壳子程序 JavaScript （以下简称 JS）可以高效地使用拍照、签名、二维码扫描等原生功能，为 Web 项目提供接近原生的体验。</p>
+<!--more-->
+<p>但是一段时间使用下来，前端开发人员陆陆续续地反馈了一些蛋疼的问题，比如正常情况下可以使用 Chrome 浏览器的 <code>chrome://inspect</code> 功能调试设备上的远程网页，但是一些设备死活都无法 <code>inspect</code>，这给开发调试带来了很多不便，而后我在思考，还有没有另一种方式既能实现基本的 JsBridge 功能又能方便开发人员调试。</p>
+<p>我想到了 WebSocket，它是 HTML5 开始提供的一种在单个 TCP 连接上进行全双工通讯的协议。不过，在具体介绍 Websocket 之前先简单回顾下目前主流 JsBridge 的实现方案。</p>
+<h3 id="1-addjavascriptinterface-">1. addJavascriptInterface 方式</h3>
+<p>这是 Android 官方推荐的交互方式，但是在 Android 4.2 以下存在安全漏洞，后期官方通过在 Java 远程方法上添加注解 <code>@JavascriptInterface</code> 解决了这一安全隐患。</p>
+<h4 id="11-java--js-">1.1 Java 调用 JS 方法</h4>
+<pre><code class="language-java">if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.KITKAT) {
+    webView.evaluateJavascript(script, new ValueCallback&lt;String&gt;() {
+        @Override
+        public void onReceiveValue(String value) {
+            // 处理 JavaScript 方法的返回值
+        }
+    });
+} else {
+    webView.loadUrl(&quot;javascript:&quot; + script);// 低版本通用方式，但有弊端：无法获取返回值
+}
+</code></pre>
+<h4 id="12-js--java-">1.2 JS 调用 Java 方法</h4>
+<p>Java 端注入接口等待调用：</p>
+<pre><code class="language-java">class BridgeInterface {    
+    @JavascriptInterface
+    public String call(String msg) { 
+        return &quot;Hello!&quot;; 
+    }
+}
+...
+webView.addJavascriptInterface(new BridgeInterface(), &quot;JsBridge&quot;);
+</code></pre>
+<p>JS 端调用：</p>
+<pre><code class="language-javascript">if(window.JsBridge){
+    JsBridge.call(msg);
+}
+</code></pre>
+<h3 id="2-onjsprompt-">2. onJsPrompt 方式</h3>
+<p>为解决 Android 4.2 以下安全漏洞，肯定不能再使用 <code>addJavascriptInterface</code> 方式了，我们可以使用 HTML DOM <code>prompt()</code> 方法配合 <code>WebChromeClient</code> 的 <code>onJsPrompt</code> 回调方法实现交互。</p>
+<p>Java 端等待回调：</p>
+<pre><code class="language-java">@Override
+public boolean onJsPrompt(WebView view, String url, final String message, String defaultValue, final JsPromptResult result) {
+// message 和 defaultValue 为 JavaScript 端传来参数
+// 我们还可以通过 JsPromptResult 返回数据给 JavaScript 端，例如：result.confirm(&quot;Done!&quot;);
+}
+</code></pre>
+<p>JS 端调用：</p>
+<pre><code class="language-javascript">prompt(message, defaultValue);
+</code></pre>
+<h3 id="3--url-">3. 拦截 Url 方式</h3>
+<p><a href="https://github.com/lzyzsd/JsBridge">https://github.com/lzyzsd/JsBridge</a> 提供了一个很好的思路，通过 <code>shouldOverrideUrlLoading</code> 来拦截指定规则的 Url，然后处理业务逻辑实现两端交互。<br />
+由于 Java 调用 JS 方法都大同小异，这里我们不做过多的说明。</p>
+<p>页面加载完成后，JsBridge 动态创建了一个不可见的 <code>iframe</code>，在需要通知 Java 端时在 JS  消息队列里添加新的消息，同时改变 <code>iframe</code> 的 <code>src</code> 值触发 WebView 的 <code>shouldOverrideUrlLoading</code> 回调方法，然后 Java 端调用 <code>javascript:WebViewJavascriptBridge._fetchQueue();</code> 方法准备获取数据，调用后触发 <code>iframe</code> 的 <code>src</code> 值改变，此时 <code>src</code> 值为需要传递给 Java 端的数据，最后再次触发 <code>shouldOverrideUrlLoading</code> 回调方法，Java 端解析 url 取出数据，完成整个调用流程。</p>
+<p>整个流程稍显啰嗦了一点，JS 端发消息给 Java 端完全可以把两步合并为一步，此外通过改变 <code>iframe src</code> 属性的这种方式并不能保证 <code>shouldOverrideUrlLoading</code> 每次都会被调用。</p>
+<h3 id="4-websocket-">4. WebSocket 方式</h3>
+<p>在使用之前，我对 WebSocket 并不熟悉，网上找不到使用它来实现 JsBridge 的相关资料，不过这并不能阻止我尝试的脚步。</p>
+<blockquote>
+<p>WebSocket 协议在 2008年 诞生，2011 年成为国际标准。所有浏览器都已经支持了。</p>
+<p>它的最大特点就是，服务器可以主动向客户端推送信息，客户端也可以主动向服务器发送信息，是真正的双向平等对话，属于服务器推送技术的一种。</p>
+</blockquote>
+<p>其特点包括：</p>
+<ul>
+<li>建立在 TCP 协议之上，服务器端的实现比较容易。</li>
+<li>与 HTTP 协议有着良好的兼容性。默认端口也是 80 和 443，并且握手阶段采用 HTTP 协议，因此握手时不容易屏蔽，能通过各种 HTTP 代理服务器。</li>
+<li>数据格式比较轻量，性能开销小，通信高效。</li>
+<li>可以发送文本，也可以发送二进制数据。</li>
+<li>没有同源限制，客户端可以与任意服务器通信。</li>
+<li>协议标识符是 ws（如果加密，则为 wss），服务器网址就是 URL。</li>
+</ul>
+<p>WebSocket 的相关特性刚好满足 Native 端和 JS 端交互。</p>
+<h4 id="41--android--websocket-">4.1 搭建 Android 端 WebSocket 服务器</h4>
+<p>这里用的是开源项目 <a href="https://github.com/koush/AndroidAsync">AndroidAsync</a> 搭建服务器，示例代码如下：</p>
+<pre><code class="language-java">AsyncHttpServer server = new AsyncHttpServer();
+
+List&lt;WebSocket&gt; _sockets = new ArrayList&lt;WebSocket&gt;();
+
+server.websocket(&quot;/live&quot;, new WebSocketRequestCallback() {
+    @Override
+    public void onConnected(final WebSocket webSocket, AsyncHttpServerRequest request) {
+        _sockets.add(webSocket);
+        
+        //连接断开时的回调
+        webSocket.setClosedCallback(new CompletedCallback() {
+            @Override
+            public void onCompleted(Exception ex) {
+                try {
+                    if (ex != null)
+                        Log.e(&quot;WebSocket&quot;, &quot;Error&quot;);
+                } finally {
+                    _sockets.remove(webSocket);
+                }
+            }
+        });
+        
+        // 我们可以在这里处理来自 JS 端的消息
+        webSocket.setStringCallback(new StringCallback() {
+            @Override
+            public void onStringAvailable(String s) {
+                if (&quot;Hello Server&quot;.equals(s))
+                    webSocket.send(&quot;Welcome Client!&quot;);// Java 端发消息给 JS 端
+            }
+        });
+    
+    }
+});
+
+server.listen(5000);
+</code></pre>
+<h4 id="42-js--websocket-">4.2 JS 实现 WebSocket 客户端</h4>
+<pre><code class="language-javascript">// 创建完对象后，客户端就会与服务器进行连接
+var ws = new WebSocket(&quot;wss://localhost:5000/live&quot;);
+
+ws.onopen = function(evt) { 
+  // 连接成功后
+  console.log(&quot;Connection open ...&quot;); 
+};
+
+ws.onmessage = function(evt) {
+  // 收到服务端的消息
+  console.log( &quot;Received Message: &quot; + evt.data);
+};
+
+ws.onclose = function(evt) {
+  // 连接断开后
+  console.log(&quot;Connection closed.&quot;);
+};    
+
+...
+
+// JS 端发消息给服务端
+ws.send(&quot;Hello Server&quot;);
+
+</code></pre>
+<p>写了个测试 <a href="https://github.com/li-yu/WebSocketJsBridge">Demo</a>，发现整体效果还是可以的，后期完善下可以独立出来做个开源组件了。</p>
+<h3 id="heading">总结</h3>
+<p>WebSocket 并不是新鲜技术，用它来实现 JsBridge 也有点杀鸡用牛刀的错觉，但也不失为一种新的思路。此外，通过这种方式我们可以不使用 <code>chrome://inspect</code> 来调试远程网页了，把 JS 里 <code>localhost</code> 改为手机的 IP 地址就可以实现在任意电脑上调试 JsBridge了。</p>
+<p>注意，原生 WebView 在 Android 4.4.x (KitKat) 之后才支持 WebSocket，如果想兼容低版本可以尝试使用一些第三方 WebView 组件，例如腾讯浏览服务 <a href="https://x5.tencent.com/">TBS</a>。</p>
+<h3 id="heading-1">参考</h3>
+<ol>
+<li><a href="https://blog.csdn.net/leehong2005/article/details/11808557">Android WebView 的 Js 对象注入漏洞解决方案</a></li>
+<li><a href="https://www.jianshu.com/p/910e058a1d63">JsBridge 使用和原理</a></li>
+<li><a href="https://github.com/lzyzsd/JsBridge">JsBridge</a></li>
+<li><a href="https://github.com/wendux/WebViewJavascriptBridge">WebViewJavascriptBridge</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2017/05/websocket.html">WebSocket 教程</a></li>
+</ol>
+
+  </article>
+
+  <footer class="post__footer">
+    <div class="post__tags">
+      
+    </div>
+  </footer>
+
+  <div class="author-card">
+    <img class="author-card__avatar" src="gravatar" alt="Yu" onerror="this.style.display='none'">
+    <div class="author-card__body">
+      <div class="author-card__name">Yu</div>
+      <p class="author-card__note">我的拖孩哪去了？</p>
+    </div>
+    <a class="author-card__link" href="/post/about">关于作者 →</a>
+  </div>
+
+  
+  <nav class="post-nav" aria-label="相邻文章">
+    <div class="post-nav__item">
+      <span class="post-nav__label">← 上一篇</span>
+      
+        <a class="post-nav__title" href="/post/My2018/">我的 2018</a>
+      
+    </div>
+    <div class="post-nav__item">
+      <span class="post-nav__label">下一篇 →</span>
+      
+        <a class="post-nav__title" href="/post/JavaKeywords/">回顾几个 Java 关键字</a>
+      
+    </div>
+  </nav>
+  
+
+  
+
+  
+</main>
+
+<footer class="site-footer">
+  <div class="shell footer__inner">
+    <div class="footer__ornament" aria-hidden="true">❦</div>
+    <div class="footer__brand">拖孩不见了</div>
+    <div class="footer__tagline">所有问题都有解决方案</div>
+
+    
+    <div class="footer__social">
+      
+        <a href="https://github.com/li-yu" target="_blank" rel="noopener">GitHub</a>
+      
+        <a href="http://weibo.com/u/1241167880" target="_blank" rel="noopener">微博</a>
+      
+    </div>
+    
+
+    
+    <div class="footer__record">记录技术、管理与生活的个人博客。</div>
+    
+
+    
+    <div class="footer__meta"><p><a href="http://beian.miit.gov.cn" target="_blank" rel="noopener">粤ICP备14087112号-1</a></p><p>Powered by <a href="https://gridea.pro" target="_blank" rel="noopener">Gridea Pro</a></p></div>
+    
+
+    <div class="footer__credit">
+      © 2026 拖孩不见了
+      <span class="sep">·</span>
+      Theme New Yorker
+      
+      <span class="sep">·</span>
+      <a href="/feed.xml">RSS</a>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/media/vendor/highlight.min.js"></script>
+<script src="/media/scripts/site.js" defer></script>
+<script src="/media/scripts/search.js" defer></script>
+
+<script src="/media/scripts/wechat-export.js" defer></script>
+<script>console.log("\n%c ✦ Gridea Pro v1.3.0-beta.2 %c · Theme: new-yorker v1.0.0 · https://gridea.pro %c\n","color:#fadfa3;background:#111111;padding:9px 14px;border-radius:4px 0 0 4px;font-weight:500;font-size:12px","color:#e05c00;background:#fff3ec;padding:9px 14px;border-radius:0 4px 4px 0;font-size:11px","")</script>
+</body>
+</html>

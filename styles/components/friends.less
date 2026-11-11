@@ -1,0 +1,96 @@
+// ---------------------------------------------------------------------------
+// Friends
+// ---------------------------------------------------------------------------
+
+.friends {
+  max-width: 980px;
+  margin: 0 auto;
+  padding-bottom: 50px;
+}
+
+.friends__intro {
+  max-width: @measure;
+  margin: 0 auto 34px;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.85;
+  color: var(--muted);
+  white-space: pre-line;
+
+  a {
+    color: var(--accent);
+    border-bottom: 1px solid var(--accent-line);
+  }
+
+  p + p {
+    margin-top: 0.8em;
+  }
+}
+
+.friends-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 48px;
+}
+
+.friend {
+  display: flex;
+  gap: 16px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.friend__avatar {
+  flex: 0 0 auto;
+  width: 52px;
+  height: 52px;
+  border: 1px solid var(--rule);
+  border-radius: 50%;
+  object-fit: cover;
+  filter: grayscale(15%);
+}
+
+.friend__body {
+  min-width: 0;
+}
+
+.friend__name {
+  display: inline-block;
+  font-family: @font-display;
+  font-size: 20px;
+  line-height: 1.35;
+  color: var(--ink-strong);
+
+  &:hover {
+    color: var(--accent);
+  }
+}
+
+.friend__desc {
+  margin-top: 4px;
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+.friends__empty {
+  grid-column: 1 / -1;
+  padding: 56px 0;
+  text-align: center;
+  font-size: 15px;
+  color: var(--muted);
+}
+
+@media (max-width: @screen-sm) {
+  .friends-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .friend {
+    padding: 16px 0;
+  }
+
+  .friend__name {
+    font-size: 18px;
+  }
+}

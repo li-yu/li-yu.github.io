@@ -1,0 +1,19 @@
+<% posts.forEach(function (post) { %>
+<article class="story">
+  <div class="story__aside">
+    <time class="story__date"><%= post.dateFormat %></time>
+  </div>
+  <div class="story__main">
+    <% if (post.tags && post.tags.length) { %>
+      <span class="story__tag"><%= post.tags[0].name %></span>
+    <% } %>
+    <h2 class="story__title"><a href="<%= post.link %>"><%= post.title %></a></h2>
+    <p class="story__dek"><%- post.searchedPreview %></p>
+    <% if (post.stats) { %>
+      <div class="story__meta">
+        <span><%= post.stats.minutes %> 分钟阅读</span>
+      </div>
+    <% } %>
+  </div>
+</article>
+<% }); %>

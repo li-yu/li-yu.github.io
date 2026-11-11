@@ -1,0 +1,118 @@
+// ---------------------------------------------------------------------------
+// Layout & shared editorial furniture
+// ---------------------------------------------------------------------------
+
+.shell {
+  width: 100%;
+  max-width: @shell;
+  margin: 0 auto;
+  padding-left: @gutter;
+  padding-right: @gutter;
+}
+
+.kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: @font-sans;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+
+  &::before {
+    content: "";
+    display: inline-block;
+    width: 26px;
+    height: 1px;
+    background: currentColor;
+  }
+}
+
+.ornament {
+  margin: 46px 0;
+  text-align: center;
+  font-family: @font-display;
+  font-size: 17px;
+  line-height: 1;
+  letter-spacing: 0.55em;
+  padding-left: 0.55em;
+  color: var(--accent);
+  opacity: 0.85;
+  user-select: none;
+}
+
+.page-head {
+  max-width: @masthead-max;
+  margin: 0 auto;
+  padding: 64px 0 44px;
+  text-align: center;
+  border-bottom: 1px solid var(--rule);
+
+  .kicker {
+    justify-content: center;
+
+    &::after {
+      content: "";
+      display: inline-block;
+      width: 26px;
+      height: 1px;
+      background: currentColor;
+    }
+  }
+
+  h1 {
+    margin: 18px 0 10px;
+    font-family: @font-display;
+    font-size: clamp(36px, 5vw, 54px);
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: 0.02em;
+    color: var(--ink-strong);
+  }
+
+  p {
+    font-family: @font-sans;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+  }
+}
+
+.plain-text {
+  color: var(--muted);
+}
+
+.searched-keyword {
+  padding: 0 2px;
+  background: var(--accent-wash);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.searching,
+.no-result {
+  padding: 64px 0;
+  text-align: center;
+  font-family: @font-sans;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+@media (max-width: @screen-sm) {
+  .shell {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+
+  .ornament {
+    margin: 34px 0;
+  }
+
+  .page-head {
+    padding: 44px 0 32px;
+  }
+}

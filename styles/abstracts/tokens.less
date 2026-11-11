@@ -1,0 +1,49 @@
+// ---------------------------------------------------------------------------
+// Design tokens
+// ---------------------------------------------------------------------------
+
+// Palette is exposed as CSS custom properties so style-override.js can swap
+// the whole "paper" without recompiling LESS.
+:root {
+  --paper: #faf9f6;
+  --paper-deep: #f1ede5;
+  --surface: #fffdf9;
+  --ink: #2b2b2b;
+  --ink-strong: #1a1a1a;
+  --muted: #7a7a7a;
+  --faint: #a6a096;
+  --rule: #e6e6e6;
+  --rule-strong: #cfc8bc;
+  --accent: #8b0000;
+  --accent-deep: #610000;
+  --accent-wash: rgba(139, 0, 0, 0.06);
+  --accent-line: rgba(139, 0, 0, 0.24);
+  --selection: rgba(139, 0, 0, 0.14);
+  --code-bg: #1e1d1b;
+  --code-ink: #e9e2d6;
+  --shadow: rgba(43, 43, 43, 0.08);
+}
+
+// Type
+@font-serif: "Iowan Old Style", "Palatino", "Palatino Linotype", "Book Antiqua",
+  Georgia, "Songti SC", "STSong", "Source Han Serif SC", "Noto Serif CJK SC",
+  serif;
+@font-display: "Didot", "Bodoni 72", "Playfair Display", "Iowan Old Style",
+  "Palatino Linotype", "Songti SC", "STSong", Georgia, serif;
+@font-sans: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB",
+  "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+@font-mono: "SF Mono", "SFMono-Regular", Menlo, Monaco, Consolas,
+  "Liberation Mono", "Courier New", monospace;
+
+// Layout
+@shell: 1180px;
+@measure: 720px;
+@gutter: 48px;
+@masthead-max: 860px;
+
+// Breakpoints
+@screen-md: 980px;
+@screen-sm: 720px;
+
+// Motion
+@ease: cubic-bezier(0.22, 0.61, 0.36, 1);

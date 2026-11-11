@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>搜索 | 呵呵小鱼</title>
+<link rel="canonical" href="../" />
+<style>body{margin:0;background:#faf9f6;color:#2b2b2b;font-family:Georgia,"Songti SC",serif;display:flex;min-height:100vh;align-items:center;justify-content:center}p{font-size:15px;letter-spacing:.05em}a{color:#8b0000}</style>
+</head>
+<body><p>正在打开搜索… 如果没有自动跳转，请<a href="../">返回首页</a>按 ⌘/Ctrl + K。</p>
+<script>
+(function () {
+  var q = window.location.search || '';
+  var target = q && q !== '?' ? q : '?search=1';
+  window.location.replace('../' + target + (window.location.hash || ''));
+})();
+</script>
+</body>
+</html>

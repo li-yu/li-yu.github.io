@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Gridea" />
+<meta name="generator" content="Gridea Pro 1.3.0-beta.2">
+<title>Android 和 Java 的那些事 | 拖孩不见了</title>
+<meta name="description" content="Android 和 Java 的那些事 — 拖孩不见了" />
+<meta name="author" content="Yu" />
+<meta property="og:site_name" content="拖孩不见了" />
+<meta property="og:title" content="Android 和 Java 的那些事 | 拖孩不见了" />
+<meta property="og:description" content="Android 和 Java 的那些事 — 拖孩不见了" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="gravatar" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Android 和 Java 的那些事 | 拖孩不见了" />
+<meta name="twitter:description" content="Android 和 Java 的那些事 — 拖孩不见了" />
+<link rel="shortcut icon" href="/favicon.ico?v=1794397270" />
+<link rel="alternate" type="application/rss+xml" title="拖孩不见了" href="/feed.xml" />
+<link rel="stylesheet" href="/styles/main.css?v=1794397270" />
+
+
+  
+<meta name="description" content="Java 语言应用非常广泛，最近几年更是快速迭代更新，那么 Android 的发展是否与之息息相关呢？身边很多人，包括我自己对于它们之间乱七八糟的关系也产生过很多疑问，希望这次能一一解惑!">
+<link rel="canonical" href="https://liyuyu.cn/post/android-and-java/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Android 和 Java 的那些事","url":"https://liyuyu.cn/post/android-and-java/","description":"Java 语言应用非常广泛，最近几年更是快速迭代更新，那么 Android 的发展是否与之息息相关呢？身边很多人，包括我自己对于它们之间乱七八糟的关系也产生过很多疑问，希望这次能一一解惑!","datePublished":"2021-12-20T16:03:42+08:00","dateModified":"2026-11-11T18:16:24+08:00","author":{"@type":"Person","name":"拖孩不见了"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"gravatar"},"name":"拖孩不见了"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://liyuyu.cn","name":"拖孩不见了","position":1},{"@type":"ListItem","item":"https://liyuyu.cn/post/android-and-java/","name":"Android 和 Java 的那些事","position":2}]}</script>
+<meta property="og:title" content="Android 和 Java 的那些事">
+<meta property="og:description" content="Java 语言应用非常广泛，最近几年更是快速迭代更新，那么 Android 的发展是否与之息息相关呢？身边很多人，包括我自己对于它们之间乱七八糟的关系也产生过很多疑问，希望这次能一一解惑!">
+<meta property="og:url" content="https://liyuyu.cn/post/android-and-java/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="拖孩不见了">
+<meta property="og:image" content="gravatar">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://liyuyu.cn/post/android-and-java/">
+<meta name="twitter:title" content="Android 和 Java 的那些事">
+<meta name="twitter:description" content="Java 语言应用非常广泛，最近几年更是快速迭代更新，那么 Android 的发展是否与之息息相关呢？身边很多人，包括我自己对于它们之间乱七八糟的关系也产生过很多疑问，希望这次能一一解惑!">
+<meta name="twitter:image" content="gravatar">
+</head>
+<body class="page-post">
+<a class="skip-link" href="#main">跳到正文</a>
+
+<div class="reading-progress" id="reading-progress" aria-hidden="true"></div>
+
+<header class="masthead" id="masthead">
+  <div class="shell">
+    <div class="masthead__meta">
+      <span>2026年11月11日 · 星期三</span>
+      
+      <a class="masthead__rss" href="/feed.xml" target="_blank" rel="noopener">订阅 RSS</a>
+      
+    </div>
+
+    <a class="masthead__brand" href="/">
+      <span class="brand__name">拖孩不见了</span>
+      <span class="brand__tagline">所有问题都有解决方案</span>
+    </a>
+
+    <div class="masthead__nav-wrap">
+      <nav class="masthead__nav" aria-label="主导航">
+        
+          <a class="nav-link " href="/">首页</a>
+        
+          <a class="nav-link " href="/archives">归档</a>
+        
+          <a class="nav-link " href="/tags/">标签</a>
+        
+          <a class="nav-link " href="/post/about">关于</a>
+        
+        
+        <button class="masthead__search" type="button" data-search-open aria-label="搜索文章">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m16.5 16.5 4.5 4.5"></path></svg>
+        </button>
+        
+      </nav>
+    </div>
+  </div>
+</header>
+
+<div class="topbar" id="topbar" aria-hidden="true">
+  <div class="shell topbar__inner">
+    <a class="topbar__brand" href="/">拖孩不见了</a>
+    <nav class="topbar__nav" aria-label="快捷导航">
+      
+        <a class="" href="/">首页</a>
+      
+        <a class="" href="/archives">归档</a>
+      
+        <a class="" href="/tags/">标签</a>
+      
+        <a class="" href="/post/about">关于</a>
+      
+      
+      <button type="button" data-search-open>搜索</button>
+      
+    </nav>
+  </div>
+</div>
+
+
+<div class="search-overlay" id="search-overlay" role="dialog" aria-modal="true" aria-labelledby="search-overlay-title" aria-hidden="true" data-search-api="/api/search.json">
+  <div class="search-overlay__backdrop" data-search-close></div>
+  <div class="search-overlay__panel">
+    <div class="search-overlay__head">
+      <svg class="search-overlay__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m16.5 16.5 4.5 4.5"></path></svg>
+      <h2 class="sr-only" id="search-overlay-title">搜索文章</h2>
+      <input class="search-overlay__input" type="search" placeholder="搜索文章…" autocomplete="off" spellcheck="false" data-search-input />
+      <button class="search-overlay__close" type="button" data-search-close aria-label="关闭搜索">×</button>
+    </div>
+    <div class="search-overlay__results" data-search-results></div>
+    <div class="search-overlay__hint">回车打开第一条 · Esc 关闭</div>
+  </div>
+</div>
+
+
+
+<main class="shell post" id="main">
+  <header class="post__head">
+    <div class="post__utility">
+      <a class="post__back" href="/">返回首页</a>
+      
+      <button class="copy-wechat" type="button" data-wechat-copy aria-label="复制公众号版">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="1"></rect><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"></path></svg>
+        <span class="copy-wechat__text">复制公众号版</span>
+      </button>
+      
+    </div>
+
+    
+      <a class="kicker" href="/tag/DprtxKSsE/">Android</a>
+    
+
+    <h1 class="post__title">Android 和 Java 的那些事</h1>
+
+    <div class="post__byline">
+      <span class="author">文 / Yu</span>
+      <span class="dot" aria-hidden="true"></span>
+      <time datetime="2021-12-20">2021-12-20</time>
+      
+        <span class="dot" aria-hidden="true"></span>
+        <span>4749 字 · 7 分钟阅读</span>
+      
+    </div>
+  </header>
+
+  
+
+  <article class="post__body post-body has-dropcap">
+    <p>Java 语言应用非常广泛，最近几年更是快速迭代更新，那么 Android 的发展是否与之息息相关呢？身边很多人，包括我自己对于它们之间乱七八糟的关系也产生过很多疑问，希望这次能一一解惑!</p>
+<!-- more -->
+<blockquote>
+<p>阅读受众：<strong>新人</strong>或者<strong>困惑者</strong><br />
+文章涉及环境：<strong>Android Studio Arctic Fox | 2020.3.1 Patch 4</strong><br />
+文字里提到的 Java 版本均为：JavaSE（Java Platform Standard Edition）Java 标准版<br />
+文章更新时间：<strong>2021-12-15 21:00</strong></p>
+</blockquote>
+<h4 id="jdkjrejvm--openjdk-">JDK、JRE、JVM 以及 OpenJDK 到底是啥？</h4>
+<ul>
+<li>JDK(Java SE Development Kit)，Java 标准开发包，它提供了编译、运行 Java 程序所需的各种工具和资源，包括 Java 编译器、Java 运行时环境，以及常用的 Java 类库等。</li>
+<li>JRE( Java Runtime Environment) 、Java 运行环境，用于解释执行 Java 的字节码文件。</li>
+<li>JVM(Java Virtual Mechinal)，Java 虚拟机，是整个 Java 实现跨平台的最核心的部分，负责解释执行字节码文件，是可运行 Java 字节码文件的虚拟计算机。</li>
+<li>OpenJDK，可以简单理解为一个开源并更加自由的 JDK，区别可以归纳为以下几点：
+<ul>
+<li>授权协议的不同</li>
+<li>OpenJDK 不包含Deployment（部署）功能</li>
+<li>OpenJDK 源代码不完整</li>
+<li>部分源代码用开源代码替换</li>
+<li>OpenJDK 只包含最精简的 JDK</li>
+<li>不能使用 Java 商标</li>
+</ul>
+</li>
+</ul>
+<h4 id="java8jdk8--jdk18-">Java8、JDK8 以及 JDK1.8 傻傻分不清楚，到底是什么鬼？</h4>
+<p>这个问题一直困惑着不少新手，其实可以简单地把它们理解为同一个东西（体系），由于历史原因，这种混乱的命名方式目前仍持续影响着：</p>
+<p>比如 Gradle 7.0.2 源码中是这样描述 Java 版本的：<br />
+<img src="https://liyuyu.cn/post-images/1639988053984.png" alt="" /><br />
+而 Kotlin 中是这样描述 JVM 的：</p>
+<blockquote>
+<p>-jvm-target version</p>
+<p>Specify the target version of the generated JVM bytecode. Possible values are 1.6 (DEPRECATED), 1.8, 9, 10, 11, 12, 13, 14, 15, 16, and 17. The default value is 1.8.</p>
+</blockquote>
+<p>上图中的 <strong>Java 9</strong>，Gradle 称之为 <code>VERSION_1_9</code>，也就是我们常说的 <code>1.9</code>，而 Kotlin 直接成为 <code>9</code>，其实都是同一个东西，不同的编译（构建）工具或者框架体系中别称不一样而已。</p>
+<p>伴随着 Java 的迭代发展，这个问题也在逐步改善，目前从 Oracle Java 官网来看，命名已趋于统一，就连以前老的版本的名字都改过来了，变成了JDK7，JDK8 这种形式，不再是之前的 JDK1.7 以及 JDK1.8，至于新的，比如 Java 17，肯定再也不会出现 <code>1.17</code> 这种奇怪的名字了。</p>
+<h4 id="-openjdk">为啥出现了 OpenJDK？</h4>
+<p>Android Studio 2.2 首次捆绑 OpenJDK8，也就是从那时候开始我们的电脑不需要额外安装 JDK 就能运行 Android Studio 了。</p>
+<p>Oracle 起诉谷歌在 Android 上使用 Java 代码侵犯版权和专利权是谷歌参与 OpenJDK 项目以及捆绑 OpenJDK 到 Android Studio 的导火索，其实再看看 OpenJDK 和 Oracle JDK 的区别，就自然明白谷歌的心思了。</p>
+<h4 id="gradle-">Gradle 是什么？</h4>
+<p>Gradle 是一个基于 JVM 的构建工具，不是编程语言！它见证和陪伴了 Android Studio 的成长，但由于 Gradle 不单单服务于 Android 的开发构建，因此谷歌开发了一个 AGP(Android Gradle Plugin) 插件，添加了几项专用于构建 Android 应用的功能。虽然 AGP 插件通常会与 Android Studio 的更新步调保持一致，但 AGP 插件（以及 Gradle 系统的其余部分）可独立于 Android Studio 运行并单独更新。</p>
+<p>为了和 Gradle 的版本匹配，目前最新的 AGP 跳过版本 5 和 6 直接进入了 AGP 7.x 版本。</p>
+<h4 id="agpandroid-gradle-plugin--jdk">AGP(Android Gradle Plugin) 也需要 JDK！</h4>
+<p>毋庸置疑， AGP 的运行肯定是需要 JDK 的，随着 AGP 的迭代，所需的 JDK 版本也随之变化。最新 Android Studio 使用 AGP 7.x 构建应用时，需要 JDK 11 或更高版本才能运行 Gradle。由于最新 Android Studio 捆绑了 JDK 11（OpenJDK 11），并将 Gradle 配置为默认使用 JDK 11，这意味着大多数 Android Studio 用户不需要对项目进行任何配置更改。<br />
+如果使用的是独立于 Android Studio 的 AGP，需要将 <code>JAVA_HOME</code> 环境变量或 <code>-Dorg.gradle.java.home</code> 命令行选项设置为 JDK 11 安装目录。</p>
+<p>需要注意的是，上面所说的 JDK 版本是运行 AGP 所需的，不是我们开发编译业务代码所需的 JDK，两者是独立配置的。最新 Android Studio 也为了区别开，专门新增了一个 <strong>Gradle JDK</strong> 的配置项：<br />
+<img src="https://liyuyu.cn/post-images/1639987996445.png" alt="" /></p>
+<h4 id="-java-8-">为什么说 Java 8 是一个里程碑？</h4>
+<p>要知道，Java 17 都正式发布了，但根据调查显示，80% 的受访者仍然在使用 Java 8。目前受 Oracle LTS 的版本只有 Java 8，Java 11 和 Java 17，而 Java 8 的截至支持时间更是达到了惊人的 2030 年 12 月。</p>
+<p>首先从 Oracle JDK 8u211 开始往后的版本，都需要商业收费，但我觉得这不是最重要的原因。Java 8 中终于引入了 Lambda 表达式，写过 C# 或者 Kotlin 的应该都知道，这东西写过就回不去了，除此之外，还有支持重复注解以及新增 Stream 和 Optional 类数据处理等等，这些 Java 8 开创性的语言特性还在持续渗透影响着，在 Java 8 之后的一些版本，新特性不痛不痒，也没有足够的说服力让我们去更新，要知道，生产环境越稳定越好。</p>
+<p>目前在最新 Android Studio 新建工程时，无论选 Java 还是 Kotlin 语言，都是默认 Java 8 编译环境：</p>
+<pre><code>compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+}
+
+kotlinOptions {
+    jvmTarget = '1.8'
+}
+</code></pre>
+<h4 id="kotlin-">Kotlin 的本质是什么？</h4>
+<p>Kotlin 是一种在 Java 虚拟机（JVM）上运行的静态类型编程语言，本质上和 Java 一样，都会编译成 Java 字节码运行。Koltin 和 Java 100% 互操作，且 Kotlin 开发之初就以兼容 JDK 6 为目标，因此很多老旧系统的设备都能运行，无须担心其兼容性。此外，Kotlin 在空安全、懒加载、高阶函数、协程、inline 操作符等等新特性以及语法糖的加持下，用过就真的就回不去了。</p>
+<h4 id="desugaring">Desugaring（脱糖）的目的</h4>
+<p>由于不同的 Android 版本所支持的 JVM 版本也不同，所以在使用不支持的高版本 Java 语法时，需要在编译期转换为其支持的低版本 Java 语法，这一过程称为 Desugaring（脱糖）。<br />
+Android 的脱糖发展史经历了早期的 javac&amp;ProGuard 以及 Retrolambda 到后来的 Jack&amp;Jill 编译器，再到最新的 D8&amp;R8，其实脱糖的核心目的只有一个：让所有的 Java 语言新特性都能运行在所有设备上。</p>
+<p>Android Studio 目前已支持大部分 Java 8+ APIs 且不需要指定 App 的 minSdk 最低版本，这就是通过 D8 脱糖实现的。<br />
+但是 D8 也不是万能的， 它只为我们提供了<a href="https://developer.android.com/studio/write/java8-support-table">部分</a>核心的语言特性支持。</p>
+<h4 id="android--jdk17-">Android 开发能用最新的 JDK17 吗？</h4>
+<p>很遗憾，截至目前，在我尝试前往 Project Structure -&gt; SDK Location -&gt; Gradle Settings -&gt; Download JDK ，下载并设置最新的 JDK 发行版本（推荐 Oracle OpenJDK 17），然后设置 <code>compileOptions</code>  为 <code>JavaVersion.VERSION_17</code> 并且设置 <code>compileSdkVersion</code> 为 <strong>30</strong> 及以上，Kotlin 的工程还需要指定 <code>jvmTarget = '17'</code> ，一顿操作之后，编译报错，提示 <code>Unsupported class file major version 61</code>。</p>
+<p>目前 AGP 最新版为 7.0.4，其依赖的 Gradle 为 7.0+，而要支持 Java 17 则需要 7.3+，所以暂时没戏了，后期升级应该是可以的。</p>
+<p>最后经测试 AGP 7.0.4 + Gradle 7.0.2 + Java 11 是没毛病的。</p>
+<h4 id="heading">参考文献</h4>
+<p><a href="https://www.cnblogs.com/bingyimeiling/p/10266949.html">JDK、JRE、JVM三者间的联系与区别</a></p>
+<p><a href="https://stackoverflow.com/questions/11547458/what-is-the-difference-between-jvm-jdk-jre-openjdk">What is the difference between JVM, JDK, JRE &amp; OpenJDK?</a></p>
+<p><a href="https://juejin.cn/post/6844903585017233422">Google vs Oracle 专利侵权案始末</a></p>
+<p><a href="https://developer.android.google.cn/studio/releases/gradle-plugin?hl=zh-cn#jdk-11">Android Gradle 插件版本说明</a></p>
+
+  </article>
+
+  <footer class="post__footer">
+    <div class="post__tags">
+      
+        <span class="label">标签</span>
+        
+          <a class="post__tag" href="/tag/DprtxKSsE/">Android</a>
+        
+          <a class="post__tag" href="/tag/XHgHJNkgHL/">Java</a>
+        
+      
+    </div>
+  </footer>
+
+  <div class="author-card">
+    <img class="author-card__avatar" src="gravatar" alt="Yu" onerror="this.style.display='none'">
+    <div class="author-card__body">
+      <div class="author-card__name">Yu</div>
+      <p class="author-card__note">我的拖孩哪去了？</p>
+    </div>
+    <a class="author-card__link" href="/post/about">关于作者 →</a>
+  </div>
+
+  
+  <nav class="post-nav" aria-label="相邻文章">
+    <div class="post-nav__item">
+      <span class="post-nav__label">← 上一篇</span>
+      
+        <a class="post-nav__title" href="/post/synology-calibre-web-jour/">群晖 Calibre-Web 折腾记</a>
+      
+    </div>
+    <div class="post-nav__item">
+      <span class="post-nav__label">下一篇 →</span>
+      
+        <a class="post-nav__title" href="/post/my-2020/">我的 2020</a>
+      
+    </div>
+  </nav>
+  
+
+  
+
+  
+</main>
+
+<footer class="site-footer">
+  <div class="shell footer__inner">
+    <div class="footer__ornament" aria-hidden="true">❦</div>
+    <div class="footer__brand">拖孩不见了</div>
+    <div class="footer__tagline">所有问题都有解决方案</div>
+
+    
+    <div class="footer__social">
+      
+        <a href="https://github.com/li-yu" target="_blank" rel="noopener">GitHub</a>
+      
+        <a href="http://weibo.com/u/1241167880" target="_blank" rel="noopener">微博</a>
+      
+    </div>
+    
+
+    
+    <div class="footer__record">记录技术、管理与生活的个人博客。</div>
+    
+
+    
+    <div class="footer__meta"><p><a href="http://beian.miit.gov.cn" target="_blank" rel="noopener">粤ICP备14087112号-1</a></p><p>Powered by <a href="https://gridea.pro" target="_blank" rel="noopener">Gridea Pro</a></p></div>
+    
+
+    <div class="footer__credit">
+      © 2026 拖孩不见了
+      <span class="sep">·</span>
+      Theme New Yorker
+      
+      <span class="sep">·</span>
+      <a href="/feed.xml">RSS</a>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/media/vendor/highlight.min.js"></script>
+<script src="/media/scripts/site.js" defer></script>
+<script src="/media/scripts/search.js" defer></script>
+
+<script src="/media/scripts/wechat-export.js" defer></script>
+<script>console.log("\n%c ✦ Gridea Pro v1.3.0-beta.2 %c · Theme: new-yorker v1.0.0 · https://gridea.pro %c\n","color:#fadfa3;background:#111111;padding:9px 14px;border-radius:4px 0 0 4px;font-weight:500;font-size:12px","color:#e05c00;background:#fff3ec;padding:9px 14px;border-radius:0 4px 4px 0;font-size:11px","")</script>
+</body>
+</html>

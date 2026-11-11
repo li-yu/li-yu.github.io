@@ -1,0 +1,77 @@
+// ---------------------------------------------------------------------------
+// Memos
+// ---------------------------------------------------------------------------
+
+.memos {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 8px 0 50px;
+}
+
+.memo {
+  display: grid;
+  grid-template-columns: 108px minmax(0, 1fr);
+  gap: 30px;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--rule);
+
+  &:last-child {
+    border-bottom: 0;
+  }
+}
+
+.memo__date {
+  padding-top: 4px;
+  font-family: @font-sans;
+  font-size: 10px;
+  line-height: 1.5;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.memo__body {
+  font-size: 16.5px;
+  line-height: 1.85;
+  color: var(--ink);
+
+  p {
+    margin: 0 0 0.8em;
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+
+  a {
+    color: var(--accent);
+    border-bottom: 1px solid var(--accent-line);
+  }
+}
+
+.memo__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 12px;
+  font-family: @font-sans;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+}
+
+@media (max-width: @screen-sm) {
+  .memo {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 6px;
+    padding: 22px 0;
+  }
+
+  .memo__date {
+    padding-top: 0;
+  }
+
+  .memo__body {
+    font-size: 15.5px;
+  }
+}

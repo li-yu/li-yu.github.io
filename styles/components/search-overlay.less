@@ -1,0 +1,220 @@
+// ---------------------------------------------------------------------------
+// Search overlay (Gridea Pro: /api/search.json)
+// ---------------------------------------------------------------------------
+
+.search-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 150;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 10vh 24px 24px;
+  background: var(--paper);
+  opacity: 0;
+  visibility: hidden;
+  overflow-y: auto;
+  transition: opacity 0.25s @ease, visibility 0.25s @ease;
+
+  &.is-open {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.search-overlay__backdrop {
+  position: absolute;
+  inset: 0;
+  background: var(--paper);
+}
+
+.search-overlay__panel {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 760px;
+  padding-bottom: 8px;
+}
+
+.search-overlay__head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--ink);
+}
+
+.search-overlay__icon {
+  flex: 0 0 auto;
+  width: 20px;
+  height: 20px;
+  color: var(--accent);
+}
+
+.search-overlay__input {
+  flex: 1;
+  min-width: 0;
+  padding: 4px 0;
+  border: 0;
+  background: transparent;
+  font-family: @font-serif;
+  font-size: 28px;
+  line-height: 1.4;
+  color: var(--ink-strong);
+  outline: none;
+
+  &::placeholder {
+    color: var(--faint);
+    font-style: italic;
+  }
+
+  &::-webkit-search-cancel-button,
+  &::-webkit-search-decoration {
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  &::-ms-clear {
+    display: none;
+  }
+}
+
+.search-overlay__close {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid transparent;
+  font-family: @font-sans;
+  font-size: 22px;
+  line-height: 1;
+  color: var(--muted);
+  transition: color 0.2s @ease, border-color 0.2s @ease;
+
+  &:hover {
+    color: var(--accent);
+    border-color: var(--rule);
+  }
+}
+
+.search-overlay__results {
+  padding-top: 6px;
+}
+
+.search-result {
+  display: grid;
+  grid-template-columns: 84px minmax(0, 1fr);
+  gap: 22px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--rule);
+
+  &:last-child {
+    border-bottom: 0;
+  }
+}
+
+.search-result__date {
+  padding-top: 4px;
+  font-family: @font-sans;
+  font-size: 9.5px;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.search-result__title {
+  font-family: @font-display;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.35;
+  color: var(--ink-strong);
+
+  a {
+    color: inherit;
+
+    &:hover {
+      color: var(--accent);
+    }
+  }
+}
+
+.search-result__excerpt {
+  display: -webkit-box;
+  margin-top: 6px;
+  overflow: hidden;
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--muted);
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.search-result__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 6px;
+  font-family: @font-sans;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+.search-result.is-active {
+  background: var(--accent-wash);
+}
+
+.search-result mark {
+  padding: 0 2px;
+  background: var(--accent-wash);
+  color: var(--accent);
+}
+
+.search-empty {
+  padding: 48px 0;
+  text-align: center;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.search-overlay__hint {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid var(--rule);
+  text-align: center;
+  font-family: @font-sans;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  color: var(--faint);
+}
+
+body.search-open {
+  overflow: hidden;
+}
+
+@media (max-width: @screen-sm) {
+  .search-overlay {
+    padding: 5vh 18px 18px;
+  }
+
+  .search-overlay__input {
+    font-size: 20px;
+  }
+
+  .search-result {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 4px;
+    padding: 14px 0;
+  }
+
+  .search-result__date {
+    padding-top: 0;
+  }
+
+  .search-result__title {
+    font-size: 19px;
+  }
+}
